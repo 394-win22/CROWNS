@@ -10,7 +10,9 @@ import { all_types } from '../data/HairTypes';
 const HairSubtype = ({ hairSubtype }) => {
   return (
     <div>
-      <Typography>{hairSubtype.shortDescription}</Typography>
+      <Typography variant="h6">{hairSubtype.shortDescription}</Typography>
+      <Typography>{hairSubtype.longDescription}</Typography>
+      <img src={hairSubtype.exampleImage} alt={`Example of ${hairSubtype.shortDescription}`} />
     </div>
   )
 }
@@ -36,6 +38,9 @@ const HairType = ({ hairType }) => {
 const HairQuiz = () => {
   return (
     <div>
+      <Typography align={'center'} variant='h4'>
+        Determine Your Hair Type
+      </Typography>
       {all_types.map((e) => <HairType hairType={e} />)}
     </div>
   );
