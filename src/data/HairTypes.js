@@ -1,0 +1,3 @@
+const type1 = {}
+
+
