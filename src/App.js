@@ -1,12 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
-import HairQuiz from './components/HairQuiz'
+import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
+import LandingPage from './components/LandingPage.js';
+import ResultsPage from './components/ResultsPage.js';
 
 function App() {
   return (
     <div className="App">
-      <HairQuiz/>
-    </div>
+      <Router>
+            <Routes>
+                <Route exact path="/" element={<LandingPage />} />
+                <Route exact path="/trades" element={<ResultsPage />} />
+            </Routes>
+      </Router>
+        </div>
   );
 }
 
