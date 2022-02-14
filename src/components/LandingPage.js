@@ -51,19 +51,11 @@ const LandingPage = () => {
                     Hey Girl! Are you ready to embrace <br></br>your hair and take back control?
                 </div>
 
-<<<<<<< HEAD
                 <div>
                     <Button onClick={() => {navigate('/quiz'); }}variant="contained" size="large" defaultValue={30} sx={buttonStyle} > 
                         Find out my hair type! 
                     </Button>
-=======
-                <div style={{ paddingTop: '50px' }}>
-                <Button variant="contained" size="large" defaultValue={30} sx={{width: 300,color: 'white', backgroundColor: "#F1CCD3", fontFamily: 'Aileron'}}> 
-                    Figure out my hair type! 
-                </Button>
 
-
->>>>>>> d38aa79b043f3da6b9f471c2e44e482f1d8d2b3e
                 </div>
                
             </Stack>
