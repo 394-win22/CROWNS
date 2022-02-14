@@ -36,9 +36,9 @@ const LandingPage = () => {
                     Hey Girl! Are you ready to embrace <br></br>your hair and take back control?
                 </div>
 
-                <div>
+                <div style={{ paddingTop: '50px' }}>
                 <Button variant="contained" size="large" defaultValue={30} sx={{width: 300,color: 'white', backgroundColor: "#F1CCD3", fontFamily: 'Aileron'}}> 
-                    Find out my hair type! 
+                    Figure out my hair type! 
                 </Button>
 
 
