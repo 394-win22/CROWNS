@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import "@fontsource/aileron";
 import "@fontsource/caveat";
-import "@fontsource/raleway"
+import "@fontsource/raleway";
 
 
 const HairSubtype = ({ hairSubtype, setHairType }) => {
