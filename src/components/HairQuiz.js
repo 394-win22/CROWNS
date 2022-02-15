@@ -5,18 +5,24 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { all_types } from '../data/HairTypes';
+import Card from '@mui/material/Card'
+import { useNavigate } from 'react-router-dom';
 
 
-const HairSubtype = ({ hairSubtype }) => {
+const HairSubtype = ({ hairSubtype, setHairType }) => {
+  let navigate = useNavigate(); 
   return (
-    <div>
+    <Card variant = "outlined" onClick = {() => {
+      setHairType(hairSubtype);
+      navigate("/results");
+    }}>
       <Typography variant="h6">{hairSubtype.shortDescription}</Typography>
       <Typography>{hairSubtype.longDescription}</Typography>
       <img src={hairSubtype.exampleImage} alt={`Example of ${hairSubtype.shortDescription}`} />
-    </div>
+    </Card>
   )
 }
-const HairType = ({ hairType }) => {
+const HairType = ({ hairType, setHairType }) => {
   return (
     <Accordion>
       <AccordionSummary
@@ -29,19 +35,19 @@ const HairType = ({ hairType }) => {
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        {hairType.subtypes.map((e) => <HairSubtype hairSubtype={e} />)}
+        {hairType.subtypes.map((e) => <HairSubtype hairSubtype={e} setHairType = {setHairType} />)}
       </AccordionDetails>
     </Accordion>
   )
 }
 
-const HairQuiz = () => {
+const HairQuiz = ({ setHairType }) => {
   return (
     <div>
       <Typography align={'center'} variant='h4'>
-        Determine Your Hair Type
+        Choose the type that is most like your Hair
       </Typography>
-      {all_types.map((e) => <HairType hairType={e} />)}
+      {all_types.map((e) => <HairType hairType={e} setHairType = {setHairType} />)}
     </div>
   );
 }
