@@ -8,6 +8,8 @@ import { all_types } from '../data/HairTypes';
 import Card from '@mui/material/Card';
 import { useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
+import "@fontsource/aileron";
+import "@fontsource/caveat";
 
 
 const HairSubtype = ({ hairSubtype, setHairType }) => {
@@ -20,16 +22,22 @@ const HairSubtype = ({ hairSubtype, setHairType }) => {
 
   return (
     <Card variant="outlined" onClick={() => chooseHairType(hairSubtype)}>
-      <Grid container spacing = {2}>
-        <Grid item xs={6}>
-          <div>
+          <Grid container spacing={2}>
+              <Grid item xs={6}>
+                  <div style={{
+                      display: 'flex', justifyContent: 'center', alignItems: 'center',
+                      flexFlow: 'column nowrap', height: '100%', width: '100%', paddingLeft: '1rem'
+                  }}>
             <Typography variant="h6"><b>{hairSubtype.shortDescription}</b></Typography>
             <Typography>{hairSubtype.longDescription}</Typography>
           </div>
         </Grid>
         <Grid item xs={6}>
-          <div>
-            <img style={{maxWidth: '10rem'}} src={hairSubtype.exampleImage} alt={`Example of ${hairSubtype.shortDescription}`} />
+                  <div style={{
+                      display: 'flex', justifyContent: 'center', alignItems: 'center',
+                     paddingLeft: '1rem'
+                  }}>
+            <img style={{maxWidth: '12rem'}} src={hairSubtype.exampleImage} alt={`Example of ${hairSubtype.shortDescription}`} />
           </div>
         </Grid>
       </Grid>
@@ -37,14 +45,28 @@ const HairSubtype = ({ hairSubtype, setHairType }) => {
   )
 }
 const HairType = ({ hairType, setHairType }) => {
-  return (
-    <Accordion>
-      <AccordionSummary
+
+    const accordionStyle = {
+        backgroundColor: "#B28181",
+        fontFamily: 'Aileron',
+        color: 'white',
+        '&:hover': {
+            backgroundColor: '#F2AFAF',
+            color: 'white',
+        },
+        padding: '1rem',
+        margin: '0.5rem 0rem',
+        fontSize: '10rem'
+    };
+    return (
+      <Accordion sx=
+          {accordionStyle}>
+            <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography >
+                <Typography sx={{ fontSize: '2rem' }}>
           {hairType.categoryDescription}
         </Typography>
       </AccordionSummary>
