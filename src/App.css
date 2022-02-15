@@ -37,6 +37,12 @@
   }
 }
 
+
 .Mui-selected {
   background-color: 'inherit';
 }
+
+body {
+  background-color: #F8E8DA;
+}
+
