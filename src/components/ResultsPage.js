@@ -1,11 +1,11 @@
 import React from "react";
 
 
-const ResultsPage = () => {
+const ResultsPage = ({hairType}) => {
     console.log("navigated to results page");
     return (
         <div className="ResultsPage">
-        empty 
+        {hairType.shortDescription} 
         </div>
     );
   }
