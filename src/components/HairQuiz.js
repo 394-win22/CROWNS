@@ -83,7 +83,7 @@ const HairType = ({ hairType, setHairType }) => {
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        {hairType.subtypes.map((e) => <HairSubtype hairSubtype={e} setHairType={setHairType} />)}
+        {hairType.subtypes.map(function(e, index) {return (<HairSubtype key={index.toString()} hairSubtype={e} setHairType={setHairType} />)})}
       </AccordionDetails>
     </Accordion>
   )
@@ -95,7 +95,7 @@ const HairQuiz = ({ setHairType }) => {
       <Typography align={'center'}  sx={{ fontSize: '2rem', fontFamily: 'Raleway', padding: '1rem', fontWeight: '900' }}>
         Choose the type that is most like your Hair
       </Typography>
-      {all_types.map((e) => <HairType hairType={e} setHairType={setHairType} />)}
+      {all_types.map(function(e, index) {return (<HairType key={index.toString()} hairType={e} setHairType={setHairType} />)})}
     </div>
   );
 }
