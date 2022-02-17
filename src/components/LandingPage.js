@@ -39,13 +39,14 @@ const LandingPage = () => {
         fontSize: '3rem',
         fontWeight: 'bold',
         fontFamily: 'Raleway',
-        paddingTop: '4rem',
+        paddingTop: '2rem',
       };
 
     return (
         <div className="LandingPage" style={{
-            position: 'absolute', left: '50%', top: '45%',
-            transform: 'translate(-50%, -50%)'
+            paddingBottom: "2rem"
+            // position: 'absolute', left: '50%', top: '45%',
+            // transform: 'translate(-50%, -50%)'
         }}>
             <Stack
                 direction="column"
