@@ -174,7 +174,7 @@ const ResultsPage = ({hairType}) => {
                 <GoalGrid tiles={goals_info_data[key].tiles} />
             </div>
         )}
-         {/*
+        
         <Container sx={{maxWidth: "24rem"}}>
         <Accordion>
             <AccordionSummary
@@ -234,7 +234,7 @@ const ResultsPage = ({hairType}) => {
                 </Typography>
             </AccordionDetails>
         </Accordion>
-        </Container> */}
+        </Container>
         </div>
     );
   }
