@@ -15,6 +15,17 @@ const LandingPage = () => {
     const buttonStyle = {
         width: 300,
         color: 'white', 
+        backgroundColor: "#F2AFAF", 
+        fontFamily: 'Raleway',
+        '&:hover': {
+          backgroundColor: '#B28181',
+          color: 'white',
+        },
+    };
+
+    const buttonStyle2 = {
+        width: 300,
+        color: 'white', 
         backgroundColor: "#B28181", 
         fontFamily: 'Raleway',
         '&:hover': {
@@ -48,15 +59,21 @@ const LandingPage = () => {
                 <div>
                     <img style={{maxWidth: '20rem'}} src={Logo} alt=''/>
                 </div>
-                <div style={{fontFamily: 'Caveat', fontSize: '1.75rem'}}>
-                    Hey Girl! Are you ready to embrace <br></br>your hair and take back control?
+                <div style={{fontFamily: 'Caveat', fontSize: '1.5rem'}}>
+                    Hey Girl! Are you ready to embrace your <br></br> hair and take back control? CROWNS <br></br>recommends products, hairstyles, 
+                    <br></br>and more to keep your hair healthy and strong!
                 </div>
 
                 <div style={{margin: '2rem 0rem'}}>
                     <Button onClick={() => {navigate('/quiz'); }}variant="contained" size="large" defaultValue={30} sx={buttonStyle} > 
                         Find out my hair type! 
                     </Button>
+                </div>
 
+                <div >
+                    <Button onClick={() => {navigate('/selector'); }}variant="contained" size="large" defaultValue={30} sx={buttonStyle2} > 
+                        I know my type!
+                    </Button>
                 </div>
                
             </Stack>
