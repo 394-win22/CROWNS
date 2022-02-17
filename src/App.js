@@ -4,6 +4,7 @@ import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import LandingPage from './components/LandingPage.js';
 import ResultsPage from './components/ResultsPage.js';
 import HairQuiz from './components/HairQuiz';
+import TypeSelector from './components/TypeSelector';
 
 function App() {
   const [hairType, setHairType] = useState(null);
@@ -15,6 +16,8 @@ function App() {
                 <Route exact path="/" element={<LandingPage />} />
                 <Route exact path="/results" element={<ResultsPage hairType = {hairType}/>} />
                 <Route exact path="/quiz" element={<HairQuiz setHairType = {setHairType} />} />
+                <Route exact path="/selector" element={<TypeSelector setHairType = {setHairType} />} />
+
             </Routes>
       </Router>
         </div>
