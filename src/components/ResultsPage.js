@@ -113,8 +113,8 @@ const GoalGrid = ({ tiles }) => {
 
   return (
     <Grid container spacing={1} sx={{ px: "0.5rem" }}>
-      {tiles.map((tile, i) => (
-        <Grid key={i} item xs={6}>
+      {tiles.map((tile, i) =>
+        <Grid item key={i} xs={6}>
           <Card sx={{ height: "100%" }}>
             {tile.image ? (
               <CardMedia
@@ -137,7 +137,49 @@ const GoalGrid = ({ tiles }) => {
                 </Button>
               </CardActions>
             ) : null}
-            {/* <Popover
+            </Card>
+            </Grid>
+            )}
+    </Grid>
+    );
+};
+
+
+const GoalGridPopover = ({ tiles }) => {
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [t, setT] = React.useState(null);
+    const handleClick = (event, tempt) => {
+        setAnchorEl(event.currentTarget);
+        setT(tempt);
+        console.log(t);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
+
+    return (
+        <Grid container spacing={1} sx={{ px: "0.5rem" }}>
+            {tiles.map((tile, i) =>
+                <Grid item xs={6} sx={{/* maxHeight: "24rem", minHeight: "20rem" /*maxWidth: "16rem"*/ }} >
+                    <Card sx={{ maxHeight: "24rem" }}>
+                        {tile.image ? <CardMedia
+                            component="img"
+                            image={"./images/goals/" + tile.image}
+                            alt={tile.title}
+                            loading="lazy"
+                        /> : null}
+
+                        <CardContent onClick={(e) => handleClick(e, tile)}>
+                            <Typography variant="h6"> {tile.title}</Typography>
+                            <Typography variant="body1" > {tile.moreInfo}</Typography>
+
+                        </CardContent>
+                        {tile.link ? <CardActions>
+                            <Button target="_blank" href={tile.link}>Learn More</Button>
+                        </CardActions> : null}
+                        { <Popover
                     id={id}
                     open={open}
                     anchorEl={anchorEl}
@@ -147,14 +189,14 @@ const GoalGrid = ({ tiles }) => {
                       horizontal: 'left',
                     }}
                   >
-                    <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-                  </Popover> */}
-          </Card>
-        </Grid>
-      ))}
-    </Grid>
-  );
+                            <Typography sx={{ p: 2 }}>{t==null? "" : t.moreInfo}</Typography>
+                  </Popover> }
+                    </Card>
+                </Grid>
+            )}
+        </Grid>);
 };
+
 
 const ResultsPage = ({ hairType }) => {
   console.log("navigated to results page");
