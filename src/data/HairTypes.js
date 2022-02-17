@@ -1,73 +1,86 @@
 const schema = {
     shortDescription: "straight",
     longDescription: "straight with little to no volume",
-    exampleImage: "./images/test.png"
+    exampleImage: "./images/test.png",
+    code: "1A"
 };
 
 
 const type1a = {
     shortDescription: "fine",
     longDescription: "Very soft, shiny, hard to hold a curl, hair tends to be oily, hard to damage.",
-    exampleImage: "./images/test.png"
+    exampleImage: "./images/test.png",
+    code: "1A"
 };
 const type1b = {
     shortDescription: "medium",
     longDescription: "Has much body. (i.e. more volume, more full).",
-    exampleImage: "./images/test.png"
+    exampleImage: "./images/test.png",
+    code: "1B"
 };
 const type1c = {
     shortDescription: "coarse",
     longDescription: "Hard to curl (i.e. bone straight).",
-    exampleImage: "./images/test.png"
+    exampleImage: "./images/test.png",
+    code: "1C"
 };
 
 const type2a = {
     shortDescription: "loose waves",
     longDescription: "Can accomplish various styles. Loose \"S\" pattern. Hair sticks close to the head.",
-    exampleImage: "./images/hairTypes/2A.jpeg"
+    exampleImage: "./images/hairTypes/2A.jpeg",
+    code: "2A"
 };
 const type2b = {
     shortDescription: "defined waves",
     longDescription: "A bit resistant to styling. Hair has more of a defined \"S\" pattern. Hair tends to be frizzy.",
-    exampleImage: "./images/hairTypes/2B.jpeg"
+    exampleImage: "./images/hairTypes/2B.jpeg",
+    code: "2B"
 };
 const type2c = {
     shortDescription: "wide waves",
     longDescription: "Hair has wider waves. Resistant to styling. Hair tends to be frizzy.",
-    exampleImage: "./images/hairTypes/2C.jpeg"
+    exampleImage: "./images/hairTypes/2C.jpeg",
+    code: "2C"
 };
 
 const type3a = {
     shortDescription: "loose curl",
     longDescription: "Thick and full with much body. Definite curl pattern. Hair tends to be frizzy. Can have a combination texture.",
-    exampleImage: "./images/hairTypes/3A.jpeg"
+    exampleImage: "./images/hairTypes/3A.jpeg",
+    code: "3A"
 };
 const type3b = {
     shortDescription: "tight curls",
     longDescription: "Medium amount of space of the curls. Can have a combined texture.",
-    exampleImage: "./images/hairTypes/3B.jpeg"
+    exampleImage: "./images/hairTypes/3B.jpeg",
+    code: "3B"
 };
 const type3c = {
     shortDescription: "corkscrews",
     longDescription: "Tight curls in corkscrews. The curls are very tightly curled.",
-    exampleImage: "./images/hairTypes/3C.jpeg"
+    exampleImage: "./images/hairTypes/3C.jpeg",
+    code: "3C"
 };
 
 
 const type4a = {
     shortDescription: "defined coil",
     longDescription: "Tightly coiled. Has a very defined \"o\"-shaped pattern.",
-    exampleImage: "./images/hairTypes/4A.png"
+    exampleImage: "./images/hairTypes/4A.png",
+    code: "4A"
 };
 const type4b = {
     shortDescription: "z coil",
     longDescription: "Tightly coiled. Little less defined kink pattern. Has more of a \"Z\"-shaped pattern.",
-    exampleImage: "./images/hairTypes/4B.jpeg"
+    exampleImage: "./images/hairTypes/4B.jpeg",
+    code: "4B"
 };
 const type4c = {
     shortDescription: "tight coil",
     longDescription: "Tightly coiled. Almost no visible defined kink pattern, unless seen from up close. Has more of a very tight \"o\"-shaped pattern.",
-    exampleImage: "./images/hairTypes/4C.png"
+    exampleImage: "./images/hairTypes/4C.png",
+    code: "4C"
 };
 
 const type1 = {
