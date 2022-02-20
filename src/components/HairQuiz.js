@@ -8,6 +8,9 @@ import { all_types } from '../data/HairTypes';
 import Card from '@mui/material/Card';
 import { useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
+import { quizQuestions } from "../data/Questions"
+import { PlainQuizQuestion, ImageQuizQuestion } from './QuizQuestion';
+import {accordionStyle} from "../styles/quizStyling"
 import "@fontsource/aileron";
 import "@fontsource/caveat";
 import "@fontsource/raleway";
@@ -53,20 +56,10 @@ const HairSubtype = ({ hairSubtype, setHairType }) => {
     </Card>
   )
 }
-const HairType = ({ hairType, setHairType }) => {
 
-  const accordionStyle = {
-    backgroundColor: "#B28181",
-    fontFamily: 'Raleway',
-    color: 'white',
-    '&:hover': {
-      backgroundColor: '#F2AFAF',
-      color: 'white',
-    },
-    padding: '1rem',
-    margin: '0.5rem 0rem',
-    fontSize: '10rem'
-  };
+
+
+const HairType = ({ hairType, setHairType }) => {
   return (
     <Accordion sx=
       {accordionStyle}>
@@ -92,10 +85,12 @@ const HairType = ({ hairType, setHairType }) => {
 const HairQuiz = ({ setHairType }) => {
   return (
     <div style={{ maxWidth: 650, display: "inline-block"}}>
-      <Typography align={'center'}  sx={{ fontSize: '2rem', fontFamily: 'Raleway', padding: '1rem', fontWeight: '900' }}>
+      {/* <Typography align={'center'}  sx={{ fontSize: '2rem', fontFamily: 'Raleway', padding: '1rem', fontWeight: '900' }}>
         Choose the type that is most like your Hair
-      </Typography>
-      {all_types.map(function(e, index) {return (<HairType key={index.toString()} hairType={e} setHairType={setHairType} />)})}
+      </Typography> */}
+      <PlainQuizQuestion question={quizQuestions[0]}/>
+      
+      { /* all_types.map(function(e, index) {return (<HairType key={index.toString()} hairType={e} setHairType={setHairType} />)}) */}
 
     </div>
   );
