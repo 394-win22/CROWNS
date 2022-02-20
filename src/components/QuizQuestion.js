@@ -12,7 +12,7 @@ const questionTextStyle = {
   fontWeight: "900",
 };
 
-const PlainQuizQuestion = ({ question }) => {
+const PlainQuizQuestion = ({ question, setResult }) => {
   console.log("Quiz");
   return (
     <Box>
@@ -21,8 +21,12 @@ const PlainQuizQuestion = ({ question }) => {
       </Typography>
       <Grid columns={1}>
         {question.answers.map((answer) => (
-          <Grid item>
-            <Button sx={{...accordionStyle, backgroundImage: answer.image ? 'url(/images' + answer.image + ')' : null}}>{answer.option}</Button>
+          <Grid key={answer.id} item>
+            <Button sx={{...accordionStyle, 
+              backgroundImage: answer.image ? "url(/images" + answer.image + ')' : null,
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover'}}
+              onClick={() => setResult(answer.id)}>{answer.option}</Button>
           </Grid>
         ))}
       </Grid>

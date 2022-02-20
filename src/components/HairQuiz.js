@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState, useCallback} from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -83,12 +84,30 @@ const HairType = ({ hairType, setHairType }) => {
 }
 
 const HairQuiz = ({ setHairType }) => {
+  const [results, setResults] = useState([]);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const navigate = useNavigate();
+
+  const setResult = useCallback((res) => {
+    let temp = [...results, res];
+    setResults(temp);
+    if (temp.length === quizQuestions.length) {
+      finishQuiz()
+    } else {
+      setCurrentQuestion(currentQuestion + 1)
+    }
+  }, [results]);
+  
+  const finishQuiz = useCallback(() => {
+    console.log("quiz finished");
+    console.log(results);
+    setHairType(all_types[3].subtypes[2])
+    navigate("/results")
+  }, [results]);
+
   return (
-    <div style={{ maxWidth: 650, display: "inline-block"}}>
-      {/* <Typography align={'center'}  sx={{ fontSize: '2rem', fontFamily: 'Raleway', padding: '1rem', fontWeight: '900' }}>
-        Choose the type that is most like your Hair
-      </Typography> */}
-      <PlainQuizQuestion question={quizQuestions[0]}/>
+    <div style={{ maxWidth: "40rem", width: '100%', display: "inline-block"}}>
+      <PlainQuizQuestion setResult = {setResult} question={quizQuestions[currentQuestion]}/>
       
       { /* all_types.map(function(e, index) {return (<HairType key={index.toString()} hairType={e} setHairType={setHairType} />)}) */}
 
