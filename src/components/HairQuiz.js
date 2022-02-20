@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState, useCallback} from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -8,6 +9,9 @@ import { all_types } from '../data/HairTypes';
 import Card from '@mui/material/Card';
 import { useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
+import { quizQuestions } from "../data/Questions"
+import { PlainQuizQuestion, ImageQuizQuestion } from './QuizQuestion';
+import {accordionStyle} from "../styles/quizStyling"
 import "@fontsource/aileron";
 import "@fontsource/caveat";
 import "@fontsource/raleway";
@@ -53,20 +57,10 @@ const HairSubtype = ({ hairSubtype, setHairType }) => {
     </Card>
   )
 }
-const HairType = ({ hairType, setHairType }) => {
 
-  const accordionStyle = {
-    backgroundColor: "#B28181",
-    fontFamily: 'Raleway',
-    color: 'white',
-    '&:hover': {
-      backgroundColor: '#F2AFAF',
-      color: 'white',
-    },
-    padding: '1rem',
-    margin: '0.5rem 0rem',
-    fontSize: '10rem'
-  };
+
+
+const HairType = ({ hairType, setHairType }) => {
   return (
     <Accordion sx=
       {accordionStyle}>
@@ -90,12 +84,32 @@ const HairType = ({ hairType, setHairType }) => {
 }
 
 const HairQuiz = ({ setHairType }) => {
+  const [results, setResults] = useState([]);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const navigate = useNavigate();
+
+  const setResult = useCallback((res) => {
+    let temp = [...results, res];
+    setResults(temp);
+    if (temp.length === quizQuestions.length) {
+      finishQuiz()
+    } else {
+      setCurrentQuestion(currentQuestion + 1)
+    }
+  }, [results]);
+  
+  const finishQuiz = useCallback(() => {
+    console.log("quiz finished");
+    console.log(results);
+    setHairType(all_types[3].subtypes[2])
+    navigate("/results")
+  }, [results]);
+
   return (
-    <div style={{ maxWidth: 650, display: "inline-block"}}>
-      <Typography align={'center'}  sx={{ fontSize: '2rem', fontFamily: 'Raleway', padding: '1rem', fontWeight: '900' }}>
-        Choose the type that is most like your Hair
-      </Typography>
-      {all_types.map(function(e, index) {return (<HairType key={index.toString()} hairType={e} setHairType={setHairType} />)})}
+    <div style={{ maxWidth: "40rem", width: '100%', display: "inline-block"}}>
+      <PlainQuizQuestion setResult = {setResult} question={quizQuestions[currentQuestion]}/>
+      
+      { /* all_types.map(function(e, index) {return (<HairType key={index.toString()} hairType={e} setHairType={setHairType} />)}) */}
 
     </div>
   );
