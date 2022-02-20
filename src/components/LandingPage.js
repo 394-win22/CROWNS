@@ -36,13 +36,25 @@ const LandingPage = () => {
         },
     };
 
+    const buttonStyle3 = {
+        width: 150,
+        color: 'white',
+        backgroundColor: "#D2691E",
+        fontFamily: 'Raleway',
+        '&:hover': {
+            backgroundColor: '#F2AFAF',
+            color: 'white',
+        },
+    };
+
     const headerStyle = {
         color: 'white',
         fontSize: '3rem',
         fontWeight: 'bold',
         fontFamily: 'Raleway',
-        paddingTop: '2rem',
-        paddingBottom: '20rem'
+        //paddingTop: '2rem',
+        //paddingBottom: '20rem',
+        marginBottom: '115px'
       };
 
     return (
@@ -54,7 +66,7 @@ const LandingPage = () => {
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             //height: "100%"
-            backgroundPosition: "center"
+            backgroundPosition: '50%'
         }}>
             <Stack
                 direction="column"
@@ -69,7 +81,8 @@ const LandingPage = () => {
                 {/* <div>
                     <img style={{maxWidth: '20rem'}} src={Logo} alt=''/>
                 </div> */}
-                <div style={{fontFamily: 'Caveat', fontSize: '1.5rem', color: 'white'}}>
+                <div style={{
+                    fontFamily: 'Raleway', fontSize: '1.25rem', color: 'white', paddingBottom: '2rem', display: 'inline-block', margin: '10px 15px'}}>
                     Are you ready to embrace your hair and take back control? Crowns recommends products, hairstyles, and stylists to guide you on your
                     hair journey or strong healthy hair!
                 </div>
@@ -83,6 +96,15 @@ const LandingPage = () => {
                 <div >
                     <Button onClick={() => {navigate('/selector'); }}variant="contained" size="large" defaultValue={30} sx={buttonStyle2} > 
                         I know my type!
+                    </Button>
+                </div>
+                <div style={{ margin: '2rem 0rem', display: 'flex' }}>
+                    <Button onClick={() => { navigate('/selector'); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
+                        Login
+                        </Button>
+                    &nbsp;&nbsp;&nbsp;
+                    <Button onClick={() => { navigate('/selector'); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
+                        Create Account
                     </Button>
                 </div>
                
