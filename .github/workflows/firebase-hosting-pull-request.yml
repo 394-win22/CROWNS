@@ -45,7 +45,8 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CROWN_DD66D }}'
           projectId: crown-dd66d
-          channelId: develop
+          # channelId: develop
           target: develop
+          
 
   
