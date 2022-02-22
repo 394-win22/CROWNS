@@ -7,9 +7,6 @@
       "hosting": {
         "develop": [
           "crowns-develop"
-        ],
-        "live": [
-          "crown-dd66d"
         ]
       }
     }
