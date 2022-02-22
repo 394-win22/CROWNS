@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import {useState, useEffect} from 'react';
 import { initializeApp } from "firebase/app";
+import { getFirestore, getDoc, doc, setDoc } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithPopup, signOut } from 'firebase/auth';
 
 
@@ -13,12 +14,10 @@ const firebaseConfig = {
     appId: "1:640118822953:web:6b9e6891d3c429d79ea438"
 };
 const app = initializeApp(firebaseConfig);
-
-export const signInWithGoogle = async () => {
-    signInWithPopup(getAuth(app), new GoogleAuthProvider());
-};
+export const db = getFirestore();
 
 const firebaseSignOut = () => signOut(getAuth(app));
+
 
 export { firebaseSignOut as signOut };
 
@@ -32,4 +31,24 @@ export const useUserState = () => {
     return [user];
 };
 
+export const uploadUser = async (id, data) => {
+    const existingUserRef = doc(db, "users", id)
+    const existingUser = await getDoc(existingUserRef)
+    if (existingUser.exists()) {
+      return;
+    }
+  
+    const docRef = await setDoc(existingUserRef, data);
+    if (docRef.ok) return true;
+    else {
+      console.log(docRef);
+      return false;
+    }
+  }
+
+  export const signInWithGoogle = async () => {
+    const user = await signInWithPopup(getAuth(app), new GoogleAuthProvider());
+    uploadUser(user.user.uid, 
+        {userName: user.user.displayName, hairType: "", postIds: []});
+};
 
