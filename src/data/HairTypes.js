@@ -103,4 +103,19 @@ const type4 = {
 
 const all_types = [type1, type2, type3, type4];
 
-export { all_types };
+const type_mapping = {
+    _1a: all_types[0].subtypes[0],
+    _1b: all_types[0].subtypes[1],
+    _1c: all_types[0].subtypes[2],
+    _2a: all_types[1].subtypes[0],
+    _2b: all_types[1].subtypes[1],
+    _2c: all_types[1].subtypes[2],
+    _3a: all_types[2].subtypes[0],
+    _3b: all_types[2].subtypes[1],
+    _3c: all_types[2].subtypes[2],
+    _4a: all_types[3].subtypes[0],
+    _4b: all_types[3].subtypes[1],
+    _4c: all_types[3].subtypes[2],
+}
+
+export { all_types, type_mapping };

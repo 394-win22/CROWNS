@@ -26,7 +26,7 @@ const PlainQuizQuestion = ({ question, setResult }) => {
               backgroundImage: answer.image ? "url(/images" + answer.image + ')' : null,
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover'}}
-              onClick={() => setResult(answer.id)}>{answer.option}</Button>
+              onClick={() => setResult(answer.id, answer.weights)}>{answer.option}</Button>
           </Grid>
         ))}
       </Grid>

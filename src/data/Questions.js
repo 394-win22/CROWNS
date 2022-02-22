@@ -6,13 +6,13 @@ const questionSchema = {
             id: 1,
             option: "yes",
             image: null,
-            results: null
+            weights: null
         },
         {
             id: 2,
             option: "no",
             image: null,
-            results: null
+            weights: null
         }
     ]
 };
@@ -26,25 +26,33 @@ const quizQuestions = [
                 id: 0,
                 option: "Straight",
                 image: "/quizImages/straight.jpg",
-                results: null
+                weights: {
+                    _1a: 3, _1b: 3, _1c: 3
+                }
             },
             {
                 id: 1,
                 option: "Wavy",
                 image: "/quizImages/wavy.jpg",
-                results: null
+                weights: {
+                    _2a: 3, _2b: 3, _2c: 3
+                }
             },
             {
                 id: 2,
                 option: "Curly",
                 image: "/quizImages/curly.jpg",
-                results: null
+                weights: {
+                    _3a: 3, _3b: 3, _3c: 3
+                }
             },
             {
                 id: 3,
                 option: "Kinky",
                 image: "/quizImages/kinky.jpg",
-                results: null
+                weights: {
+                    _4a: 3, _4b: 3, _4c: 3
+                }
             },
         ]
     },
@@ -56,19 +64,19 @@ const quizQuestions = [
                 id: 0,
                 option: "Fine",
                 image: null,
-                results: null
+                weights: null
             },
             {
                 id: 1,
                 option: "Medium",
                 image: null,
-                results: null
+                weights: null
             },
             {
                 id: 2,
                 option: "Coarse",
                 image: null,
-                results: null
+                weights: null
             }
         ]
     },
@@ -80,25 +88,25 @@ const quizQuestions = [
                 id: 0,
                 option: "Super Short",
                 image: null,
-                results: null
+                weights: null
             },
             {
                 id: 1,
                 option: "Short",
                 image: null,
-                results: null
+                weights: null
             },
             {
                 id: 2,
                 option: "Medium",
                 image: null,
-                results: null
+                weights: null
             },
             {
-                id: 2,
-                option: "Medium",
+                id: 3,
+                option: "Long",
                 image: null,
-                results: null
+                weights: null
             }
         ]
     },
@@ -110,19 +118,19 @@ const quizQuestions = [
                 id: 0,
                 option: "Fine",
                 image: null,
-                results: null
+                weights: null
             },
             {
                 id: 1,
                 option: "Medium",
                 image: null,
-                results: null
+                weights: null
             },
             {
                 id: 2,
                 option: "Coarse",
                 image: null,
-                results: null
+                weights: null
             }
         ]
     }
