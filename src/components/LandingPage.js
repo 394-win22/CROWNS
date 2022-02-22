@@ -8,11 +8,13 @@ import "@fontsource/aileron";
 import "@fontsource/caveat";
 import "@fontsource/raleway";
 import { CoverageMap } from "istanbul-lib-coverage";
+import { signInWithGoogle, useUserState} from "../utilities/firebase"
 
 const LandingPage = () => {
     console.log("navigated to landing page");
     let navigate = useNavigate(); 
-
+    const [user] = useUserState();
+    console.log(user)
 
     const buttonStyle = {
         width: 300,
@@ -99,9 +101,9 @@ const LandingPage = () => {
                     </Button>
                 </div>
                 <div style={{ margin: '2rem 0rem', display: 'flex' }}>
-                    <Button onClick={() => { navigate('/selector'); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
+                    <Button onClick={() => { signInWithGoogle(); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
                         Login
-                        </Button>
+                    </Button>
                     &nbsp;&nbsp;&nbsp;
                     <Button onClick={() => { navigate('/selector'); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
                         Create Account
