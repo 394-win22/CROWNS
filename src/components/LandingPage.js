@@ -59,6 +59,7 @@ const LandingPage = () => {
       };
 
     return (
+        jefoghseofosheob
         <div className="LandingPage" style={{
             // position: 'absolute', left: '50%', top: '45%',
             // transform: 'translate(-50%, -50%)'
