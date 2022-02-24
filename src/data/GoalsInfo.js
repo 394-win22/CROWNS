@@ -5,6 +5,19 @@ const tile_schema = {
     link: "https://example.com"
 }
 
+const hairTypeGoals = {
+    type4: {
+        _4c: {
+            Goals: [
+                {
+                    name: "Volume",
+                    image: "Volume Icon.png"
+                }
+            ]
+        }
+    }
+}
+
 
 const goals_info_data = {
     Health: {

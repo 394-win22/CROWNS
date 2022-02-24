@@ -29,6 +29,7 @@ import CardActions from "@mui/material/CardActions";
 
 import { all_types } from "../data/HairTypes";
 import { goals_info_data } from "../data/GoalsInfo";
+import {accordionStyle} from '../styles/quizStyling'
 
 const GoalGallery = ({ tiles }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -219,24 +220,30 @@ const ResultsPage = ({ hairType }) => {
 
   return (
     <Container className="ResultsPage" maxWidth="lg" style={font}>
-      <img
-        style={{ maxHeight: "40vh", maxWidth: "100%" }}
-        src={hairType.exampleImage}
-        alt={`Example of ${hairType.shortDescription}`}
-      />
-      <Typography variant="h6">Your Hair Type: {hairType.code}</Typography>
-      <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-        {hairType.shortDescription}
-      </Typography>
-      <Typography variant="body1">{hairType.longDescription}</Typography>
-
-      {/* const dividerStyle = {{
-            backgroundColor: "#F1CCD3", 
-            fontFamily: 'Aileron'
-            }}; */}
+      <Grid>
+        <Typography sx={{fontSize: "3rem", color: "black", fontWeight: "bold"}}>CROWNS</Typography>
+      </Grid>
+      <Grid sx={{...accordionStyle, backgroundColor: "#f9b792"}}>
+        <Typography sx={{fontSize: "2rem"}}>Your hair type is {hairType.code}</Typography>
+      </Grid>
+      <Grid sx={{display: "flex", alignItems: "center", justifyContent: "center", border: 3, borderColor: "black", padding: 1}}>
+        <Grid item xs={5}>
+            <img
+            style={{ maxHeight: "40vh", maxWidth: "100%" }}
+            src={hairType.exampleImage}
+            alt={`Example of ${hairType.shortDescription}`}
+          />
+        </Grid>
+        <Grid item xs={7} sx={{marginLeft: 2}}>
+          <Typography sx={{color: "black", fontSize: "0.8rem"}}>{hairType.longDescription}</Typography>
+        </Grid>
+      </Grid>
+      
+      
+      {/* Divider
       <Divider sx={{ my: "1rem" }}>
         <Chip label="Let's reach your goals" />
-      </Divider>
+      </Divider> */}
 
       {Object.keys(goals_info_data).map((key) => (
         <Box key={key} sx={{ my: "1rem" }}>

@@ -78,7 +78,7 @@ const type4b = {
 };
 const type4c = {
     shortDescription: "tight coil",
-    longDescription: "Tightly coiled. Almost no visible defined kink pattern, unless seen from up close. Has more of a very tight \"o\"-shaped pattern.",
+    longDescription: "From kinks to coils, 4C hair is versatile and can be shaped into almost any style. Your strands are tightly coiled. Almost no visible defined kink pattern, unless seen from up close.",
     exampleImage: "./images/hairTypes/4C.png",
     code: "4C"
 };
