@@ -54,12 +54,12 @@ const LandingPage = () => {
         fontFamily: 'Raleway',
         //paddingTop: '2rem',
         //paddingBottom: '20rem',
-        marginBottom: '115px'
+        paddingTop: '4rem',
+        paddingBottom: '3rem'
       };
 
     return (
         <div className="LandingPage" style={{
-            paddingBottom: "2rem",
             // position: 'absolute', left: '50%', top: '45%',
             // transform: 'translate(-50%, -50%)'
             backgroundImage: "url(./images/landing-page-background.jpg)",
@@ -75,16 +75,17 @@ const LandingPage = () => {
                 spacing={0}
                 height="100vh"
             >
-                <div style={headerStyle}> 
-                   CROWNS
+                <div style={headerStyle}>
+                    CROWNS
                 </div>
                 {/* <div>
                     <img style={{maxWidth: '20rem'}} src={Logo} alt=''/>
                 </div> */}
                 <div style={{
-                    fontFamily: 'Raleway', fontSize: '1.25rem', color: 'white', paddingBottom: '2rem', display: 'inline-block', margin: '10px 15px', maxWidth: '480px'}}>
+                    fontFamily: 'Raleway', fontSize: '1.25rem', color: 'white', paddingBottom: '2rem', display: 'inline-block', margin: '10px 40px', maxWidth: '40rem'}}>
                     Are you ready to embrace your hair and take back control? Crowns recommends products, hairstyles, and stylists to guide you on your
                     hair journey or strong healthy hair!
+
                 </div>
 
                 <div style={{margin: '2rem 0rem'}}>
