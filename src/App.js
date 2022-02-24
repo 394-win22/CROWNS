@@ -5,7 +5,7 @@ import LandingPage from './components/LandingPage.js';
 import ResultsPage from './components/ResultsPage.js';
 import HairQuiz from './components/HairQuiz';
 import TypeSelector from './components/TypeSelector';
-import Dropdown from './components/Dropdown'
+import {ProductsDropdown} from './components/Dropdown'
 
 function App() {
   const [hairType, setHairType] = useState(null);
@@ -18,7 +18,7 @@ function App() {
                 <Route exact path="/results" element={<ResultsPage hairType = {hairType}/>} />
                 <Route exact path="/quiz" element={<HairQuiz setHairType = {setHairType} />} />
                 <Route exact path="/selector" element={<TypeSelector setHairType = {setHairType} />} />
-                <Route exact path="/testDropdown" element={<Dropdown hairType = {"_4c"} />} />
+                <Route exact path="/testDropdown" element={<ProductsDropdown hairType = {"_4c"} />} />
             </Routes>
       </Router>
         </div>

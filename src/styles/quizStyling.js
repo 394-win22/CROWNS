@@ -12,3 +12,4 @@ export const accordionStyle = {
   width: "100%",
 };
 
+export const crownsPink = "#B28181";
