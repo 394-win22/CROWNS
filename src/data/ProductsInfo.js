@@ -13,13 +13,13 @@ const product_schema = {
 }
 
 const products_info_data = {
-    _4a: {
+    _4A: {
 
     },
-    _4b: {
+    _4B: {
 
     },
-    _4c: {
+    _4C: {
         description: "This is a description",
         shampoos: [
             {

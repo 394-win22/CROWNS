@@ -54,6 +54,7 @@ const ProductsCategory = ({data}) => {
     leaveIns: "Leave-ins",
     };
 
+
     return subsections.map((subsection) => {
             return (
               <>
@@ -107,6 +108,7 @@ const Dropdown = ({ category, hairType, content }) => {
 }
 
 const ProductsDropdown = ({category, hairType}) => {
+  console.log(hairType)
     const data = products_info_data[hairType];
     const content = <ProductsCategory data={data} />;
 

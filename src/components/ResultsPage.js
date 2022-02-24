@@ -31,6 +31,7 @@ import { all_types } from "../data/HairTypes";
 import { goals_info_data } from "../data/GoalsInfo";
 import { hairTypeGoals} from "../data/HairstylesInfo.js";
 import { accordionStyle, gridStyle} from '../styles/quizStyling'
+import { ProductsDropdown } from "./Dropdown";
 
 const GoalGallery = ({ tiles }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -248,7 +249,8 @@ const ResultsPage = ({ hairType }) => {
           <Typography sx={{color: "black", fontSize: "0.8rem"}}>{hairType.longDescription}</Typography>
         </Grid>
           </Grid>
-     <Grid>
+      <ProductsDropdown hairType={"_" + hairType.code} category=""/>
+     {/* <Grid>
               <Accordion>
                   <AccordionSummary
                       aria-controls="products"
@@ -263,7 +265,7 @@ const ResultsPage = ({ hairType }) => {
                       
                   </AccordionDetails>
               </Accordion>
-    </Grid>
+    </Grid> */}
 
     
       
