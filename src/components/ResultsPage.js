@@ -221,6 +221,15 @@ const ResultsPage = ({ hairType }) => {
 
   return (
     <Container className="ResultsPage" maxWidth="lg" style={font}>
+      {/* <Grid> //SIGN IN ICON
+        <div style={{float: "right", color: "black"}}>
+          <img src={"../images/goals/type4/goals/Crown Icon.png"}
+              style={{ maxHeight: "30vh", maxWidth: "10%"}}/>
+          <div style={{ width: "5rem"}}>
+            Sign In
+          </div>
+        </div>
+      </Grid> */}
       <Grid>
         <Typography sx={{fontSize: "3rem", color: "black", fontWeight: "bold"}}>CROWNS</Typography>
       </Grid>

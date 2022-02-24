@@ -1,61 +1,72 @@
-const goal_schema = {
+const hairstyle_schema = {
     description: "string",
-    goals: []
+    styles: []
 }
 
-
-const hairTypeGoals = {
+const Hairstyles = {
     _4a: {
         description: "",
-        goals: [
+        styles: [
             {
-                name: "Volume",
-                image: "Volume Icon.png"
+                name: "Afro Poofs",
+                image: "Afro Poofs.jpeg"
             },
             {
-                name: "Strength",
-                image: "Strength Icon.png"
+                name: "Bantu Knots",
+                image: "Bantu Knots.jpeg"
+            },
+            {
+                name: "Goddess Braid",
+                image: "Goddess Braid.jpeg"
             }
         ]
     },
     _4b: {
         description: "",
-        goals: [
+        styles: [
             {
-                name: "Volume",
-                image: "Volume Icon.png"
+                name: "Afro Poofs",
+                image: "Afro Poofs.jpeg"
             },
             {
-                name: "Strength",
-                image: "Strength Icon.png"
+                name: "Bantu Knots",
+                image: "Bantu Knots.jpeg"
             },
             {
-                name: "Growth",
-                image: "Growth Icon.png"
+                name: "Box Braids",
+                image: "Box Braids 1.jpeg"
+            },
+            {
+                name: "Goddess Braid",
+                image: "Goddess Braid.jpeg"
             }
         ]
     },
     _4c: {
         description: "",
-        goals: [
+        styles: [
             {
-                name: "Volume",
-                image: "Volume Icon.png"
+                name: "Bantu Knots",
+                image: "Bantu Knots.jpeg"
             },
             {
-                name: "Strength",
-                image: "Strength Icon.png"
+                name: "Box Braids",
+                image: "Box Braids 1.jpeg"
             },
             {
-                name: "Hydration",
-                image: "Hydration Icon.png"
+                name: "Cornrow Braid Ponytail",
+                image: "Cornrow Braid Ponytail.jpeg"
             },
             {
-                name: "Growth",
-                image: "Growth Icon.png"
+                name: "Goddess Braid",
+                image: "Goddess Braid.jpeg"
+            },
+            {
+                name: "Locs",
+                image: "Locs.png"
             }
         ]
     }
 }
 
-export { hairTypeGoals}
+export { Hairstyles };
