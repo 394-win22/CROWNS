@@ -5,7 +5,7 @@ import LandingPage from './components/LandingPage.js';
 import ResultsPage from './components/ResultsPage.js';
 import HairQuiz from './components/HairQuiz';
 import TypeSelector from './components/TypeSelector';
-import Dropdown from './components/Dropdown;'
+import Dropdown from './components/Dropdown'
 
 function App() {
   const [hairType, setHairType] = useState(null);
