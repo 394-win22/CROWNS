@@ -29,6 +29,8 @@ import CardActions from "@mui/material/CardActions";
 
 import { all_types } from "../data/HairTypes";
 import { goals_info_data } from "../data/GoalsInfo";
+import { hairTypeGoals} from "../data/HairstylesInfo.js";
+import { accordionStyle, gridStyle} from '../styles/quizStyling'
 
 const GoalGallery = ({ tiles }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -219,24 +221,57 @@ const ResultsPage = ({ hairType }) => {
 
   return (
     <Container className="ResultsPage" maxWidth="lg" style={font}>
-      <img
-        style={{ maxHeight: "40vh", maxWidth: "100%" }}
-        src={hairType.exampleImage}
-        alt={`Example of ${hairType.shortDescription}`}
-      />
-      <Typography variant="h6">Your Hair Type: {hairType.code}</Typography>
-      <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-        {hairType.shortDescription}
-      </Typography>
-      <Typography variant="body1">{hairType.longDescription}</Typography>
+      {/* <Grid> //SIGN IN ICON
+        <div style={{float: "right", color: "black"}}>
+          <img src={"../images/goals/type4/goals/Crown Icon.png"}
+              style={{ maxHeight: "30vh", maxWidth: "10%"}}/>
+          <div style={{ width: "5rem"}}>
+            Sign In
+          </div>
+        </div>
+      </Grid> */}
+      <Grid>
+        <Typography sx={{fontSize: "3rem", color: "black", fontWeight: "bold"}}>CROWNS</Typography>
+      </Grid>
+          <Grid sx={{ ...gridStyle, backgroundColor: "#f9b792"}}>
+        <Typography sx={{fontSize: "2rem"}}>Your hair type is {hairType.code}</Typography>
+      </Grid>
+      <Grid sx={{display: "flex", alignItems: "center", justifyContent: "center", border: 3, borderColor: "black", padding: 1}}>
+        <Grid item xs={5}>
+            <img
+            style={{ maxHeight: "40vh", maxWidth: "100%" }}
+            src={hairType.exampleImage}
+            alt={`Example of ${hairType.shortDescription}`}
+          />
+        </Grid>
+        <Grid item xs={7} sx={{marginLeft: 2}}>
+          <Typography sx={{color: "black", fontSize: "0.8rem"}}>{hairType.longDescription}</Typography>
+        </Grid>
+          </Grid>
+     <Grid>
+              <Accordion>
+                  <AccordionSummary
+                      aria-controls="products"
+                      id="products"
+                      sx={{ ...accordionStyle, marginTop: "1rem", flexFlow: "column" }}
+                  >
+                      <Typography sx={{ display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold" }}>
+                          Goals
+                       </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                      
+                  </AccordionDetails>
+              </Accordion>
+    </Grid>
 
-      {/* const dividerStyle = {{
-            backgroundColor: "#F1CCD3", 
-            fontFamily: 'Aileron'
-            }}; */}
+    
+      
+      {/* 
+      Divider
       <Divider sx={{ my: "1rem" }}>
         <Chip label="Let's reach your goals" />
-      </Divider>
+      </Divider> 
 
       {Object.keys(goals_info_data).map((key) => (
         <Box key={key} sx={{ my: "1rem" }}>
@@ -244,10 +279,10 @@ const ResultsPage = ({ hairType }) => {
           <Typography variant="h6" sx={{ mb: "0.5rem" }}>
             {goals_info_data[key].description}
           </Typography>
-          {/* <GoalGallery tiles={goals_info_data[key].tiles}/>
+          <GoalGallery tiles={goals_info_data[key].tiles}/>
                 <Divider sx={{ my: "1rem" }}>
                 <Chip label="diff components" />
-                </Divider> */}
+                </Divider> 
           <GoalGrid tiles={goals_info_data[key].tiles} />
         </Box>
       ))}
@@ -340,9 +375,11 @@ const ResultsPage = ({ hairType }) => {
               eget.
             </Typography>
           </AccordionDetails>
-        </Accordion>
+              </Accordion>
+              </Container>
+              */}
+      
       </Container>
-    </Container>
   );
 };
 
