@@ -12,6 +12,7 @@ export const accordionStyle = {
   width: "100%",
 };
 
+
 export const gridStyle = {
     backgroundColor: "#B28181",
     fontFamily: "Raleway",
@@ -22,3 +23,6 @@ export const gridStyle = {
     width: "100%",
 
 };
+
+export const crownsPink = "#B28181";
+
