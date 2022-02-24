@@ -82,7 +82,7 @@ const LandingPage = () => {
                     <img style={{maxWidth: '20rem'}} src={Logo} alt=''/>
                 </div> */}
                 <div style={{
-                    fontFamily: 'Raleway', fontSize: '1.25rem', color: 'white', paddingBottom: '2rem', display: 'inline-block', margin: '10px 15px'}}>
+                    fontFamily: 'Raleway', fontSize: '1.25rem', color: 'white', paddingBottom: '2rem', display: 'inline-block', margin: '10px 15px', maxWidth: '480px'}}>
                     Are you ready to embrace your hair and take back control? Crowns recommends products, hairstyles, and stylists to guide you on your
                     hair journey or strong healthy hair!
                 </div>
@@ -98,6 +98,7 @@ const LandingPage = () => {
                         I know my type!
                     </Button>
                 </div>
+                {/*
                 <div style={{ margin: '2rem 0rem', display: 'flex' }}>
                     <Button onClick={() => { navigate('/selector'); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
                         Login
@@ -107,7 +108,7 @@ const LandingPage = () => {
                         Create Account
                     </Button>
                 </div>
-               
+                */}
             </Stack>
         </div>
     );
