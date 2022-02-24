@@ -82,16 +82,8 @@ const LandingPage = () => {
                     <img style={{maxWidth: '20rem'}} src={Logo} alt=''/>
                 </div> */}
                 <div style={{
-<<<<<<< HEAD
                     fontFamily: 'Raleway', fontSize: '1.25rem', color: 'white', paddingBottom: '2rem', display: 'inline-block', margin: '10px 40px', maxWidth: '40rem'}}>
-                    Are you ready to embrace your hair and take back control? Crowns recommends products, hairstyles, and stylists to guide you on your
-                    hair journey or strong healthy hair!
-
-=======
-                    fontFamily: 'Raleway', fontSize: '1.25rem', color: 'white', paddingBottom: '2rem', display: 'inline-block', margin: '10px 15px', maxWidth: '40rem'}}>
-                    Are you ready to embrace your hair and take back control? Crowns recommends products, hairstyles, and stylists to guide you on your hair journey to strong,
-                    healthy hair! Share your experiences alongside our Crown community. Join our community today.
->>>>>>> 784db304486861b2e39f9144db2a74f5b6b7d194
+                    Are you ready to embrace your hair and take back control? Crowns recommends products, hairstyles, and stylists to guide you on your hair journey or strong healthy hair!
                 </div>
 
                 <div style={{margin: '2rem 0rem'}}>
