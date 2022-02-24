@@ -218,14 +218,14 @@ const ResultsPage = ({ hairType }) => {
   };
 
   return (
-    <div className="ResultsPage" style={font}>
+    <Container className="ResultsPage" maxWidth="lg" style={font}>
       <img
         style={{ maxHeight: "40vh", maxWidth: "100%" }}
         src={hairType.exampleImage}
         alt={`Example of ${hairType.shortDescription}`}
       />
       <Typography variant="h6">Your Hair Type: {hairType.code}</Typography>
-      <Typography variant="h4" sx={{fontWeight: "bold"}}>
+      <Typography variant="h4" sx={{ fontWeight: "bold" }}>
         {hairType.shortDescription}
       </Typography>
       <Typography variant="body1">{hairType.longDescription}</Typography>
@@ -241,7 +241,7 @@ const ResultsPage = ({ hairType }) => {
       {Object.keys(goals_info_data).map((key) => (
         <Box key={key} sx={{ my: "1rem" }}>
           <Typography variant="h5">{key}</Typography>
-          <Typography variant="h6" sx={{mb: "0.5rem"}}>
+          <Typography variant="h6" sx={{ mb: "0.5rem" }}>
             {goals_info_data[key].description}
           </Typography>
           {/* <GoalGallery tiles={goals_info_data[key].tiles}/>
@@ -342,7 +342,7 @@ const ResultsPage = ({ hairType }) => {
           </AccordionDetails>
         </Accordion>
       </Container>
-    </div>
+    </Container>
   );
 };
 
