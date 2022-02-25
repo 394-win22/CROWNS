@@ -4,7 +4,7 @@ const goal_schema = {
 }
 
 
-const hairTypeGoals = {
+const goals = {
     _4a: {
         description: "",
         goals: [
@@ -58,4 +58,4 @@ const hairTypeGoals = {
     }
 }
 
-export { hairTypeGoals}
+export { goals }

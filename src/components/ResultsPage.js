@@ -28,10 +28,10 @@ import CardMedia from "@mui/material/CardMedia";
 import CardActions from "@mui/material/CardActions";
 
 import { all_types } from "../data/HairTypes";
-import { goals_info_data } from "../data/GoalsInfo";
-import { hairTypeGoals} from "../data/HairstylesInfo.js";
+import { goals } from "../data/Goals";
+import { hairstyles} from "../data/Hairstyles.js";
 import { accordionStyle, gridStyle} from '../styles/quizStyling'
-import { ProductsDropdown } from "./Dropdown";
+import { ProductsDropdown, Dropdown } from "./Dropdown";
 
 const GoalGallery = ({ tiles }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -250,6 +250,7 @@ const ResultsPage = ({ hairType }) => {
         </Grid>
           </Grid>
       <ProductsDropdown hairType={"_" + hairType.code} category=""/>
+      
      {/* <Grid>
               <Accordion>
                   <AccordionSummary

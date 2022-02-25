@@ -3,8 +3,8 @@ const hairstyle_schema = {
     styles: []
 }
 
-const Hairstyles = {
-    _4a: {
+const hairstyles = {
+    _4A: {
         description: "",
         styles: [
             {
@@ -21,7 +21,7 @@ const Hairstyles = {
             }
         ]
     },
-    _4b: {
+    _4B: {
         description: "",
         styles: [
             {
@@ -42,7 +42,7 @@ const Hairstyles = {
             }
         ]
     },
-    _4c: {
+    _4C: {
         description: "",
         styles: [
             {
@@ -69,4 +69,4 @@ const Hairstyles = {
     }
 }
 
-export { Hairstyles };
+export { hairstyles };
