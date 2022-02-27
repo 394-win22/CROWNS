@@ -16,10 +16,10 @@ function App() {
       <Router>
             <Routes>
                 <Route exact path="/" element={<><LandingPage /><Navbar/></>} />
-                <Route exact path="/results" element={<ResultsPage hairType = {hairType}/>} />
-                <Route exact path="/quiz" element={<HairQuiz setHairType = {setHairType} />} />
-                <Route exact path="/selector" element={<TypeSelector setHairType = {setHairType} />} />
-                <Route exact path="/testDropdown" element={<ProductsDropdown hairType = {"_4c"} />} />
+                  <Route exact path="/results" element={<><ResultsPage hairType={hairType} /><Navbar/></>}/>
+                  <Route exact path="/quiz" element={<><HairQuiz setHairType={setHairType} /><Navbar /></>} />
+                  <Route exact path="/selector" element={<><TypeSelector setHairType = {setHairType} /><Navbar /></>} />
+                  <Route exact path="/testDropdown" element={<><ProductsDropdown hairType={"_4c"} /><Navbar /></>} />
             </Routes>
       </Router>
         </div>
