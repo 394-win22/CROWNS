@@ -133,7 +133,7 @@ const LandingPage = ({ setUserData, userData }) => {
                         I know my type!
                     </Button>
                 </div>
-                {/*
+               
                 <div style={{ margin: '2rem 0rem', display: 'flex' }}>
 
                     <Button onClick={() => { SignIn(user, setUserCrownsData); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
@@ -145,7 +145,7 @@ const LandingPage = ({ setUserData, userData }) => {
                         Create Account
                     </Button>
                 </div>
-                */}
+                
             </Stack>
         </div>
     );
