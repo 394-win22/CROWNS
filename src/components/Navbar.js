@@ -18,7 +18,7 @@ const Navbar = () => {
         <AppBar position="fixed"  sx={{ top: 'auto', bottom: 0 , backgroundColor: crownsPinkLight, justifyContent: "space-around"}}>
             <Toolbar>
                 <Box sx={{ flexGrow: 0.5 }} />
-                <IconButton size = 'large' onClick={() => { navigate('/quiz'); }}>
+                <IconButton size = 'large' onClick={() => { navigate('/profile'); }}>
                     <AccountCircleIcon fontSize = 'inherit'/>
                 </IconButton>
                 <Box sx={{ flexGrow: 1}} />
