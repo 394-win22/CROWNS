@@ -25,4 +25,5 @@ export const gridStyle = {
 };
 
 export const crownsPink = "#B28181";
+export const crownsPinkLight = "#F2AFAF";
 
