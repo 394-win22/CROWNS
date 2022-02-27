@@ -1,13 +1,17 @@
 import * as React from 'react';
+import {useState, useCallback} from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { all_types } from '../data/HairTypes';
+import { all_types, type_mapping } from '../data/HairTypes';
 import Card from '@mui/material/Card';
 import { useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
+import { quizQuestions } from "../data/Questions"
+import { PlainQuizQuestion, ImageQuizQuestion } from './QuizQuestion';
+import {accordionStyle} from "../styles/quizStyling"
 import "@fontsource/aileron";
 import "@fontsource/caveat";
 import "@fontsource/raleway";
@@ -53,20 +57,10 @@ const HairSubtype = ({ hairSubtype, setHairType }) => {
     </Card>
   )
 }
-const HairType = ({ hairType, setHairType }) => {
 
-  const accordionStyle = {
-    backgroundColor: "#B28181",
-    fontFamily: 'Raleway',
-    color: 'white',
-    '&:hover': {
-      backgroundColor: '#F2AFAF',
-      color: 'white',
-    },
-    padding: '1rem',
-    margin: '0.5rem 0rem',
-    fontSize: '10rem'
-  };
+
+
+const HairType = ({ hairType, setHairType }) => {
   return (
     <Accordion sx=
       {accordionStyle}>
@@ -90,12 +84,49 @@ const HairType = ({ hairType, setHairType }) => {
 }
 
 const HairQuiz = ({ setHairType }) => {
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [totalWeights, setTotalWeights] = useState({});
+  const navigate = useNavigate();
+
+  const finishQuiz = useCallback((weights) => {
+    console.log("quiz finished");
+    let maxWeight = -1
+    let maxKey = null
+    Object.keys(weights).forEach(key => {
+      if (weights[key] >= maxWeight) {
+        maxKey = key
+        maxWeight = weights[key]
+      }
+    })
+    setHairType(type_mapping[maxKey])
+    navigate("/results")
+  }, [totalWeights, navigate, setHairType]);
+
+  const setResult = useCallback((res, weights) => {
+    let temp2 = {...totalWeights}
+    if (weights) {
+      Object.keys(weights).forEach(key => {
+        if (key in temp2) {
+          temp2[key] += weights[key]
+        } else {
+          temp2[key] = weights[key]
+        }
+      })
+    }
+    setTotalWeights(temp2);
+
+    if (currentQuestion === quizQuestions.length - 1) {
+      finishQuiz(temp2)
+    } else {
+      setCurrentQuestion(currentQuestion + 1)
+    }
+  }, [totalWeights, currentQuestion, finishQuiz]);
+
   return (
-    <div style={{ maxWidth: 650, display: "inline-block"}}>
-      <Typography align={'center'}  sx={{ fontSize: '2rem', fontFamily: 'Raleway', padding: '1rem', fontWeight: '900' }}>
-        Choose the type that is most like your Hair
-      </Typography>
-      {all_types.map(function(e, index) {return (<HairType key={index.toString()} hairType={e} setHairType={setHairType} />)})}
+    <div style={{ maxWidth: "40rem", width: '100%', display: "inline-block"}}>
+      <PlainQuizQuestion setResult = {setResult} question={quizQuestions[currentQuestion]}/>
+      
+      { /* all_types.map(function(e, index) {return (<HairType key={index.toString()} hairType={e} setHairType={setHairType} />)}) */}
 
     </div>
   );

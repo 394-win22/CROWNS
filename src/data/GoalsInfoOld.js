@@ -6,6 +6,7 @@ const tile_schema = {
 }
 
 
+
 const goals_info_data = {
     Health: {
         description: "From kinks to coils, 4C hair is versatile and can be shaped into almost any style. But it’s coil pattern leaves it susceptible to extreme dryness and frizziness. It’s important to keep those kinks and coils moisturized and ends trimmed regularly. Here are a few products to help you on your journey to healthy, moisture-rich hair.",
