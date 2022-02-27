@@ -7,14 +7,45 @@ name: Deploy to Firebase Hosting on merge
     branches:
       - main
 jobs:
-  build_and_deploy:
+  build:
+    name: Build and unit test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm ci && CI=false npm run build
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: npm ci
+      - run: CI= npm run build --if-present
+      #- run: npm test
+  
+  #cypress:
+  #  name: Cypress test
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - uses: actions/checkout@v2
+  #    # https://www.cypress.io/blog/2019/11/20/drastically-simplify-your-testing-with-cypress-github-action/
+  #    - uses: cypress-io/github-action@v2
+  #      with:
+  #        build: CI= npm run build --if-present
+  #        start: npm start
+  #        wait-on: http://localhost:3000
+
+  deploy:
+    name: Firebase deploy
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: npm ci
+      - run: CI= npm run build --if-present
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CROWN_DD66D }}'
           channelId: live
           projectId: crown-dd66d
+          target: live

@@ -118,9 +118,8 @@ const LandingPage = ({ setUserData, userData }) => {
                     <img style={{maxWidth: '20rem'}} src={Logo} alt=''/>
                 </div> */}
                 <div style={{
-                    fontFamily: 'Raleway', fontSize: '1.25rem', color: 'white', paddingBottom: '2rem', display: 'inline-block', margin: '10px 15px', maxWidth: '40rem'}}>
-                    Are you ready to embrace your hair and take back control? Crowns recommends products, hairstyles, and stylists to guide you on your hair journey to strong,
-                    healthy hair! Share your experiences alongside our Crown community. Join our community today.
+                    fontFamily: 'Raleway', fontSize: '1.25rem', color: 'white', paddingBottom: '2rem', display: 'inline-block', margin: '10px 40px', maxWidth: '40rem'}}>
+                    Are you ready to embrace your hair and take back control? Crowns recommends products, hairstyles, and stylists to guide you on your hair journey or strong healthy hair!
                 </div>
 
                 <div style={{margin: '2rem 0rem'}}>
@@ -134,6 +133,7 @@ const LandingPage = ({ setUserData, userData }) => {
                         I know my type!
                     </Button>
                 </div>
+                {/*
                 <div style={{ margin: '2rem 0rem', display: 'flex' }}>
 
                     <Button onClick={() => { SignIn(user, setUserCrownsData); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
@@ -145,7 +145,7 @@ const LandingPage = ({ setUserData, userData }) => {
                         Create Account
                     </Button>
                 </div>
-               
+                */}
             </Stack>
         </div>
     );
