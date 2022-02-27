@@ -11,7 +11,6 @@ import { CoverageMap } from "istanbul-lib-coverage";
 import { signInWithGoogle, uploadUser, useUserState, useUser, setUser } from "../utilities/firebase"
 
 
-<<<<<<< HEAD
 const SignIn = (user, setUserCrownsData) =>{
     const data = signInWithGoogle();
     setUserCrownsData(data);
