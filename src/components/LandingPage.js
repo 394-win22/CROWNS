@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState} from "react";
 import Stack  from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Logo from '../images/CROWNSLOGO.png';
@@ -33,20 +33,20 @@ const SignIn = (user, setUserCrownsData) =>{
     
 }
 
-const LandingPage = () => {
+
+const LandingPage = ({ setUserData, userData }) => {
     console.log("navigated to landing page");
     let navigate = useNavigate(); 
     const [user] = useUserState();
-    const [userCrownsData, setUserCrownsData] = React.useState(null);
-
+    const [userCrownsData, setUserCrownsData] = useState(null);
     useEffect(() => {
         if (userCrownsData) {
-            Promise.resolve(userCrownsData).then 
+            Promise.resolve(userCrownsData).then((response) => { console.log(response);setUserData(response); if(response.hairType!="") navigate("/results") }); 
         }
-    }, [listings]);
+    }, [userCrownsData]);
 
-    if (loading || loading2) return <div>Loading</div>
-    if (error) return <div>Error</div>
+    //if (loading || loading2) return <div>Loading</div>
+    //if (error) return <div>Error</div>
 
 
 
@@ -135,19 +135,13 @@ const LandingPage = () => {
                     </Button>
                 </div>
                 <div style={{ margin: '2rem 0rem', display: 'flex' }}>
-<<<<<<< HEAD
+
                     <Button onClick={() => { SignIn(user, setUserCrownsData); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
                         Login
                     </Button>
                     &nbsp;&nbsp;&nbsp;
                     <Button onClick={() => { SignIn(user, setUserCrownsData); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
-=======
-                    <Button onClick={() => { if(SignIn()==5) navigate('/results'); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
-                        Login
-                    </Button>
-                    &nbsp;&nbsp;&nbsp;
-                    <Button onClick={() => { if (SignIn() == 5) navigate('/results'); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
->>>>>>> 9c4bcf2162283f2d565dbe7076fb7638bc8515a0
+
                         Create Account
                     </Button>
                 </div>

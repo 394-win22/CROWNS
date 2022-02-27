@@ -87,20 +87,10 @@ export const setUser = async (id, data) => {
     await updateDoc(existingUserRef, data);
 }
 
-
-<<<<<<< HEAD
   export const signInWithGoogle = async () => {
     const user = await signInWithPopup(getAuth(app), new GoogleAuthProvider());
     return uploadUser(user.user.uid, 
         {userName: user.user.displayName, hairType: "", postIds: []});
-=======
-    export const signInWithGoogle = async () => {
-        console.log("Start sign in")
-        const user = await signInWithPopup(getAuth(app), new GoogleAuthProvider());
-        console.log(user);
-        return uploadUser(user.user.uid,
-            { userName: user.user.displayName, hairType: "", postIds: [] });
->>>>>>> 9c4bcf2162283f2d565dbe7076fb7638bc8515a0
 };
 
 export const getUserById = async(collectionName, userID) => {
