@@ -15,7 +15,7 @@ const Navbar = () => {
     let navigate = useNavigate();
 
     return (
-        <AppBar position="fixed"  sx={{ top: 'auto', bottom: 0 , backgroundColor: crownsPinkLight, justifyContent: "space-around"}}>
+        <AppBar position="fixed"  sx={{ top: 'auto', bottom: 0 , backgroundColor: crownsPinkLight, justifyContent: "space-around", maxHeight: '55px'}}>
             <Toolbar>
                 <Box sx={{ flexGrow: 0.5 }} />
                 <IconButton size = 'large' onClick={() => { navigate('/profile'); }}>

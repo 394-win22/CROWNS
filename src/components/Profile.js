@@ -7,7 +7,7 @@ import "@fontsource/raleway";
 import { crownsPinkLight, crownsPink } from "../styles/quizStyling";
 
 const Profile = () => {
-    return (<Container maxWidth="sm" >
+    return (<Container maxWidth="sm" sx={{pb: '60px'}}>
         <Typography variant="h3" fontWeight="bold" sx={{fontFamily: "Raleway", my:4}}>Profile</Typography>
         <Card sx={{m: 1, border: 4, borderColor: crownsPink, backgroundColor: crownsPinkLight }}>
             <CardContent>
