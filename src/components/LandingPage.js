@@ -8,12 +8,30 @@ import "@fontsource/aileron";
 import "@fontsource/caveat";
 import "@fontsource/raleway";
 import { CoverageMap } from "istanbul-lib-coverage";
-import { signInWithGoogle, uploadUser, useUserState } from "../utilities/firebase"
+import { signInWithGoogle, uploadUser, useUserState, useUser, setUser } from "../utilities/firebase"
 
 
+<<<<<<< HEAD
 const SignIn = (user, setUserCrownsData) =>{
     const data = signInWithGoogle();
     setUserCrownsData(data);
+    /*
+    const [data, loading, error] = useUser("users", user.user.uid)
+    
+    if (data !== null) {
+        if (data.hairType !== "") {
+            navigate('/results');
+        }
+        else
+            setUser(user.user.uid,
+                { userName: user.user.displayName, hairType: "", postIds: [] });
+    }
+    else {
+        setUser(user.user.uid,
+            { userName: user.user.displayName, hairType: "", postIds: [] });
+    }
+    */
+    
 }
 
 const LandingPage = () => {
@@ -118,11 +136,19 @@ const LandingPage = () => {
                     </Button>
                 </div>
                 <div style={{ margin: '2rem 0rem', display: 'flex' }}>
+<<<<<<< HEAD
                     <Button onClick={() => { SignIn(user, setUserCrownsData); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
                         Login
                     </Button>
                     &nbsp;&nbsp;&nbsp;
                     <Button onClick={() => { SignIn(user, setUserCrownsData); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
+=======
+                    <Button onClick={() => { if(SignIn()==5) navigate('/results'); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
+                        Login
+                    </Button>
+                    &nbsp;&nbsp;&nbsp;
+                    <Button onClick={() => { if (SignIn() == 5) navigate('/results'); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
+>>>>>>> 9c4bcf2162283f2d565dbe7076fb7638bc8515a0
                         Create Account
                     </Button>
                 </div>
