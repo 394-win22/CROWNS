@@ -13,7 +13,8 @@ function App() {
     <div className="App">
       <Router>
             <Routes>
-                <Route exact path="/" element={<LandingPage setUserData={setUserData} userData={userData}/>} />
+                <Route exact path="/" element={<LandingPage setUserData={setUserData} userData={userData} 
+                                                            setHairType={setHairType}/>} />
                 <Route exact path="/results" element={<ResultsPage hairType = {hairType}/>} />
                 <Route exact path="/quiz" element={<HairQuiz setHairType = {setHairType} />} />
                 <Route exact path="/selector" element={<TypeSelector setHairType = {setHairType} />} />

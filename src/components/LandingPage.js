@@ -34,14 +34,21 @@ const SignIn = (user, setUserCrownsData) =>{
 }
 
 
-const LandingPage = ({ setUserData, userData }) => {
+const LandingPage = ({ setUserData, userData, setHairType }) => {
     console.log("navigated to landing page");
     let navigate = useNavigate(); 
     const [user] = useUserState();
     const [userCrownsData, setUserCrownsData] = useState(null);
     useEffect(() => {
         if (userCrownsData) {
-            Promise.resolve(userCrownsData).then((response) => { console.log(response);setUserData(response); if(response.hairType!="") navigate("/results") }); 
+            Promise.resolve(userCrownsData).then((response) => {
+                console.log(response);
+                setUserData(response); 
+                if (response.hairType!="") {
+                    setHairType(response.hairType); 
+                    navigate("/results")
+                }
+            }); 
         }
     }, [userCrownsData]);
 
