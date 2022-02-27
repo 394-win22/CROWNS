@@ -11,13 +11,26 @@ import { CoverageMap } from "istanbul-lib-coverage";
 import { signInWithGoogle, uploadUser, useUserState } from "../utilities/firebase"
 
 
-const SignIn = () =>{
-    signInWithGoogle();
+const SignIn = (user, setUserCrownsData) =>{
+    const data = signInWithGoogle();
+    setUserCrownsData(data);
 }
 
 const LandingPage = () => {
     console.log("navigated to landing page");
     let navigate = useNavigate(); 
+    const [user] = useUserState();
+    const [userCrownsData, setUserCrownsData] = React.useState(null);
+
+    useEffect(() => {
+        if (userCrownsData) {
+            Promise.resolve(userCrownsData).then 
+        }
+    }, [listings]);
+
+    if (loading || loading2) return <div>Loading</div>
+    if (error) return <div>Error</div>
+
 
 
     const buttonStyle = {
@@ -105,11 +118,11 @@ const LandingPage = () => {
                     </Button>
                 </div>
                 <div style={{ margin: '2rem 0rem', display: 'flex' }}>
-                    <Button onClick={() => { SignIn(); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
+                    <Button onClick={() => { SignIn(user, setUserCrownsData); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
                         Login
                     </Button>
                     &nbsp;&nbsp;&nbsp;
-                    <Button onClick={() => { SignIn(); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
+                    <Button onClick={() => { SignIn(user, setUserCrownsData); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
                         Create Account
                     </Button>
                 </div>

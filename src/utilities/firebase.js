@@ -35,7 +35,8 @@ export const uploadUser = async (id, data) => {
     const existingUserRef = doc(db, "users", id)
     const existingUser = await getDoc(existingUserRef)
     if (existingUser.exists()) {
-      return;
+      const userData = existingUser.data();
+      return userData;
     }
   
     const docRef = await setDoc(existingUserRef, data);
@@ -48,7 +49,14 @@ export const uploadUser = async (id, data) => {
 
   export const signInWithGoogle = async () => {
     const user = await signInWithPopup(getAuth(app), new GoogleAuthProvider());
-    uploadUser(user.user.uid, 
+    return uploadUser(user.user.uid, 
         {userName: user.user.displayName, hairType: "", postIds: []});
+};
+
+export const getUserById = async(collectionName, userID) => {
+  const docRef = doc(db, collectionName, userID);
+  const docSnap = await getDoc(docRef);
+  const data = docSnap.data();
+  return data;
 };
 
