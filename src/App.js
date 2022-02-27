@@ -10,12 +10,13 @@ import Profile from './components/Profile'
 import {ProductsDropdown} from './components/Dropdown'
 
 function App() {
-  const [hairType, setHairType] = useState(null);
-
+    const [hairType, setHairType] = useState(null);
+    const [userData, setUserData] = useState(null);
   return (
     <div className="App">
       <Router>
             <Routes>
+
                 <Route exact path="/" element={<LandingPage />} />
                   <Route exact path="/results" element={<><ResultsPage hairType={hairType} /><Navbar/></>}/>
                   <Route exact path="/quiz" element={<HairQuiz setHairType={setHairType} />} />

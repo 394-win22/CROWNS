@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState} from "react";
 import Stack  from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Logo from '../images/CROWNSLOGO.png';
@@ -8,10 +8,46 @@ import "@fontsource/aileron";
 import "@fontsource/caveat";
 import "@fontsource/raleway";
 import { CoverageMap } from "istanbul-lib-coverage";
+import { signInWithGoogle, uploadUser, useUserState, useUser, setUser } from "../utilities/firebase"
 
-const LandingPage = () => {
+
+const SignIn = (user, setUserCrownsData) =>{
+    const data = signInWithGoogle();
+    setUserCrownsData(data);
+    /*
+    const [data, loading, error] = useUser("users", user.user.uid)
+    
+    if (data !== null) {
+        if (data.hairType !== "") {
+            navigate('/results');
+        }
+        else
+            setUser(user.user.uid,
+                { userName: user.user.displayName, hairType: "", postIds: [] });
+    }
+    else {
+        setUser(user.user.uid,
+            { userName: user.user.displayName, hairType: "", postIds: [] });
+    }
+    */
+    
+}
+
+
+const LandingPage = ({ setUserData, userData }) => {
     console.log("navigated to landing page");
     let navigate = useNavigate(); 
+    const [user] = useUserState();
+    const [userCrownsData, setUserCrownsData] = useState(null);
+    useEffect(() => {
+        if (userCrownsData) {
+            Promise.resolve(userCrownsData).then((response) => { console.log(response);setUserData(response); if(response.hairType!="") navigate("/results") }); 
+        }
+    }, [userCrownsData]);
+
+    //if (loading || loading2) return <div>Loading</div>
+    //if (error) return <div>Error</div>
+
 
 
     const buttonStyle = {
@@ -99,11 +135,13 @@ const LandingPage = () => {
                 </div>
                 {/*
                 <div style={{ margin: '2rem 0rem', display: 'flex' }}>
-                    <Button onClick={() => { navigate('/selector'); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
+
+                    <Button onClick={() => { SignIn(user, setUserCrownsData); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
                         Login
-                        </Button>
+                    </Button>
                     &nbsp;&nbsp;&nbsp;
-                    <Button onClick={() => { navigate('/selector'); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
+                    <Button onClick={() => { SignIn(user, setUserCrownsData); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
+
                         Create Account
                     </Button>
                 </div>
