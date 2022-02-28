@@ -206,9 +206,11 @@ const ResultsPage = ({ hairType }) => {
 
   // TODO: Remove this after dev
   if (!hairType) {
-    hairType = all_types[3].subtypes[0];
-    console.log("Fixed null");
+    return (
+      <div>Loading . . .</div>
+    )
   }
+  console.log(hairType);
 
   const font = {
     color: "#db8ab4",
