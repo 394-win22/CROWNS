@@ -7,6 +7,8 @@ import { ProductsDropdown, Dropdown } from "./Dropdown";
 import {signOut, useUserState, useUser} from '../utilities/firebase'
 import { useNavigate } from "react-router-dom";
 import {type_mapping} from "../data/HairTypes"
+import { signInWithGoogle, uploadUser, setUser } from "../utilities/firebase"
+import Button from '@mui/material/Button';
 
 // const GoalGallery = ({ tiles }) => {
 //   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -192,9 +194,14 @@ const ResultsPage = ({ hairType, setHairType }) => {
 
   // TODO: Remove this after dev
   if (!hairType) {
-    return (
+    if (!loading) {
+      navigate("/")
+      return null
+    }
+    else {
+      return (
       <div>Loading . . .</div>
-    )
+    )}
   }
   console.log(hairType);
 
@@ -206,6 +213,18 @@ const ResultsPage = ({ hairType, setHairType }) => {
   const resourceButton = {
     m: "0.5rem",
     borderRadius: "0.5em",
+  };
+
+  const accountButtonStyle = {
+    width: 150,
+    color: 'white',
+    backgroundColor: "#D2691E",
+    fontFamily: 'Raleway',
+    margin: "1rem",
+    '&:hover': {
+        backgroundColor: '#F2AFAF',
+        color: 'white',
+    },
   };
 
   return (
@@ -237,6 +256,12 @@ const ResultsPage = ({ hairType, setHairType }) => {
           <Typography sx={{color: "black", fontSize: "0.8rem"}}>{hairType.longDescription}</Typography>
         </Grid>
           </Grid>
+
+        {!user && <Grid>
+          <Button onClick={user ? () => {signOut()} : () => { signInWithGoogle(); }} variant="contained" size="large" defaultValue={30} sx={accountButtonStyle} >
+                          {"Join Our Community!"}
+          </Button>
+        </Grid>}
       <ProductsDropdown hairType={"_" + hairType.code} category=""/>
       
      {/* <Grid>

@@ -162,10 +162,10 @@ const LandingPage = ({ setUserData, userData, setHairType, hairType }) => {
                         {user ? "Sign Out" : "Login"}
                     </Button>
                     &nbsp;&nbsp;&nbsp;
-                    <Button onClick={() => { signInWithGoogle(); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
-
+            
+                    {/* <Button onClick={() => { signInWithGoogle(); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
                         Create Account
-                    </Button>
+                    </Button> */}
                 </div>
                 
             </Stack>
