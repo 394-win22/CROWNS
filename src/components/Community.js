@@ -65,9 +65,9 @@ const DiscussionCard = ({ data, index }) => {
                 </Typography>
             </CardContent>
             {data.tags && 
-            <Stack direction="column" spacing={1} sx={{px: 2, alignItems: 'flex-start'}}>
-                {data.tags.map((tag) => {
-                    return (<Chip label={tag} />)
+            <Stack direction="row" spacing={0} sx={{px: 2, alignItems: 'flex-start', flexWrap: "wrap"}}>
+                {data.tags.map((tag, i) => {
+                    return (<Chip label={tag} key={i} sx={{m: 0.5}}/>)
                 })}
             </Stack>
             }
