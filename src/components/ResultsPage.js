@@ -216,11 +216,11 @@ const ResultsPage = ({ hairType, setHairType }) => {
   };
 
   const accountButtonStyle = {
-    width: 150,
+    width: "100%",
     color: 'white',
     backgroundColor: "#D2691E",
     fontFamily: 'Raleway',
-    margin: "1rem",
+    margin: "1rem 0",
     '&:hover': {
         backgroundColor: '#F2AFAF',
         color: 'white',
@@ -229,7 +229,10 @@ const ResultsPage = ({ hairType, setHairType }) => {
 
   return (
     <Container className="ResultsPage" maxWidth="lg" style={font} sx={{pb: '60px'}}>
-      <Grid sx={{position: "absolute", right: 0, top: 0, paddingRight: "1rem", background: "white", cursor: "pointer"}} onClick={() => {signOut(navigate); setHairType(null)}}>
+      <Grid>
+        <Typography sx={{fontSize: "3rem", color: "black", fontWeight: "bold"}}>CROWNS</Typography>
+      </Grid>
+      {user && <Grid sx={{position: "absolute", right: 0, top: 0, paddingRight: "0.5rem", cursor: "pointer"}} onClick={() => {signOut(navigate); setHairType(null)}}>
         <div style={{float: "right", color: "black"}}>
           <img src={"../images/goals/type4/goals/Crown Icon.png"}
               style={{ width: "3rem"}} />
@@ -237,10 +240,7 @@ const ResultsPage = ({ hairType, setHairType }) => {
             Sign Out
           </div>
         </div>
-      </Grid>
-      <Grid>
-        <Typography sx={{fontSize: "3rem", color: "black", fontWeight: "bold"}}>CROWNS</Typography>
-      </Grid>
+      </Grid> }
           <Grid sx={{ ...gridStyle, backgroundColor: "#f9b792"}}>
         <Typography sx={{fontSize: "2rem"}}>Your hair type is {hairType.code}</Typography>
       </Grid>
@@ -258,7 +258,7 @@ const ResultsPage = ({ hairType, setHairType }) => {
           </Grid>
 
         {!user && <Grid>
-          <Button onClick={user ? () => {signOut()} : () => { signInWithGoogle(); }} variant="contained" size="large" defaultValue={30} sx={accountButtonStyle} >
+          <Button onClick={() => { signInWithGoogle(); }} variant="contained" size="large" defaultValue={30} sx={accountButtonStyle} >
                           {"Join Our Community!"}
           </Button>
         </Grid>}
