@@ -16,22 +16,26 @@ import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import CommentIcon from '@mui/icons-material/Comment';
 import "@fontsource/raleway";
 import { crownsPinkLight, crownsPink } from "../styles/quizStyling";
 import Grid from '@mui/material/Grid';
 import { products } from "../data/Products";
 import "@fontsource/raleway";
 import { makeStyles } from "@material-ui/core/styles";
+import Container from '@mui/material/Container';
+import post_data from '../data/Post';
 
 
-const DiscussionCard = () => {
+const DiscussionCard = ({ data }) => {
 
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ marginTop: "1rem"}}>
             <CardHeader
+                sx={{ textAlign: "left" }}
                 avatar={
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                        R
+                        {data.name.charAt(0).toUpperCase()}
                     </Avatar>
                 }
                 action={
@@ -39,23 +43,24 @@ const DiscussionCard = () => {
                         <MoreVertIcon />
                     </IconButton>
                 }
-                title="Clara"
-                subheader="March 1, 2022"
+                title={<b>{data.title}</b>}
+                subheader={data.date}
             />
-            <CardMedia
+            {/*<CardMedia
                 component="img"
                 height="194"
                 image="/static/images/cards/paella.jpg"
                 alt="How to better style my hair, pls help!!"
-            />
-            <CardContent>
+            />*/}
+            
+            <CardContent sx={{ textAlign: "left" }}>
                 <Typography variant="body2" color="text.secondary">
-                    Hi all! I am trying to style my hair in better curls, any tips?
+                    {data.content}
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
+                    <CommentIcon />
                 </IconButton>
             </CardActions>
             </Card>
@@ -70,25 +75,28 @@ const Community = () => {
     }
   });
   const classes = useStyles();
-
+    console.log(post_data);
     return (
 
         <div>
 
         <Typography variant="h3" fontWeight="bold" sx={{fontFamily: "Raleway", my:4}}>Community Board</Typography>
-
-        <Grid columns={1}>
-           <Grid item>
-                <DiscussionCard></DiscussionCard>
-            </Grid>
-           <Grid item>
-                 <DiscussionCard></DiscussionCard>
-            </Grid>
-           <Grid item>
-                <DiscussionCard></DiscussionCard>
-            </Grid>
-        </Grid>
-
+            <Container maxWidth="sm">
+                <Grid columns={1} sx={{ alignItems: "center" }}>
+                    {
+                        post_data.map((data, index) =>
+                        {
+                            return (
+                            <Grid item key={index}>
+                                <DiscussionCard data={data}></DiscussionCard>
+                                </Grid>)
+                        }
+                        )
+                    
+                    }
+                   
+                </Grid>
+        </Container>
         </div>
     )
 }
