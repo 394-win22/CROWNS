@@ -12,7 +12,7 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
+import { red, orange, yellow, green, blue, purple } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -25,16 +25,22 @@ import "@fontsource/raleway";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from '@mui/material/Container';
 import post_data from '../data/Post';
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
 
 
-const DiscussionCard = ({ data }) => {
+const colors = [red[500], orange[500], yellow[500], green[500], blue[500], purple[500],
+                red[200], orange[300], yellow[800], green[200], blue[300], purple[700]];
+
+
+const DiscussionCard = ({ data, index }) => {
 
     return (
-        <Card sx={{ marginTop: "1rem"}}>
+        <Card sx={{ marginTop: "1rem", border: 1, borderColor: "lightgrey"}}>
             <CardHeader
                 sx={{ textAlign: "left" }}
                 avatar={
-                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                    <Avatar sx={{ bgcolor: colors[index % colors.length] }} aria-label="recipe">
                         {data.name.charAt(0).toUpperCase()}
                     </Avatar>
                 }
@@ -58,6 +64,13 @@ const DiscussionCard = ({ data }) => {
                     {data.content}
                 </Typography>
             </CardContent>
+            {data.tags && 
+            <Stack direction="column" spacing={1} sx={{px: 2, alignItems: 'flex-start'}}>
+                {data.tags.map((tag) => {
+                    return (<Chip label={tag} />)
+                })}
+            </Stack>
+            }
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
                     <CommentIcon />
@@ -78,7 +91,7 @@ const Community = () => {
     console.log(post_data);
     return (
 
-        <div>
+        <Container sx={{pb: '65px'}}>
 
         <Typography variant="h3" fontWeight="bold" sx={{fontFamily: "Raleway", my:4}}>Community Board</Typography>
             <Container maxWidth="sm">
@@ -88,7 +101,7 @@ const Community = () => {
                         {
                             return (
                             <Grid item key={index}>
-                                <DiscussionCard data={data}></DiscussionCard>
+                                <DiscussionCard data={data} index={index}></DiscussionCard>
                                 </Grid>)
                         }
                         )
@@ -97,7 +110,7 @@ const Community = () => {
                    
                 </Grid>
         </Container>
-        </div>
+        </Container>
     )
 }
 

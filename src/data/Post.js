@@ -6,7 +6,7 @@ const tile_schema = {
     content: "string",
     date: "string",
     comments: [],
-    tag: []
+    tags: []
 }
 
 const post_data = [
@@ -18,7 +18,27 @@ const post_data = [
         content: "Hi all! I am trying to style my hair in better curls, any tips?",
         date: "March 1, 2022",
         comments: [],
-        tag: []
+        tags: ["#4C", "#Hairstyle"]
+    },
+    {
+        title: "My hair recommendation",
+        name: "Bob",
+        userID: "test",
+        image: null,
+        content: "Really long text with extrasuperfloruous words Really long text with extrasuperfloruous words Really long text with extrasuperfloruous words Really long text with extrasuperfloruous words Really long text with extrasuperfloruous words",
+        date: "February 27, 2022",
+        comments: [],
+        tags: []
+    },
+    {
+        title: "My hair recommendation",
+        name: "Denise",
+        userID: "test",
+        image: null,
+        content: "Looking for shampoo",
+        date: "March 1, 2022",
+        comments: [],
+        tags: ["#2B", "#Products", "#Chicago", "#IReallyLikeHairAndHairstyles", "#Hashtag"]
     },
 ]
 
