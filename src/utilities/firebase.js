@@ -16,7 +16,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore();
 
-const firebaseSignOut = () => signOut(getAuth(app));
+const firebaseSignOut = async (navigate = null) => {
+    await signOut(getAuth(app));
+    if (navigate) navigate("/");
+}
 
 
 export { firebaseSignOut as signOut };

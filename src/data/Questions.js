@@ -27,7 +27,7 @@ const quizQuestions = [
                 option: "Straight",
                 image: "/quizImages/straight.jpg",
                 weights: {
-                    _1a: 3, _1b: 3, _1c: 3
+                    _1A: 3, _1B: 3, _1C: 3
                 }
             },
             {
@@ -35,7 +35,7 @@ const quizQuestions = [
                 option: "Wavy",
                 image: "/quizImages/wavy.jpg",
                 weights: {
-                    _2a: 3, _2b: 3, _2c: 3
+                    _2A: 3, _2B: 3, _2C: 3
                 }
             },
             {
@@ -43,7 +43,7 @@ const quizQuestions = [
                 option: "Curly",
                 image: "/quizImages/curly.jpg",
                 weights: {
-                    _3a: 3, _3b: 3, _3c: 3
+                    _3A: 3, _3B: 3, _3C: 3
                 }
             },
             {
@@ -51,7 +51,7 @@ const quizQuestions = [
                 option: "Kinky",
                 image: "/quizImages/kinky.jpg",
                 weights: {
-                    _4a: 3, _4b: 3, _4c: 3
+                    _4A: 3, _4B: 3, _4C: 3
                 }
             },
         ]
