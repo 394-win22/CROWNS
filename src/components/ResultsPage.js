@@ -1,214 +1,207 @@
 import React from "react";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Divider from "@mui/material/Divider";
-import Chip from "@mui/material/Chip";
-import { Box, ThemeProvider } from "@mui/system";
 import Container from "@mui/material/Container";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import List from "@mui/material/List";
-import ListItemText from "@mui/material/ListItemText";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
-import ImageListItemBar from "@mui/material/ImageListItemBar";
-import ListSubheader from "@mui/material/ListSubheader";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import OpenInNewOutlinedIcon from "@mui/icons-material/OpenInNewOutlined";
-import { grey } from "@mui/material/colors";
-import Popover from "@mui/material/Popover";
 import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import CardActions from "@mui/material/CardActions";
-
-import { all_types } from "../data/HairTypes";
-import { goals } from "../data/Goals";
-import { hairstyles} from "../data/Hairstyles.js";
 import { accordionStyle, gridStyle} from '../styles/quizStyling'
 import { ProductsDropdown, Dropdown } from "./Dropdown";
+import {signOut, useUserState, useUser} from '../utilities/firebase'
+import { useNavigate } from "react-router-dom";
+import {type_mapping} from "../data/HairTypes"
+import { signInWithGoogle, uploadUser, setUser } from "../utilities/firebase"
+import Button from '@mui/material/Button';
 
-const GoalGallery = ({ tiles }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [t, setT] = React.useState(null);
-  const handleClick = (event, tempt) => {
-    setAnchorEl(event.currentTarget);
-    setT(tempt);
-    console.log(t);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+// const GoalGallery = ({ tiles }) => {
+//   const [anchorEl, setAnchorEl] = React.useState(null);
+//   const [t, setT] = React.useState(null);
+//   const handleClick = (event, tempt) => {
+//     setAnchorEl(event.currentTarget);
+//     setT(tempt);
+//     console.log(t);
+//   };
+//   const handleClose = () => {
+//     setAnchorEl(null);
+//   };
+//   const open = Boolean(anchorEl);
+//   const id = open ? "simple-popover" : undefined;
 
-  return (
-    <ImageList variant="masonry" cols={2} sx={{ mx: "1rem" }} gap={8}>
-      {tiles.map((tile, i) => (
-        <ImageListItem
-          rows={4}
-          key={i}
-          sx={
-            {
-              /* maxHeight: "24rem", minHeight: "20rem" /*maxWidth: "16rem"*/
-            }
-          }
-        >
-          {tile.image ? (
-            <img
-              src={"./images/goals/" + tile.image}
-              alt={tile.title}
-              loading="lazy"
-            />
-          ) : (
-            <Typography>{tile.moreInfo}</Typography>
-          )}
+//   return (
+//     <ImageList variant="masonry" cols={2} sx={{ mx: "1rem" }} gap={8}>
+//       {tiles.map((tile, i) => (
+//         <ImageListItem
+//           rows={4}
+//           key={i}
+//           sx={
+//             {
+//               /* maxHeight: "24rem", minHeight: "20rem" /*maxWidth: "16rem"*/
+//             }
+//           }
+//         >
+//           {tile.image ? (
+//             <img
+//               src={"./images/goals/" + tile.image}
+//               alt={tile.title}
+//               loading="lazy"
+//             />
+//           ) : (
+//             <Typography>{tile.moreInfo}</Typography>
+//           )}
 
-          <ImageListItemBar
-            title={tile.title}
-            subtitle={tile.moreInfo}
-            actionIcon={
-              tile.link ? (
-                <IconButton
-                  sx={{ color: grey[300] }}
-                  target="_blank"
-                  href={tile.link}
-                >
-                  <OpenInNewOutlinedIcon />
-                </IconButton>
-              ) : null
-            }
-            onClick={(e) => handleClick(e, tile)}
-          />
-          <Popover
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
-            onClose={handleClose}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "left",
-            }}
-          >
-            <Typography sx={{ p: 2 }}></Typography>
-          </Popover>
-        </ImageListItem>
-      ))}
-    </ImageList>
-  );
-};
+//           <ImageListItemBar
+//             title={tile.title}
+//             subtitle={tile.moreInfo}
+//             actionIcon={
+//               tile.link ? (
+//                 <IconButton
+//                   sx={{ color: grey[300] }}
+//                   target="_blank"
+//                   href={tile.link}
+//                 >
+//                   <OpenInNewOutlinedIcon />
+//                 </IconButton>
+//               ) : null
+//             }
+//             onClick={(e) => handleClick(e, tile)}
+//           />
+//           <Popover
+//             id={id}
+//             open={open}
+//             anchorEl={anchorEl}
+//             onClose={handleClose}
+//             anchorOrigin={{
+//               vertical: "bottom",
+//               horizontal: "left",
+//             }}
+//           >
+//             <Typography sx={{ p: 2 }}></Typography>
+//           </Popover>
+//         </ImageListItem>
+//       ))}
+//     </ImageList>
+//   );
+// };
 
-const GoalGrid = ({ tiles }) => {
-  // const [anchorEl, setAnchorEl] = React.useState(null);
-  // const handleClick = (event) => {
-  //     setAnchorEl(event.currentTarget);
-  // };
-  // const handleClose = () => {
-  //     setAnchorEl(null);
-  // };
-  // const open = Boolean(anchorEl);
-  // const id = open ? 'simple-popover' : undefined;
+// const GoalGrid = ({ tiles }) => {
+//   // const [anchorEl, setAnchorEl] = React.useState(null);
+//   // const handleClick = (event) => {
+//   //     setAnchorEl(event.currentTarget);
+//   // };
+//   // const handleClose = () => {
+//   //     setAnchorEl(null);
+//   // };
+//   // const open = Boolean(anchorEl);
+//   // const id = open ? 'simple-popover' : undefined;
 
-  return (
-    <Grid container spacing={1} sx={{ px: "0.5rem" }}>
-      {tiles.map((tile, i) =>
-        <Grid item key={i} xs={6}>
-          <Card sx={{ height: "100%" }}>
-            {tile.image ? (
-              <CardMedia
-                component="img"
-                image={"./images/goals/" + tile.image}
-                alt={tile.title}
-                sx={{ objectFit: "cover", height: "25vh" }}
-                loading="lazy"
-              />
-            ) : null}
+//   return (
+//     <Grid container spacing={1} sx={{ px: "0.5rem" }}>
+//       {tiles.map((tile, i) =>
+//         <Grid item key={i} xs={6}>
+//           <Card sx={{ height: "100%" }}>
+//             {tile.image ? (
+//               <CardMedia
+//                 component="img"
+//                 image={"./images/goals/" + tile.image}
+//                 alt={tile.title}
+//                 sx={{ objectFit: "cover", height: "25vh" }}
+//                 loading="lazy"
+//               />
+//             ) : null}
 
-            <CardContent>
-              <Typography variant="h6"> {tile.title}</Typography>
-              <Typography variant="body1"> {tile.moreInfo}</Typography>
-            </CardContent>
-            {tile.link ? (
-              <CardActions>
-                <Button target="_blank" href={tile.link}>
-                  Learn More
-                </Button>
-              </CardActions>
-            ) : null}
-            </Card>
-            </Grid>
-            )}
-    </Grid>
-    );
-};
-
-
-const GoalGridPopover = ({ tiles }) => {
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const [t, setT] = React.useState(null);
-    const handleClick = (event, tempt) => {
-        setAnchorEl(event.currentTarget);
-        setT(tempt);
-        console.log(t);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
-
-    return (
-        <Grid container spacing={1} sx={{ px: "0.5rem" }}>
-            {tiles.map((tile, i) =>
-                <Grid item xs={6} sx={{/* maxHeight: "24rem", minHeight: "20rem" /*maxWidth: "16rem"*/ }} >
-                    <Card sx={{ maxHeight: "24rem" }}>
-                        {tile.image ? <CardMedia
-                            component="img"
-                            image={"./images/goals/" + tile.image}
-                            alt={tile.title}
-                            loading="lazy"
-                        /> : null}
-
-                        <CardContent onClick={(e) => handleClick(e, tile)}>
-                            <Typography variant="h6"> {tile.title}</Typography>
-                            <Typography variant="body1" > {tile.moreInfo}</Typography>
-
-                        </CardContent>
-                        {tile.link ? <CardActions>
-                            <Button target="_blank" href={tile.link}>Learn More</Button>
-                        </CardActions> : null}
-                        { <Popover
-                    id={id}
-                    open={open}
-                    anchorEl={anchorEl}
-                    onClose={handleClose}
-                    anchorOrigin={{
-                      vertical: 'bottom',
-                      horizontal: 'left',
-                    }}
-                  >
-                            <Typography sx={{ p: 2 }}>{t==null? "" : t.moreInfo}</Typography>
-                  </Popover> }
-                    </Card>
-                </Grid>
-            )}
-        </Grid>);
-};
+//             <CardContent>
+//               <Typography variant="h6"> {tile.title}</Typography>
+//               <Typography variant="body1"> {tile.moreInfo}</Typography>
+//             </CardContent>
+//             {tile.link ? (
+//               <CardActions>
+//                 <Button target="_blank" href={tile.link}>
+//                   Learn More
+//                 </Button>
+//               </CardActions>
+//             ) : null}
+//             </Card>
+//             </Grid>
+//             )}
+//     </Grid>
+//     );
+// };
 
 
-const ResultsPage = ({ hairType }) => {
+// const GoalGridPopover = ({ tiles }) => {
+//     const [anchorEl, setAnchorEl] = React.useState(null);
+//     const [t, setT] = React.useState(null);
+//     const handleClick = (event, tempt) => {
+//         setAnchorEl(event.currentTarget);
+//         setT(tempt);
+//         console.log(t);
+//     };
+//     const handleClose = () => {
+//         setAnchorEl(null);
+//     };
+//     const open = Boolean(anchorEl);
+//     const id = open ? 'simple-popover' : undefined;
+
+//     return (
+//         <Grid container spacing={1} sx={{ px: "0.5rem" }}>
+//             {tiles.map((tile, i) =>
+//                 <Grid item xs={6} sx={{/* maxHeight: "24rem", minHeight: "20rem" /*maxWidth: "16rem"*/ }} >
+//                     <Card sx={{ maxHeight: "24rem" }}>
+//                         {tile.image ? <CardMedia
+//                             component="img"
+//                             image={"./images/goals/" + tile.image}
+//                             alt={tile.title}
+//                             loading="lazy"
+//                         /> : null}
+
+//                         <CardContent onClick={(e) => handleClick(e, tile)}>
+//                             <Typography variant="h6"> {tile.title}</Typography>
+//                             <Typography variant="body1" > {tile.moreInfo}</Typography>
+
+//                         </CardContent>
+//                         {tile.link ? <CardActions>
+//                             <Button target="_blank" href={tile.link}>Learn More</Button>
+//                         </CardActions> : null}
+//                         { <Popover
+//                     id={id}
+//                     open={open}
+//                     anchorEl={anchorEl}
+//                     onClose={handleClose}
+//                     anchorOrigin={{
+//                       vertical: 'bottom',
+//                       horizontal: 'left',
+//                     }}
+//                   >
+//                             <Typography sx={{ p: 2 }}>{t==null? "" : t.moreInfo}</Typography>
+//                   </Popover> }
+//                     </Card>
+//                 </Grid>
+//             )}
+//         </Grid>);
+// };
+
+
+const ResultsPage = ({ hairType, setHairType }) => {
   console.log("navigated to results page");
+  const navigate = useNavigate();
+  const [user] = useUserState();
+  const [data, loading, error] = useUser("users", user?.uid);
+
+  if (data && !hairType) {
+    hairType = data.hairType
+  }
+
+  if (typeof hairType === 'string' && hairType !== "") {
+    hairType = type_mapping["_" + hairType]
+  }
 
   // TODO: Remove this after dev
   if (!hairType) {
-    return (
+    if (!loading) {
+      navigate("/")
+      return null
+    }
+    else {
+      return (
       <div>Loading . . .</div>
-    )
+    )}
   }
   console.log(hairType);
 
@@ -222,20 +215,32 @@ const ResultsPage = ({ hairType }) => {
     borderRadius: "0.5em",
   };
 
+  const accountButtonStyle = {
+    width: "100%",
+    color: 'white',
+    backgroundColor: "#D2691E",
+    fontFamily: 'Raleway',
+    margin: "1rem 0",
+    '&:hover': {
+        backgroundColor: '#F2AFAF',
+        color: 'white',
+    },
+  };
+
   return (
     <Container className="ResultsPage" maxWidth="lg" style={font} sx={{pb: '60px'}}>
-      {/* <Grid> //SIGN IN ICON
-        <div style={{float: "right", color: "black"}}>
-          <img src={"../images/goals/type4/goals/Crown Icon.png"}
-              style={{ maxHeight: "30vh", maxWidth: "10%"}}/>
-          <div style={{ width: "5rem"}}>
-            Sign In
-          </div>
-        </div>
-      </Grid> */}
       <Grid>
         <Typography sx={{fontSize: "3rem", color: "black", fontWeight: "bold"}}>CROWNS</Typography>
       </Grid>
+      {user && <Grid sx={{position: "absolute", right: 0, top: 0, paddingRight: "0.5rem", cursor: "pointer"}} onClick={() => {signOut(navigate); setHairType(null)}}>
+        <div style={{float: "right", color: "black"}}>
+          <img src={"../images/goals/type4/goals/Crown Icon.png"}
+              style={{ width: "3rem"}} />
+          <div style={{ width: "5rem"}}>
+            Sign Out
+          </div>
+        </div>
+      </Grid> }
           <Grid sx={{ ...gridStyle, backgroundColor: "#f9b792"}}>
         <Typography sx={{fontSize: "2rem"}}>Your hair type is {hairType.code}</Typography>
       </Grid>
@@ -251,6 +256,12 @@ const ResultsPage = ({ hairType }) => {
           <Typography sx={{color: "black", fontSize: "0.8rem"}}>{hairType.longDescription}</Typography>
         </Grid>
           </Grid>
+
+        {!user && <Grid>
+          <Button onClick={() => { signInWithGoogle(); }} variant="contained" size="large" defaultValue={30} sx={accountButtonStyle} >
+                          {"Join Our Community!"}
+          </Button>
+        </Grid>}
       <ProductsDropdown hairType={"_" + hairType.code} category=""/>
       
      {/* <Grid>
