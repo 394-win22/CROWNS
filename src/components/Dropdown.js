@@ -20,7 +20,7 @@ const InnerGrid = ({ data, subsection }) => {
   if (data[subsection].length === 0) return null
   return (
     <Grid container>
-      <Grid item xs={12}>
+      <Grid item xs={12} sx={{alignItems: 'flex-end'}}>
         <Typography variant="h6">
           {formattedKeyNames[subsection]}
         </Typography>

@@ -7,7 +7,8 @@ import HairQuiz from './components/HairQuiz';
 import TypeSelector from './components/TypeSelector';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile'
-import {ProductsDropdown} from './components/Dropdown'
+import { ProductsDropdown } from './components/Dropdown'
+import Community from './components/Community'
 
 function App() {
     const [hairType, setHairType] = useState(null);
@@ -22,7 +23,8 @@ function App() {
                 <Route exact path="/quiz" element={<HairQuiz setHairType={setHairType} />} />
                 <Route exact path="/selector" element={<><TypeSelector setHairType = {setHairType} /><Navbar /></>} />
                 <Route exact path="/profile" element={<><Profile /><Navbar/></>} />
-                <Route exact path="/testDropdown" element={<><ProductsDropdown hairType={"_4c"} /><Navbar /></>} />   
+                <Route exact path="/community" element={<><Community /><Navbar /></>} />
+
             </Routes>
       </Router>
         </div>

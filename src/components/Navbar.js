@@ -26,7 +26,7 @@ const Navbar = () => {
                     <Avatar sx={{ bgcolor: crownsPink }}>4A</Avatar>
                 </IconButton>
                 <Box sx={{ flexGrow: 1}} />
-                <IconButton size='large' onClick={() => { navigate('/quiz'); }}>
+                <IconButton size='large' onClick={() => { navigate('/community'); }}>
                     <ConnectWithoutContactIcon fontSize = 'inherit'/>
                 </IconButton>
                 <Box sx={{ flexGrow: 0.5 }} />
