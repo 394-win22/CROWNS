@@ -118,7 +118,7 @@ const LandingPage = ({ setUserData, userData, setHairType }) => {
                 spacing={0}
                 height="100vh"
             >
-                <div style={headerStyle}>
+                <div style={headerStyle} data-cy="title">
                     CROWNS
                 </div>
                 {/* <div>
@@ -129,7 +129,7 @@ const LandingPage = ({ setUserData, userData, setHairType }) => {
                     Are you ready to embrace your hair and take back control? Crowns recommends products, hairstyles, and stylists to guide you on your hair journey or strong healthy hair!
                 </div>
 
-                <div style={{margin: '2rem 0rem'}}>
+                <div style={{margin: '2rem 0rem'}} data-cy="quiz">
                     <Button onClick={() => {navigate('/quiz'); }}variant="contained" size="large" defaultValue={30} sx={buttonStyle} > 
                         Find out my hair type! 
                     </Button>
