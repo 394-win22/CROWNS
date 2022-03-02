@@ -20,5 +20,12 @@ describe ('Test App', () => {
         });
         cy.get('[data-cy=quizQuestion]').should('be.visible');
     })
+
+    it ('tries to sign in', () => {
+        cy.visit ('/');
+
+        cy.get('[data-cy=signIn').click();
+        
+    })
   
 });

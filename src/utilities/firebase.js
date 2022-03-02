@@ -1,10 +1,10 @@
 // Import the functions you need from the SDKs you need
 import { useEffect, useState, useCallback } from "react";
 import { initializeApp } from "firebase/app";
-import { getFirestore, getDoc, doc, setDoc, updateDoc, } from "firebase/firestore";
-import { getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithPopup, signOut } from 'firebase/auth';
+import { getFirestore, connectFirestoreEmulator, getDoc, doc, setDoc, updateDoc, } from "firebase/firestore";
+import { getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithPopup, signOut, connectAuthEmulator, signInWithCredential } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
-
+// import { getDatabase, connectDatabaseEmulator } from "firebase/database";getAuth()
 const firebaseConfig = {
     apiKey: "AIzaSyB8Xulh0Uh7Jy2AHJVQOiBf4vTK2F2aotw",
     authDomain: "crown-dd66d.firebaseapp.com",
@@ -18,7 +18,21 @@ export const db = getFirestore();
 
 const firebaseSignOut = () => signOut(getAuth(app));
 
+// const auth = getAuth();
+// const db = getDatabase();
 
+if (window.Cypress) {
+  connectAuthEmulator(getAuth(), "http://localhost:9099");
+  connectFirestoreEmulator(db, "localhost", 9000);
+
+  signInWithCredential(GoogleAuthProvider.credential(
+    'chris'
+  ));
+
+  console.log(getAuth().currentUser);
+
+  // ' {userName: "Chris Riesbeck", hairType: "2A", postIds: []}'
+}
 export { firebaseSignOut as signOut };
 
 export const useUserState = () => {

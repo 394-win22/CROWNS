@@ -143,7 +143,7 @@ const LandingPage = ({ setUserData, userData, setHairType }) => {
                
                 <div style={{ margin: '2rem 0rem', display: 'flex' }}>
 
-                    <Button onClick={() => { SignIn(user, setUserCrownsData); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
+                    <Button onClick={() => { SignIn(user, setUserCrownsData); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} data-cy="signIn">
                         Login
                     </Button>
                     &nbsp;&nbsp;&nbsp;
