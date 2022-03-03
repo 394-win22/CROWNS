@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -29,14 +29,15 @@ import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 
 
+
 const colors = [red[500], orange[500], yellow[500], green[500], blue[500], purple[500],
-                red[200], orange[300], yellow[800], green[200], blue[300], purple[700]];
+red[200], orange[300], yellow[800], green[200], blue[300], purple[700]];
 
 
 const DiscussionCard = ({ data, index }) => {
 
     return (
-        <Card sx={{ marginTop: "1rem", border: 1, borderColor: "lightgrey" }}>
+        <Card sx={{ marginTop: "1rem", border: 3, borderColor: "black" }}>
             <CardHeader
                 sx={{ textAlign: "left" }}
                 avatar={
@@ -58,58 +59,68 @@ const DiscussionCard = ({ data, index }) => {
                 image="/static/images/cards/paella.jpg"
                 alt="How to better style my hair, pls help!!"
             />*/}
-            
+
             <CardContent sx={{ textAlign: "left" }}>
                 <Typography variant="body2" color="text.secondary">
                     {data.content}
                 </Typography>
             </CardContent>
-            {data.tags && 
-            <Stack direction="row" spacing={0} sx={{px: 2, alignItems: 'flex-start', flexWrap: "wrap"}}>
-                {data.tags.map((tag, i) => {
-                    return (<Chip label={tag} key={i} sx={{m: 0.5}}/>)
-                })}
-            </Stack>
+            {data.tags &&
+                <Stack direction="row" spacing={0} sx={{ px: 2, alignItems: 'flex-start', flexWrap: "wrap" }}>
+                    {data.tags.map((tag, i) => {
+                        return (<Chip label={tag} key={i} sx={{ m: 0.5 }} />)
+                    })}
+                </Stack>
             }
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
                     <CommentIcon />
                 </IconButton>
             </CardActions>
-            </Card>
+        </Card>
+    )
+}
+
+const CommunityFilters = ({setFilter}) => {
+    const filters = ["Hairstyles", "Products", "Stylists", "News"]
+    return (
+        <Container disableGutters sx={{ textAlign: "left" }}>
+            {filters.map(e => { return <Chip onClick={() => setFilter(e)} label={e} sx={{ backgroundColor: "white", ml: 0.5, border: 1, borderColor: "black", fontFamily: "Raleway" }} /> })}
+        </Container>
     )
 }
 
 const Community = () => {
-
-  const useStyles = makeStyles({
-    content: {
-      justifyContent: "center"
-    }
-  });
-  const classes = useStyles();
+    const [currentFilter, setCurrentFilter] = useState("")
+    const useStyles = makeStyles({
+        content: {
+            justifyContent: "center"
+        }
+    });
+    const classes = useStyles();
     console.log(post_data);
     return (
 
-        <Container sx={{pb: '65px', mx: 0, px: 0}}>
+        <Container sx={{ pb: '65px' }} disableGutters>
 
-        <Typography variant="h3" fontWeight="bold" sx={{fontFamily: "Raleway", my:4}}>Community Board</Typography>
+            <Typography variant="h3" fontWeight="bold" sx={{ fontFamily: "Raleway", my: 4 }}>Community Board</Typography>
             <Container sx={{
-                mx: 0, py: 2, backgroundColor: crownsPinkLight }}>
+                mx: 0, py: 2, backgroundColor: crownsPinkLight
+            }}>
+                <CommunityFilters setFilter={setCurrentFilter} />
                 <Grid columns={1} sx={{ alignItems: "center" }}>
                     {
-                        post_data.map((data, index) =>
-                        {
+                        post_data.map((data, index) => {
                             return (
-                            <Grid item key={index}>
-                                <DiscussionCard data={data} index={index}></DiscussionCard>
+                                <Grid item key={index}>
+                                    <DiscussionCard data={data} index={index}></DiscussionCard>
                                 </Grid>)
                         }
                         )
-                    
+
                     }
-                    </Grid>
-        </Container>
+                </Grid>
+            </Container>
         </Container>
     )
 }
