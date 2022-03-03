@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import Container from '@mui/material/Container';
 import Card from "@mui/material/Card";
@@ -52,6 +52,10 @@ const Profile = ({ hairType, setHairType }) => {
     const [user] = useUserState();
     const [data, loading, error] = useUser("users", user?.uid);
     const [name, setName] = useState(data?.userName);
+
+    useEffect(() => {
+        if (data) setName(data.userName)
+    }, [data])
 
     const navigate = useNavigate();
 
