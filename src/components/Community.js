@@ -36,7 +36,7 @@ const colors = [red[500], orange[500], yellow[500], green[500], blue[500], purpl
 const DiscussionCard = ({ data, index }) => {
 
     return (
-        <Card sx={{ marginTop: "1rem", border: 1, borderColor: "lightgrey"}}>
+        <Card sx={{ marginTop: "1rem", border: 1, borderColor: "lightgrey" }}>
             <CardHeader
                 sx={{ textAlign: "left" }}
                 avatar={
@@ -91,10 +91,11 @@ const Community = () => {
     console.log(post_data);
     return (
 
-        <Container sx={{pb: '65px'}}>
+        <Container sx={{pb: '65px', mx: 0, px: 0}}>
 
         <Typography variant="h3" fontWeight="bold" sx={{fontFamily: "Raleway", my:4}}>Community Board</Typography>
-            <Container maxWidth="sm">
+            <Container sx={{
+                mx: 0, py: 2, backgroundColor: crownsPinkLight }}>
                 <Grid columns={1} sx={{ alignItems: "center" }}>
                     {
                         post_data.map((data, index) =>
@@ -107,8 +108,7 @@ const Community = () => {
                         )
                     
                     }
-                   
-                </Grid>
+                    </Grid>
         </Container>
         </Container>
     )
