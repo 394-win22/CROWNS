@@ -27,6 +27,10 @@ import Container from '@mui/material/Container';
 import post_data from '../data/Post';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import TextField from '@mui/material/TextField';
 
 
 
@@ -81,12 +85,67 @@ const DiscussionCard = ({ data, index }) => {
     )
 }
 
-const CommunityFilters = ({setFilter}) => {
+const CommunityFilters = ({ setFilter }) => {
     const filters = ["Hairstyles", "Products", "Stylists", "News", "All"]
     return (
         <Container disableGutters sx={{ textAlign: "left" }}>
-            {filters.map(e => { return <Chip onClick={() => setFilter(e === 'All' ? false: e)} label={e} sx={{ backgroundColor: "white", ml: 0.5, border: 1, borderColor: "black", fontFamily: "Raleway" }} /> })}
+            {filters.map(e => { return <Chip onClick={() => setFilter(e === 'All' ? false : e)} label={e} sx={{ backgroundColor: "white", ml: 0.5, border: 1, borderColor: "black", fontFamily: "Raleway" }} /> })}
         </Container>
+    )
+}
+
+const PostModal = () => {
+    const [open, setOpen] = useState(false)
+    const handleOpen = () => {
+        setOpen(true);
+    }
+    const handleClose = () => {
+        setOpen(false);
+    }
+    return (
+        <>
+            <Button type="button" onClick={handleOpen}>Add Post</Button>
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={{}}>
+                    <Stack spacing={2}>
+                        <TextField label="Title" variant="outlined" />
+                        <TextField label="Description" variant="outlined" />
+                        <TextField label="Title" variant="outlined" />
+                        {/* <Autocomplete
+                            multiple
+                            id="fixed-tags-demo"
+                            value={value}
+                            onChange={(event, newValue) => {
+                                setValue([
+                                    ...fixedOptions,
+                                    ...newValue.filter((option) => fixedOptions.indexOf(option) === -1),
+                                ]);
+                            }}
+                            options={top100Films}
+                            getOptionLabel={(option) => option.title}
+                            renderTags={(tagValue, getTagProps) =>
+                                tagValue.map((option, index) => (
+                                    <Chip
+                                        label={option.title}
+                                        {...getTagProps({ index })}
+                                        disabled={fixedOptions.indexOf(option) !== -1}
+                                    />
+                                ))
+                            }
+                            style={{ width: 500 }}
+                            renderInput={(params) => (
+                                <TextField {...params} label="Fixed tag" placeholder="Favorites" />
+                            )}
+                        /> */}
+                    </Stack>
+                </Box>
+            </Modal>
+        </>
     )
 }
 
@@ -104,6 +163,7 @@ const Community = () => {
         <Container sx={{ pb: '65px' }} disableGutters>
 
             <Typography variant="h3" fontWeight="bold" sx={{ fontFamily: "Raleway", my: 4 }}>Community Board</Typography>
+            <PostModal />
             <Container sx={{
                 mx: 0, py: 2, backgroundColor: crownsPinkLight
             }}>
