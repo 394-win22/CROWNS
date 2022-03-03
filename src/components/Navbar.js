@@ -10,8 +10,7 @@ import Avatar from '@mui/material/Avatar';
 import { useNavigate } from "react-router-dom";
 
 
-const Navbar = () => {
-
+const Navbar = ({hairTypeCode}) => {
     let navigate = useNavigate();
 
     return (
@@ -23,7 +22,7 @@ const Navbar = () => {
                 </IconButton>
                 <Box sx={{ flexGrow: 1}} />
                 <IconButton onClick={() => { navigate('/results'); }}>
-                    <Avatar sx={{ bgcolor: crownsPink }}>4A</Avatar>
+                    <Avatar sx={{ bgcolor: crownsPink }}>{hairTypeCode}</Avatar>
                 </IconButton>
                 <Box sx={{ flexGrow: 1}} />
                 <IconButton size='large' onClick={() => { navigate('/community'); }}>

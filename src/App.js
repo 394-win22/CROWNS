@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import LandingPage from './components/LandingPage.js';
 import ResultsPage from './components/ResultsPage.js';
@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import Profile from './components/Profile'
 import { ProductsDropdown } from './components/Dropdown'
 import Community from './components/Community'
+import {useUserState, useUser} from "./utilities/firebase"
 
 function App() {
     const [hairType, setHairType] = useState(null);
@@ -19,10 +20,10 @@ function App() {
             <Routes>
                 <Route exact path="/" element={<LandingPage setUserData={setUserData} userData={userData} 
                                                             setHairType={setHairType} hairType={hairType}/>} />
-                <Route exact path="/results" element={<><ResultsPage hairType={hairType} setHairType={setHairType} /><Navbar/></>}/>
+                <Route exact path="/results" element={<><ResultsPage hairType={hairType} setHairType={setHairType} /></>}/>
                 <Route exact path="/quiz" element={<HairQuiz setHairType={setHairType} />} />
-                <Route exact path="/selector" element={<><TypeSelector setHairType = {setHairType} /><Navbar /></>} />
-                <Route exact path="/profile" element={<><Profile /><Navbar/></>} />
+                <Route exact path="/selector" element={<><TypeSelector setHairType = {setHairType} /></>} />
+                  <Route exact path="/profile" element={<><Profile hairType={hairType} setHairType={setHairType}/></>} />
                 <Route exact path="/community" element={<><Community /><Navbar /></>} />
 
             </Routes>

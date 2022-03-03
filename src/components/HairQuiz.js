@@ -15,6 +15,7 @@ import {accordionStyle} from "../styles/quizStyling"
 import "@fontsource/aileron";
 import "@fontsource/caveat";
 import "@fontsource/raleway";
+import {useUserState, setUser} from '../utilities/firebase.js'
 
 
 const HairSubtype = ({ hairSubtype, setHairType }) => {
@@ -87,6 +88,8 @@ const HairQuiz = ({ setHairType }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [totalWeights, setTotalWeights] = useState({});
   const navigate = useNavigate();
+  const [user] = useUserState();
+
 
   const finishQuiz = useCallback((weights) => {
     console.log("quiz finished");
@@ -99,6 +102,8 @@ const HairQuiz = ({ setHairType }) => {
       }
     })
     setHairType(type_mapping[maxKey])
+    console.log(user);
+    if (user) setUser(user.uid, {hairType: maxKey.substring(1)})
     navigate("/results")
   }, [totalWeights, navigate, setHairType]);
 
