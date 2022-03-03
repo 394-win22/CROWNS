@@ -163,7 +163,7 @@ const Community = () => {
         <Container sx={{ pb: '65px' }} disableGutters>
 
             <Typography variant="h3" fontWeight="bold" sx={{ fontFamily: "Raleway", my: 4 }}>Community Board</Typography>
-            <PostModal />
+            {/* <PostModal /> */}
             <Container sx={{
                 mx: 0, py: 2, backgroundColor: crownsPinkLight
             }}>
