@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import "@fontsource/aileron";
 import "@fontsource/caveat";
 import "@fontsource/raleway";
+import {useUserState, setUser} from '../utilities/firebase'
 
 
 
@@ -34,9 +35,11 @@ const TypeSelector = ({ setHairType }) => {
         {image: Type4b, subtype: all_types[3].subtypes[1]},
         {image: Type4c, subtype: all_types[3].subtypes[2]}
     ]
+    const [user] = useUserState();
 
   const chooseHairType = (hairType) => {
     setHairType(hairType);
+    if (user) setUser(user.uid, {hairType: hairType.code});
     navigate("/results");
   }
 
