@@ -82,10 +82,10 @@ const DiscussionCard = ({ data, index }) => {
 }
 
 const CommunityFilters = ({setFilter}) => {
-    const filters = ["Hairstyles", "Products", "Stylists", "News"]
+    const filters = ["Hairstyles", "Products", "Stylists", "News", "All"]
     return (
         <Container disableGutters sx={{ textAlign: "left" }}>
-            {filters.map(e => { return <Chip onClick={() => setFilter(e)} label={e} sx={{ backgroundColor: "white", ml: 0.5, border: 1, borderColor: "black", fontFamily: "Raleway" }} /> })}
+            {filters.map(e => { return <Chip onClick={() => setFilter(e === 'All' ? false: e)} label={e} sx={{ backgroundColor: "white", ml: 0.5, border: 1, borderColor: "black", fontFamily: "Raleway" }} /> })}
         </Container>
     )
 }
@@ -110,7 +110,7 @@ const Community = () => {
                 <CommunityFilters setFilter={setCurrentFilter} />
                 <Grid columns={1} sx={{ alignItems: "center" }}>
                     {
-                        post_data.map((data, index) => {
+                        post_data.filter(data => currentFilter ? data.tags.includes(currentFilter) : true).map((data, index) => {
                             return (
                                 <Grid item key={index}>
                                     <DiscussionCard data={data} index={index}></DiscussionCard>
