@@ -1,16 +1,21 @@
 {
-  "hosting": {
+  "hosting": [{
+    "target": "live",
     "public": "build",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
+    ]
+  },
+  {
+    "target": "develop",
+    "public": "build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
     ]
   }
+  ]
 }
