@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState} from "react";
 import Stack  from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Logo from '../images/CROWNSLOGO.png';
@@ -8,11 +8,69 @@ import "@fontsource/aileron";
 import "@fontsource/caveat";
 import "@fontsource/raleway";
 import { CoverageMap } from "istanbul-lib-coverage";
+import { signInWithGoogle, uploadUser, useUserState, useUser, setUser, signOut } from "../utilities/firebase"
 
-const LandingPage = () => {
+
+// const SignIn = async (user) =>{
+//     const data = await ;
+//     console.log(data)
+//     //setUserCrownsData(data);
+//     /*
+//     const [data, loading, error] = useUser("users", user.user.uid)
+    
+//     if (data !== null) {
+//         if (data.hairType !== "") {
+//             navigate('/results');
+//         }
+//         else
+//             setUser(user.user.uid,
+//                 { userName: user.user.displayName, hairType: "", postIds: [] });
+//     }
+//     else {
+//         setUser(user.user.uid,
+//             { userName: user.user.displayName, hairType: "", postIds: [] });
+//     }
+//     */
+    
+// }
+
+
+const LandingPage = ({ setUserData, userData, setHairType, hairType }) => {
     console.log("navigated to landing page");
     let navigate = useNavigate(); 
+    const [user] = useUserState();
+    const [data, loading, error] = useUser("users", user?.uid);
+    console.log(data);
+    // const [userCrownsData, setUserCrownsData] = useState(null);
+    // useEffect(() => {
+    //     if (userCrownsData) {
+    //         // Promise.resolve(userCrownsData).then((response) => {
+    //         //     console.log(response);
+    //             console.log(userCrownsData);
+    //             setUserData(userCrownsData); 
+    //             if (userCrownsData.hairType!="") {
+    //                 setHairType(userCrownsData.hairType); 
+    //                 navigate("/results")
+    //             }
+    //        // }); 
+    //     }
+    // }, [userCrownsData]);
 
+    useEffect(() => {
+        if (data && data.hairType) {
+            console.log(data);
+            setHairType(data.hairType)
+        }
+    }, [data])
+
+    useEffect(() => {
+        if (hairType) {
+            navigate("/results")
+        }
+    }, [hairType])
+
+    //if (loading) return <div>Loading</div>
+    //if (error) return <div>Error</div>
 
     const buttonStyle = {
         width: 300,
@@ -97,17 +155,19 @@ const LandingPage = () => {
                         I know my type!
                     </Button>
                 </div>
-                {/*
+               
                 <div style={{ margin: '2rem 0rem', display: 'flex' }}>
-                    <Button onClick={() => { navigate('/selector'); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
-                        Login
-                        </Button>
-                    &nbsp;&nbsp;&nbsp;
-                    <Button onClick={() => { navigate('/selector'); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
-                        Create Account
+
+                    <Button onClick={user ? () => {signOut()} : () => { signInWithGoogle(); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
+                        {user ? "Sign Out" : "Login"}
                     </Button>
+                    &nbsp;&nbsp;&nbsp;
+            
+                    {/* <Button onClick={() => { signInWithGoogle(); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
+                        Create Account
+                    </Button> */}
                 </div>
-                */}
+                
             </Stack>
         </div>
     );

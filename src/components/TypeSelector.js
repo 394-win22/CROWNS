@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import "@fontsource/aileron";
 import "@fontsource/caveat";
 import "@fontsource/raleway";
+import {useUserState, setUser} from '../utilities/firebase'
 
 
 
@@ -34,15 +35,17 @@ const TypeSelector = ({ setHairType }) => {
         {image: Type4b, subtype: all_types[3].subtypes[1]},
         {image: Type4c, subtype: all_types[3].subtypes[2]}
     ]
+    const [user] = useUserState();
 
   const chooseHairType = (hairType) => {
     setHairType(hairType);
+    if (user) setUser(user.uid, {hairType: hairType.code});
     navigate("/results");
   }
 
   return (
     
-    <Card variant="outlined" sx={{maxWidth: '450px', width:'100%', height: '100vh', position: 'absolute', left: '50%', top: '45%', transform: 'translate(-50%, -50%)'}}>
+    <Card variant="outlined" sx={{maxWidth: '450px', width:'100%', height: '100vh', position: 'absolute', left: '50%', top: '45%', transform: 'translate(-50%, -50%)', pb: '60px'}}>
         <Typography align={'center'}  sx={{ fontSize: '2rem', fontFamily: 'Raleway', padding: '1rem', fontWeight: '900', marginTop: '2rem', marginBottom: '3rem' }}>
                 Choose the type that is most like your Hair
         </Typography>
