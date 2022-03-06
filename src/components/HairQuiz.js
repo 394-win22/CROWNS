@@ -105,7 +105,7 @@ const HairQuiz = ({ setHairType }) => {
     console.log(user);
     if (user) setUser(user.uid, {hairType: maxKey.substring(1)})
     navigate("/results")
-  }, [totalWeights, navigate, setHairType]);
+  }, [totalWeights, navigate, setHairType, user]);
 
   const setResult = useCallback((res, weights) => {
     let temp2 = {...totalWeights}
@@ -119,12 +119,14 @@ const HairQuiz = ({ setHairType }) => {
       })
     }
     setTotalWeights(temp2);
+    let nextQuestion = quizQuestions[currentQuestion].answers[res].nextQuestion;
 
-    if (currentQuestion === quizQuestions.length - 1) {
+    if (!nextQuestion) {
       finishQuiz(temp2)
     } else {
-      setCurrentQuestion(currentQuestion + 1)
+      setCurrentQuestion(nextQuestion)
     }
+
   }, [totalWeights, currentQuestion, finishQuiz]);
 
   return (
