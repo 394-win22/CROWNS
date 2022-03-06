@@ -16,6 +16,7 @@ import "@fontsource/aileron";
 import "@fontsource/caveat";
 import "@fontsource/raleway";
 import {useUserState, setUser} from '../utilities/firebase.js'
+import {headerStyle} from './LandingPage';
 
 
 const HairSubtype = ({ hairSubtype, setHairType }) => {
@@ -130,11 +131,14 @@ const HairQuiz = ({ setHairType }) => {
   }, [totalWeights, currentQuestion, finishQuiz]);
 
   return (
-    <div style={{ maxWidth: "40rem", width: '100%', display: "inline-block"}}>
-      <PlainQuizQuestion setResult = {setResult} question={quizQuestions[currentQuestion]}/>
-      
-      { /* all_types.map(function(e, index) {return (<HairType key={index.toString()} hairType={e} setHairType={setHairType} />)}) */}
+    <div>
+      <Typography sx={{...headerStyle, color:'black'}}>CROWNS</Typography>
+      <div style={{ maxWidth: "40rem", width: '100%', display: "inline-block"}}>
+        <PlainQuizQuestion setResult = {setResult} question={quizQuestions[currentQuestion]}/>
+        
+        { /* all_types.map(function(e, index) {return (<HairType key={index.toString()} hairType={e} setHairType={setHairType} />)}) */}
 
+      </div>
     </div>
   );
 }

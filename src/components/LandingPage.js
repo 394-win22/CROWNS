@@ -34,6 +34,16 @@ import { signInWithGoogle, uploadUser, useUserState, useUser, setUser, signOut }
     
 // }
 
+export const headerStyle = {
+    color: 'white',
+    fontSize: '3rem',
+    fontWeight: 'bold',
+    fontFamily: 'Raleway',
+    //paddingTop: '2rem',
+    //paddingBottom: '20rem',
+    paddingTop: '4rem',
+    paddingBottom: '3rem'
+  };
 
 const LandingPage = ({ setUserData, userData, setHairType, hairType }) => {
     console.log("navigated to landing page");
@@ -104,17 +114,6 @@ const LandingPage = ({ setUserData, userData, setHairType, hairType }) => {
             color: 'white',
         },
     };
-
-    const headerStyle = {
-        color: 'white',
-        fontSize: '3rem',
-        fontWeight: 'bold',
-        fontFamily: 'Raleway',
-        //paddingTop: '2rem',
-        //paddingBottom: '20rem',
-        paddingTop: '4rem',
-        paddingBottom: '3rem'
-      };
 
     return (
         <div className="LandingPage" style={{

@@ -1,6 +1,7 @@
 import { accordionStyle, gridStyle } from "../styles/quizStyling";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import {shadows} from "@material-ui/system";
 import Typography from "@mui/material/Typography";
 import "@fontsource/raleway";
 import Grid from "@mui/material/Grid";
@@ -20,6 +21,12 @@ const PlainQuizQuestion = ({ question, setResult }) => {
         {question.question}
       </Typography>
       <Grid columns={1}>
+        {question.header ? <Grid sx={{
+                    ...gridStyle, 
+              backgroundImage: question.header.image ? "url(/images" + question.header.image + ')' : null,
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover',
+                }}>{question.header.text}</Grid> : null}
         {question.answers.map((answer) => (
           <Grid key={answer.id} item>
                 <Button sx={{
@@ -28,7 +35,9 @@ const PlainQuizQuestion = ({ question, setResult }) => {
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover',
               backgroundColor: 'white',
-                    border: '2px black'
+              border: 1,
+              borderColor: "black",
+              boxShadow: 5
                 }}
               onClick={() => setResult(answer.id, answer.weights)}>
               <Grid container spacing={2} columns={2} sx={{flexFlow: "row", marginRight: "2rem"}}>
@@ -46,7 +55,7 @@ const PlainQuizQuestion = ({ question, setResult }) => {
                     flexFlow: 'column nowrap', height: '100%', width: '100%', paddingLeft: '1rem'
                   }}>
                                 <Typography sx={{
-                                    fontSize: '1.2rem', textTransform: "none", color: answer.image ? 'white' : 'black'}}>{answer.option}</Typography>
+                                    fontSize: answer.description ? '1.2rem' : '2rem', textTransform: "none", color: answer.image ? 'white' : 'black'}}>{answer.option}</Typography>
                                 <Typography sx={{
                                     fontSize: '1rem', textTransform: "none", color: answer.image ? 'white' : 'black'}}>{answer.description}</Typography>
                   </div>

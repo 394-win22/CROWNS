@@ -63,6 +63,7 @@ const quizQuestions = [
     {
         question: "What is your hair structure?",
         id: 1,
+        header: { text: "Straight", image: "/quizImages/straight.jpg" },
         answers: [
             {
                 id: 0,
@@ -99,6 +100,7 @@ const quizQuestions = [
     {
         question: "What is your wave structure?",
         id: 2,
+        header: { text: "Wavy", image: "/quizImages/wavy.jpg" },
         answers: [
             {
                 id: 0,
@@ -135,6 +137,7 @@ const quizQuestions = [
     {
         question: "What is your curl structure?",
         id: 3,
+        header: { text: "Curly", image: "/quizImages/curly.jpg" },
         answers: [
             {
                 id: 0,
@@ -171,6 +174,7 @@ const quizQuestions = [
     {
         question: "What is your coil structure?",
         id: 4,
+        header: { text: "Kinky", image: "/quizImages/kinky.jpg" },
         answers: [
             {
                 id: 0,
@@ -197,7 +201,7 @@ const quizQuestions = [
                 option: "Tight Coil",
                 description: "Tightly coiled. Almost no visible defined kink pattern, unless seen from up close. Has more of a very tight \"o\" shped pattern",
                 weights: {
-                    _2C: 5
+                    _4C: 5
                 },
                 nextQuestion: null,
                 subImage: "/quizImages/Crowns Type_Coily.png"
