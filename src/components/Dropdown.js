@@ -67,15 +67,39 @@ const CompleteProfileGrid = () => {
       "Challenges": ["Color damage", "Very dry", "Breakage", "Split ends", "Tangles easily"],
       "Quality": ["Color damage", "Breakage", "Tangles easily"]
     }
+    const selectedObject = {
+        "Goals": {
+            "Strength": false,
+            "Softness": false,
+            "Growth": false,
+            "Hydration": false,
+            "Volume": false,
+            "Tame my frizz": false,
+            "Shine": false
+        }, 
+        "Challenges": {
+            "Color damage": false,
+            "Very dry": false,
+            "Breakage": false,
+            "Split ends": false,
+            "Tangles easily": false,
+        },
+        "Quality": {
+            "Color damage": false,
+            "Breakage": false,
+            "Tangles easily": false
+        }
+    }
 
-    const [selected, setSelected] = React.useState(false);
+    const [selected, setSelected] = React.useState(selectedObject);
 
+    React.useEffect(() => console.log('hi'), [selected])
 
     return (
       
     <Grid container>
       {subsections.map((subsection, i) => {
-        console.log(sectionItems[subsection]);
+       // console.log(sectionItems[subsection]);
         return (
         <>
           <Grid item xs={12} sx={{alignItems: 'flex-end'}} key={i}>
@@ -84,16 +108,19 @@ const CompleteProfileGrid = () => {
             </Typography>
           </Grid>
           {sectionItems[subsection].map((name, i) => {
-            console.log("name of button:" + name)
+           // console.log("name of button:" + name)
             return (
               
               <Grid item xs={4} key={i}>
                 {/* <Button size="small">Small</Button> */}
                 <ToggleButton
                   value="check"
-                  selected={selected}
+                  selected={selected[subsection][name]}
                   onChange={() => {
-                    setSelected(!selected);
+                    var newSelected = selected;
+                      newSelected[subsection][name] = !selected[subsection][name]
+                      console.log(newSelected)
+                      setSelected(newSelected);
                   }}
                 >
                   {name}
