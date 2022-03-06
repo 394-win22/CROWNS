@@ -1,0 +1,71 @@
+[debug] [2022-03-02T22:33:55.873Z] ----------------------------------------------------------------------
+[debug] [2022-03-02T22:33:55.874Z] Command:       /Users/jimmy.white/.nvm/versions/node/v17.3.0/bin/node /Users/jimmy.white/.nvm/versions/node/v17.3.0/bin/firebase init
+[debug] [2022-03-02T22:33:55.874Z] CLI Version:   10.2.1
+[debug] [2022-03-02T22:33:55.875Z] Platform:      darwin
+[debug] [2022-03-02T22:33:55.875Z] Node Version:  v17.3.0
+[debug] [2022-03-02T22:33:55.875Z] Time:          Wed Mar 02 2022 16:33:55 GMT-0600 (Central Standard Time)
+[debug] [2022-03-02T22:33:55.875Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-03-02T22:33:55.877Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2022-03-02T22:33:55.989Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-03-02T22:33:55.990Z] > authorizing via signed-in user (himihimsdale@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/jimmy.white/Downloads/CROWNS
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[debug] [2022-03-02T22:33:56.074Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2022-03-02T22:33:56.074Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2022-03-02T22:34:43.082Z] ----------------------------------------------------------------------
+[debug] [2022-03-02T22:34:43.083Z] Command:       /Users/jimmy.white/.nvm/versions/node/v17.3.0/bin/node /Users/jimmy.white/.nvm/versions/node/v17.3.0/bin/firebase init emulators
+[debug] [2022-03-02T22:34:43.084Z] CLI Version:   10.2.1
+[debug] [2022-03-02T22:34:43.084Z] Platform:      darwin
+[debug] [2022-03-02T22:34:43.084Z] Node Version:  v17.3.0
+[debug] [2022-03-02T22:34:43.084Z] Time:          Wed Mar 02 2022 16:34:43 GMT-0600 (Central Standard Time)
+[debug] [2022-03-02T22:34:43.085Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-03-02T22:34:43.125Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-03-02T22:34:43.126Z] > authorizing via signed-in user (himihimsdale@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/jimmy.white/Downloads/CROWNS
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2022-03-02T22:34:43.129Z] Using project from CLI flag: crown-dd66d
+[debug] [2022-03-02T22:34:43.129Z] > refreshing access token with scopes: []
+[debug] [2022-03-02T22:34:43.130Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-03-02T22:34:43.280Z] <<< HTTP RESPONSE 200 {"date":"Wed, 02 Mar 2022 22:34:43 GMT","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-03-02T22:34:43.350Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/crown-dd66d [none]
+[debug] [2022-03-02T22:34:43.527Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/crown-dd66d 200
+[debug] [2022-03-02T22:34:43.527Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/crown-dd66d {"projectId":"crown-dd66d","projectNumber":"640118822953","displayName":"CROWN","name":"projects/crown-dd66d","resources":{"hostingSite":"crown-dd66d","realtimeDatabaseInstance":"crown-dd66d-default-rtdb","storageBucket":"crown-dd66d.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[info] i  Using project crown-dd66d (CROWN) 
+[info] 
+=== Emulators Setup
