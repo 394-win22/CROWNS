@@ -15,8 +15,8 @@ const questionTextStyle = {
 
 const PlainQuizQuestion = ({ question, setResult }) => {
   console.log("Quiz");
-  return (
-    <Box>
+    return (
+        <Box sx={{ margin: '2rem' }}>
       <Typography align={"center"} sx={questionTextStyle}>
         {question.question}
       </Typography>
