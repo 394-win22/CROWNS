@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -67,34 +67,58 @@ const CompleteProfileGrid = () => {
       "Challenges": ["Color damage", "Very dry", "Breakage", "Split ends", "Tangles easily"],
       "Quality": ["Color damage", "Breakage", "Tangles easily"]
     }
-    const selectedObject = {
-        "Goals": {
-            "Strength": false,
-            "Softness": false,
-            "Growth": false,
-            "Hydration": false,
-            "Volume": false,
-            "Tame my frizz": false,
-            "Shine": false
-        }, 
-        "Challenges": {
-            "Color damage": false,
-            "Very dry": false,
-            "Breakage": false,
-            "Split ends": false,
-            "Tangles easily": false,
-        },
-        "Quality": {
-            "Color damage": false,
-            "Breakage": false,
-            "Tangles easily": false
-        }
+    
+
+    
+    const [selectedGoals, setSelectedGoals] = useState([]);
+    const [selectedChallenges, setSelectedChallenges] = useState([]);
+    const [selectedQuality, setSelectedQuality] = useState([]);
+
+    const handleToggle = (subsection, name) => {
+      switch (subsection) {
+        case "Goals":
+            if(selectedGoals.includes(name)) {
+              setSelectedGoals(selectedGoals.filter(e => e !== name));
+            } else {
+              setSelectedGoals(selectedGoals.concat([name]));
+            }
+            break;
+        case "Challenges":
+          if(selectedChallenges.includes(name)) {
+            setSelectedChallenges(selectedChallenges.filter(e => e !== name));
+          } else {
+            setSelectedChallenges(selectedChallenges.concat([name]));
+          }
+          break;
+        case "Quality":
+          if(selectedQuality.includes(name)) {
+            setSelectedQuality(selectedQuality.filter(e => e !== name));
+          } else {
+            setSelectedQuality(selectedQuality.concat([name]));
+          }
+          break;
+        default:
+          return;
+      }
     }
 
-    const [selected, setSelected] = React.useState(selectedObject);
+    const checkIfToggled = (subsection, name) => {
+      switch (subsection) {
+        case "Goals":
+            console.log(selectedGoals.includes(name))
+            return selectedGoals.includes(name);
+        case "Challenges":
+          return selectedChallenges.includes(name);
+        case "Quality":
+          return selectedQuality.includes(name);
+        default:
+          return;
+      }
+    }
 
-    React.useEffect(() => console.log('hi'), [selected])
 
+  
+    
     return (
       
     <Grid container>
@@ -115,13 +139,8 @@ const CompleteProfileGrid = () => {
                 {/* <Button size="small">Small</Button> */}
                 <ToggleButton
                   value="check"
-                  selected={selected[subsection][name]}
-                  onChange={() => {
-                    var newSelected = selected;
-                      newSelected[subsection][name] = !selected[subsection][name]
-                      console.log(newSelected)
-                      setSelected(newSelected);
-                  }}
+                  selected={checkIfToggled(subsection, name)}
+                  onClick={() => handleToggle(subsection, name)}
                 >
                   {name}
                 </ToggleButton>
