@@ -5,6 +5,8 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import Grid from '@mui/material/Grid';
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ToggleButton from '@mui/material/ToggleButton';
+import Button from '@mui/material/Button';
 import { products } from "../data/Products";
 import "@fontsource/raleway";
 import { makeStyles } from "@material-ui/core/styles";
@@ -58,6 +60,53 @@ const InnerGrid = ({ data, subsection }) => {
   );
 }
 
+const CompleteProfileGrid = () => {
+    const subsections = ["Goals", "Challenges", "Quality"];
+    const sectionItems = {
+      "Goals": ["Strength", "Softness", "Growth", "Hydration", "Volume", "Tame my frizz", "Shine"],
+      "Challenges": ["Color damage", "Very dry", "Breakage", "Split ends", "Tangles easily"],
+      "Quality": ["Color damage", "Breakage", "Tangles easily"]
+    }
+
+    const [selected, setSelected] = React.useState(false);
+
+
+    return (
+      
+    <Grid container>
+      {subsections.map((subsection, i) => {
+        console.log(sectionItems[subsection]);
+        return (
+        <>
+          <Grid item xs={12} sx={{alignItems: 'flex-end'}} key={i}>
+            <Typography variant="h6">
+              {subsection}
+            </Typography>
+          </Grid>
+          {sectionItems[subsection].map((name, i) => {
+            console.log("name of button:" + name)
+            return (
+              
+              <Grid item xs={4} key={i}>
+                {/* <Button size="small">Small</Button> */}
+                <ToggleButton
+                  value="check"
+                  selected={selected}
+                  onChange={() => {
+                    setSelected(!selected);
+                  }}
+                >
+                  {name}
+                </ToggleButton>
+              </Grid>
+            );
+          })}
+          </>);
+      })}
+    </Grid>
+    );
+}
+
 const ProductsCategory = ({ data }) => {
   const subsections = Object.keys(data);
 
@@ -72,7 +121,7 @@ const ProductsCategory = ({ data }) => {
   </>
 }
 
-const Dropdown = ({ category, hairType, content }) => {
+const Dropdown = ({ category, hairType, content, title, children }) => {
 
 
 
@@ -99,13 +148,13 @@ const Dropdown = ({ category, hairType, content }) => {
           variant="h5"
           sx={{ color: "white", fontFamily: "Raleway" }}
         >
-          Products
+          {title}
         </Typography>
       </AccordionSummary>
       <AccordionDetails
         sx={{ border: 4, borderTop: 0, borderColor: crownsPink }}
       >
-        {content}
+        {children}
       </AccordionDetails>
     </Accordion>
   );
@@ -114,9 +163,8 @@ const Dropdown = ({ category, hairType, content }) => {
 const ProductsDropdown = ({ category, hairType }) => {
   const data = products[hairType];
   if (!data) return null
-  const content = <ProductsCategory data={data} />;
 
-  return <Dropdown category={category} hairType={hairType} content={content} />;
+  return <Dropdown category={category} hairType={hairType} title={"Products"}><ProductsCategory data={data} /></Dropdown>;
 }
 
-export { Dropdown, ProductsDropdown };
+export { Dropdown, ProductsDropdown, CompleteProfileGrid };

@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import { accordionStyle, gridStyle } from '../styles/quizStyling'
-import { ProductsDropdown, Dropdown } from "./Dropdown";
+import { ProductsDropdown, Dropdown, CompleteProfileGrid } from "./Dropdown";
 import { signOut, useUserState, useUser } from '../utilities/firebase'
 import { useNavigate } from "react-router-dom";
 import { type_mapping } from "../data/HairTypes"
@@ -99,7 +99,12 @@ const ResultsPage = ({ hairType, setHairType }) => {
           {"Join Our Community!"}
         </Button>
       </Grid>}
+
+      <Dropdown title={"Complete Your Profile"}><CompleteProfileGrid /></Dropdown>
+
       <ProductsDropdown hairType={"_" + hairType.code} category="" />
+
+      
 
     </Container>
     </>
