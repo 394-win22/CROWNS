@@ -77,20 +77,22 @@ const quizQuestions = [
             {
                 id: 1,
                 option: "Medium",
-                description: "",
+                description: "Has much body. (i.e. more volume, fuller)",
                 weights: {
                     _1B: 5
                 },
-                nextQuestion: null
+                nextQuestion: null,
+                subImage: "/quizImages/Crowns Type_Straight.png"
             },
             {
                 id: 0,
                 option: "Coarse",
-                description: "",
+                description: "Hard to curl (i.e. bone straight)",
                 weights: {
                     _1C: 5
                 },
-                nextQuestion: null
+                nextQuestion: null,
+                subImage: "/quizImages/Crowns Type_Straight.png"
             }
         ]
     },
@@ -101,29 +103,32 @@ const quizQuestions = [
             {
                 id: 0,
                 option: "Loose Waves",
-                description: "",
+                description: "Can accomplish various styles. Loose \"S\" pattern. Hair sticks close to the head",
                 weights: {
                     _2A: 5
                 },
-                nextQuestion: null
+                nextQuestion: null,
+                subImage: "/quizImages/Crowns Type_Wavy.png"
             },
             {
                 id: 1,
                 option: "Defined Waves",
-                description: "",
+                description: "A bit resistant to styling. Hair has more of a defined \"s\" pattern. Hair tends to be frizzy.",
                 weights: {
                     _2B: 5
                 },
-                nextQuestion: null
+                nextQuestion: null,
+                subImage: "/quizImages/Crowns Type_Wavy.png"
             },
             {
                 id: 0,
                 option: "Wide Waves",
-                description: "",
+                description: "Hair has wider waves. Resistant to styling. Hair tends to be frizzy. ",
                 weights: {
                     _2C: 5
                 },
-                nextQuestion: null
+                nextQuestion: null,
+                subImage: "/quizImages/Crowns Type_Wavy.png"
             }
         ]
     },
@@ -134,29 +139,32 @@ const quizQuestions = [
             {
                 id: 0,
                 option: "Loose Curls",
-                description: "",
+                description: "Thick and full with much body. Definite curl pattern. Hair tends to be frizzy. Can have a combination texture.",
                 weights: {
                     _3A: 5
                 },
-                nextQuestion: null
+                nextQuestion: null,
+                subImage: "/quizImages/Crowns Type_Curly.png"
             },
             {
                 id: 1,
                 option: "Tight Curls",
-                description: "",
+                description: "medium amount of space of the curls. Can have a combined texture. ",
                 weights: {
                     _3B: 5
                 },
-                nextQuestion: null
+                nextQuestion: null,
+                subImage: "/quizImages/Crowns Type_Curly.png"
             },
             {
                 id: 0,
                 option: "Corkscrews",
-                description: "",
+                description: "Tight curls in corkscrews. The curls are very tightly curled",
                 weights: {
                     _3C: 5
                 },
-                nextQuestion: null
+                nextQuestion: null,
+                subImage: "/quizImages/Crowns Type_Curly.png"
             }
         ]
     },
@@ -167,29 +175,32 @@ const quizQuestions = [
             {
                 id: 0,
                 option: "Defined Coils",
-                description: "",
+                description: "Tightly coiled. Has a very defined \"o\" shaped pattern",
                 weights: {
                     _4A: 5
                 },
-                nextQuestion: null
+                nextQuestion: null,
+                subImage: "/quizImages/Crowns Type_Coily.png"
             },
             {
                 id: 1,
                 option: "Z Coil",
-                description: "",
+                description: "Tightly coiled. Little less defined kink pattern. has more of a \"Z\"-shaped pattern",
                 weights: {
                     _4B: 5
                 },
-                nextQuestion: null
+                nextQuestion: null,
+                subImage: "/quizImages/Crowns Type_Coily.png"
             },
             {
                 id: 0,
                 option: "Tight Coil",
-                description: "",
+                description: "Tightly coiled. Almost no visible defined kink pattern, unless seen from up close. Has more of a very tight \"o\" shped pattern",
                 weights: {
                     _2C: 5
                 },
-                nextQuestion: null
+                nextQuestion: null,
+                subImage: "/quizImages/Crowns Type_Coily.png"
             }
         ]
     }
