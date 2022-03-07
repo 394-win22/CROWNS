@@ -21,7 +21,7 @@ export const gridStyle = {
     margin: "0.5rem 0rem",
     fontSize: "2rem",
     width: "100%",
-
+    
 };
 
 export const crownsPink = "#B28181";
