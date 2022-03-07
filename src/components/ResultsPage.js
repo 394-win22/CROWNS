@@ -95,7 +95,7 @@ const ResultsPage = ({ hairType, setHairType }) => {
       </Grid>
 
       {!user && <Grid>
-        <Button onClick={() => { signInWithGoogle(); }} variant="contained" size="large" defaultValue={30} sx={accountButtonStyle} >
+        <Button data-testid="joinButton" onClick={() => { signInWithGoogle(); }} variant="contained" size="large" defaultValue={30} sx={accountButtonStyle} >
           {"Join Our Community!"}
         </Button>
       </Grid>}
