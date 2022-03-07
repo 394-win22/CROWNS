@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Navbar from './Navbar';
 
 
-const ResultsPage = ({ hairType, setHairType }) => {
+const ResultsPage = ({ hairType, setHairType, selectedGoals, setSelectedGoals, selectedChallenges, setSelectedChallenges, selectedQuality, setSelectedQuality}) => {
   console.log("navigated to results page");
   const navigate = useNavigate();
   const [user] = useUserState();
@@ -100,8 +100,11 @@ const ResultsPage = ({ hairType, setHairType }) => {
         </Button>
       </Grid>}
 
-      <Dropdown title={"Complete Your Profile"}><CompleteProfileGrid user={user}/></Dropdown>
-
+      <Dropdown title={"Complete Your Profile"}>
+        <CompleteProfileGrid user={user} selectedGoals={selectedGoals} setSelectedGoals={setSelectedGoals}
+                    selectedChallenges={selectedChallenges} setSelectedChallenges={setSelectedChallenges}
+                    selectedQuality={selectedQuality} setSelectedQuality={setSelectedQuality}/>
+      </Dropdown>
       <ProductsDropdown hairType={"_" + hairType.code} category="" />
 
       

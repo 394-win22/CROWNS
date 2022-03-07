@@ -62,7 +62,7 @@ const InnerGrid = ({ data, subsection }) => {
   );
 }
 
-const CompleteProfileGrid = (user={user}) => {
+const CompleteProfileGrid = ({user, selectedGoals, setSelectedGoals, selectedChallenges, setSelectedChallenges, selectedQuality, setSelectedQuality}) => {
     const subsections = ["Goals", "Challenges", "Quality"];
     const sectionItems = {
       "Goals": ["Strength", "Softness", "Growth", "Hydration", "Volume", "Tame my frizz", "Shine"],
@@ -70,11 +70,7 @@ const CompleteProfileGrid = (user={user}) => {
       "Quality": ["Color damage", "Breakage", "Tangles easily"]
     }
     
-
-    const [data, loading, error] = useUser("users", user?.user?.uid);
-    const [selectedGoals, setSelectedGoals] = useState([]);
-    const [selectedChallenges, setSelectedChallenges] = useState([]);
-    const [selectedQuality, setSelectedQuality] = useState([]);
+    const [data, loading, error] = useUser("users", user?.uid);
     
     useEffect(() => {
       if (data){
@@ -85,15 +81,14 @@ const CompleteProfileGrid = (user={user}) => {
     }, [data])
 
     const onSubmit = async () => {
-      console.log(data)
       if(user){
+        console.log(user)
         const newUserData = {
           goals: selectedGoals,
           challenges: selectedChallenges,
           quality: selectedQuality,
       }
-
-      setUser(user.user.uid, newUserData)
+      setUser(user.uid, newUserData)
       }
   };
 
@@ -184,7 +179,7 @@ const CompleteProfileGrid = (user={user}) => {
           </>);
       })}
     </Grid>
-    {user?.user?.uid && <Button variant="contained" sx={buttonStyle} onClick={() => onSubmit()}> Submit </Button>}
+    {data && <Button variant="contained" sx={buttonStyle} onClick={() => onSubmit()}> Submit </Button>}
     </>
     );
 }
