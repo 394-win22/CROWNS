@@ -135,10 +135,12 @@ const CompleteProfileGrid = () => {
            // console.log("name of button:" + name)
             return (
               
-              <Grid item xs={4} key={i}>
+              <Grid item xs={4} key={i} sx={{padding: '0.5rem 0rem'}}>
                 {/* <Button size="small">Small</Button> */}
                 <ToggleButton
                   value="check"
+                  size="small"
+                  sx={{width: '6rem', height: '3rem'}}
                   selected={checkIfToggled(subsection, name)}
                   onClick={() => handleToggle(subsection, name)}
                 >
