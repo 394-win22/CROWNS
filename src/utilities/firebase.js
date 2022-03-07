@@ -3,7 +3,6 @@ import { useEffect, useState, useCallback } from "react";
 import { initializeApp } from "firebase/app";
 import { getFirestore, getDoc, doc, setDoc, updateDoc, } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithPopup, signOut } from 'firebase/auth';
-import { useNavigate } from "react-router-dom";
 
 const firebaseConfig = {
     apiKey: "AIzaSyB8Xulh0Uh7Jy2AHJVQOiBf4vTK2F2aotw",

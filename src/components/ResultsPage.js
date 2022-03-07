@@ -100,7 +100,7 @@ const ResultsPage = ({ hairType, setHairType }) => {
         </Button>
       </Grid>}
 
-      <Dropdown title={"Complete Your Profile"}><CompleteProfileGrid /></Dropdown>
+      <Dropdown title={"Complete Your Profile"}><CompleteProfileGrid user={user}/></Dropdown>
 
       <ProductsDropdown hairType={"_" + hairType.code} category="" />
 
