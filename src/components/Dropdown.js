@@ -77,10 +77,6 @@ const CompleteProfileGrid = ({user, selectedGoals, setSelectedGoals, selectedCha
     
     const [data, loading, error] = useUser("users", user?.uid);
     
-
-    const [selectedGoals, setSelectedGoals] = useState([]);
-    const [selectedChallenges, setSelectedChallenges] = useState([]);
-    const [selectedQuality, setSelectedQuality] = useState([]);
     const [uploadAlert, setUploadAlert] = useState(false);
 
     useEffect(() => {
@@ -200,10 +196,9 @@ const CompleteProfileGrid = ({user, selectedGoals, setSelectedGoals, selectedCha
                 <Alert severity="success" >Profile upload successful</Alert>
             </Snackbar>
             <Grid item xs={12} sx={{alignItems: 'flex-end', paddingTop: "10px"}}>
-              <Button sx={{ color: 'black', border: 1 }} onClick={onSubmit}>Submit</Button>   
+              <Button variant="contained" sx={buttonStyle} onClick={onSubmit}>Submit</Button>   
             </Grid>
     </Grid>
-    {data && <Button variant="contained" sx={buttonStyle} onClick={() => onSubmit()}> Submit </Button>}
     </>
     );
 }

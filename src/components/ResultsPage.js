@@ -101,11 +101,11 @@ const ResultsPage = ({ hairType, setHairType, selectedGoals, setSelectedGoals, s
         </Button>
       </Grid>}
 
-      <Dropdown title={"Complete Your Profile"}>
+      {data && <Dropdown title={"Complete Your Profile"}>
         <CompleteProfileGrid user={user} selectedGoals={selectedGoals} setSelectedGoals={setSelectedGoals}
                     selectedChallenges={selectedChallenges} setSelectedChallenges={setSelectedChallenges}
                     selectedQuality={selectedQuality} setSelectedQuality={setSelectedQuality}/>
-      </Dropdown>
+      </Dropdown>}
       <ProductsDropdown hairType={"_" + hairType.code} category="" />
 
       <Dropdown title={"Stylists"} bgcolor={"lightGray"}>
