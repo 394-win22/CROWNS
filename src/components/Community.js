@@ -34,6 +34,8 @@ import TextField from '@mui/material/TextField';
 import Popper from '@mui/material/Popper';
 import Fade from '@mui/material/Fade';
 import Paper from '@mui/material/Paper';
+import Navbar from './Navbar';
+import { signOut, useUserState, useUser } from '../utilities/firebase';
 
 
 const colors = [red[500], orange[500], yellow[500], green[500], blue[500], purple[500],
@@ -58,11 +60,7 @@ const DiscussionCard = ({ data, index }) => {
                         {data.name.charAt(0).toUpperCase()}
                     </Avatar>
                 }
-                action={
-                    <IconButton aria-label="settings">
-                        <MoreVertIcon />
-                    </IconButton>
-                }
+                
                 title={<b>{data.title}</b>}
                 subheader={data.date}
             />
@@ -93,7 +91,7 @@ const DiscussionCard = ({ data, index }) => {
                     {({ TransitionProps }) => (
                         <Fade {...TransitionProps} timeout={350}>
                             <Paper sx={{ backgroundColor: 'lightGray' }}>
-                                <Typography sx={{ p: 0.5, color: '#111111', fontSize: '0.75rem' }}>Coming Soon...</Typography>
+                                <Typography sx={{ p: 0.5, color: '#111111', fontSize: '0.75rem' }}>Comments Coming Soon...</Typography>
                             </Paper>
                         </Fade>
                     )}
@@ -167,7 +165,11 @@ const PostModal = () => {
     )
 }
 
-const Community = () => {
+const Community = ({hairType}) => {
+    const [user] = useUserState();
+    const [data, loading, error] = useUser("users", user?.uid);
+
+
     const [currentFilter, setCurrentFilter] = useState("")
     const [open, setOpen] = useState(false)
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -184,7 +186,7 @@ const Community = () => {
     const classes = useStyles();
     console.log(post_data);
     return (
-
+        <>
         <Container sx={{ pb: '65px' }} disableGutters>
 
             <Typography variant="h3" fontWeight="bold" sx={{ fontFamily: "Raleway", my: 4 }}>Community Board</Typography>
@@ -216,7 +218,10 @@ const Community = () => {
                     }
                 </Grid>
             </Container>
+            <Navbar hairTypeCode={data ? data.hairType : hairType?.code}/>
         </Container>
+        
+        </>
     )
 }
 

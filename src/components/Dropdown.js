@@ -198,7 +198,7 @@ const ProductsCategory = ({ data }) => {
   </>
 }
 
-const Dropdown = ({ category, hairType, content, title, children }) => {
+const Dropdown = ({ category, hairType, content, title, bgcolor, children }) => {
 
 
 
@@ -229,7 +229,7 @@ const Dropdown = ({ category, hairType, content, title, children }) => {
         </Typography>
       </AccordionSummary>
       <AccordionDetails
-        sx={{ border: 4, borderTop: 0, borderColor: crownsPink }}
+        sx={{ border: 4, borderTop: 0, borderColor: crownsPink, backgroundColor: bgcolor ?? 'white' }}
       >
         {children}
       </AccordionDetails>
