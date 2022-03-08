@@ -31,7 +31,7 @@ function App() {
                     selectedQuality={selectedQuality} setSelectedQuality={setSelectedQuality}/></>}/>
                 <Route exact path="/quiz" element={<HairQuiz setHairType={setHairType} />} />
                 <Route exact path="/selector" element={<><TypeSelector setHairType = {setHairType} /></>} />
-                  <Route exact path="/profile" element={<><Profile hairType={hairType} setHairType={setHairType}/></>} />
+                <Route exact path="/profile" element={<><Profile hairType={hairType} setHairType={setHairType}/></>} />
                 <Route exact path="/community" element={<><Community /><Navbar /></>} />
 
             </Routes>

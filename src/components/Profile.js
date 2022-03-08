@@ -96,7 +96,7 @@ const Profile = ({ hairType, setHairType }) => {
                 <CardContent>
                     <CardMedia component="img" src={user?.photoURL} alt="your profile picture" loading="lazy" 
                     sx={{width: 'auto', maxHeight: '40vh', objectFit: "contain", mb: 1, mx: 'auto', border: 2, borderColor: crownsPink}}/>
-                    <Typography variant="h5" fontWeight="bold" sx={{ fontFamily: "Raleway" }}>{name}</Typography>
+                    <Typography variant="h5" fontWeight="bold" data-testid="name-str" sx={{ fontFamily: "Raleway" }}>{name}</Typography>
                     <Typography variant="h5" sx={{ fontFamily: "Raleway" }}>Your Hair Type: {data?.hairType}</Typography>
                 </CardContent>
             </Card>
