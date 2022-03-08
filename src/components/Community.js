@@ -31,7 +31,9 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
-
+import Popper from '@mui/material/Popper';
+import Fade from '@mui/material/Fade';
+import Paper from '@mui/material/Paper';
 
 
 const colors = [red[500], orange[500], yellow[500], green[500], blue[500], purple[500],
@@ -39,6 +41,13 @@ red[200], orange[300], yellow[800], green[200], blue[300], purple[700]];
 
 
 const DiscussionCard = ({ data, index }) => {
+
+    const [open, setOpen] = useState(false)
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const handleClick = (event) => {
+        setAnchorEl(anchorEl ? null : event.currentTarget);
+        setOpen(!open);
+    };
 
     return (
         <Card sx={{ marginTop: "1rem", border: 3, borderColor: "black" }}>
@@ -77,9 +86,18 @@ const DiscussionCard = ({ data, index }) => {
                 </Stack>
             }
             <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
+                <IconButton aria-label="add to favorites" onClick={handleClick}>
                     <CommentIcon />
                 </IconButton>
+                <Popper id={'pop'} open={open} placement={'right'} anchorEl={anchorEl} transition sx={{ p: 0 }}>
+                    {({ TransitionProps }) => (
+                        <Fade {...TransitionProps} timeout={350}>
+                            <Paper sx={{ backgroundColor: 'lightGray' }}>
+                                <Typography sx={{ p: 0.5, color: '#111111', fontSize: '0.75rem' }}>Coming Soon...</Typography>
+                            </Paper>
+                        </Fade>
+                    )}
+                </Popper>
             </CardActions>
         </Card>
     )
@@ -88,7 +106,7 @@ const DiscussionCard = ({ data, index }) => {
 const CommunityFilters = ({ setFilter }) => {
     const filters = ["Hairstyles", "Products", "Stylists", "News", "All"]
     return (
-        <Container disableGutters sx={{ textAlign: "left" }}>
+        <Container disableGutters sx={{ textAlign: "left", display: 'flex', flexWrap: 'wrap'}}>
             {filters.map(e => { return <Chip onClick={() => setFilter(e === 'All' ? false : e)} label={e} sx={{ backgroundColor: "white", ml: 0.5, border: 1, borderColor: "black", fontFamily: "Raleway" }} /> })}
         </Container>
     )
@@ -151,6 +169,13 @@ const PostModal = () => {
 
 const Community = () => {
     const [currentFilter, setCurrentFilter] = useState("")
+    const [open, setOpen] = useState(false)
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const handleClick = (event) => {
+        //console.log(event.currentTarget);
+        setAnchorEl(anchorEl ? null : event.currentTarget);
+        setOpen(!open);
+    };
     const useStyles = makeStyles({
         content: {
             justifyContent: "center"
@@ -164,6 +189,16 @@ const Community = () => {
 
             <Typography variant="h3" fontWeight="bold" sx={{ fontFamily: "Raleway", my: 4 }}>Community Board</Typography>
             {/* <PostModal /> */}
+            <Chip onClick={handleClick} label={'Create Post'} sx={{ backgroundColor: "grey", border: 1, borderColor: "black", fontFamily: "Raleway", fontWeight: 'bold', mb: 4 }} />
+            <Popper id={'pop'} open={open} placement={'bottom'} anchorEl={anchorEl} transition sx={{ p: 0 }}>
+                {({ TransitionProps }) => (
+                    <Fade {...TransitionProps} timeout={350}>
+                        <Paper sx={{ backgroundColor: 'lightGray' }}>
+                            <Typography sx={{ p: 0.5, color: '#111111', fontSize: '0.75rem' }}>Coming Soon...</Typography>
+                        </Paper>
+                    </Fade>
+                )}
+            </Popper>
             <Container sx={{
                 mx: 0, py: 2, backgroundColor: crownsPinkLight
             }}>
