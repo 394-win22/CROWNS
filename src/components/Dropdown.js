@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -11,8 +11,13 @@ import { products } from "../data/Products";
 import "@fontsource/raleway";
 import { makeStyles } from "@material-ui/core/styles";
 import { crownsPink } from "../styles/quizStyling";
+
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
+
+import { setUser, useUser } from "../utilities/firebase"
+
+
 
 const formattedKeyNames = {
   conditioners: "Conditioners",
@@ -62,7 +67,7 @@ const InnerGrid = ({ data, subsection }) => {
   );
 }
 
-const CompleteProfileGrid = () => {
+const CompleteProfileGrid = ({user, selectedGoals, setSelectedGoals, selectedChallenges, setSelectedChallenges, selectedQuality, setSelectedQuality}) => {
     const subsections = ["Goals", "Challenges", "Quality"];
     const sectionItems = {
       "Goals": ["Strength", "Softness", "Growth", "Hydration", "Volume", "Tame my frizz", "Shine"],
@@ -70,18 +75,38 @@ const CompleteProfileGrid = () => {
       "Quality": ["Color damage", "Breakage", "Tangles easily"]
     }
     
-
+    const [data, loading, error] = useUser("users", user?.uid);
     
+
     const [selectedGoals, setSelectedGoals] = useState([]);
     const [selectedChallenges, setSelectedChallenges] = useState([]);
     const [selectedQuality, setSelectedQuality] = useState([]);
     const [uploadAlert, setUploadAlert] = useState(false);
-    const onSubmit = () => {
+
+    useEffect(() => {
+      if (data){
+        if (data.goals) setSelectedGoals(data.goals);
+        if (data.challenges) setSelectedChallenges(data.challenges);
+        if (data.quality) setSelectedQuality(data.quality);
+      } 
+    }, [data])
+
+    const onSubmit = async () => {
+      if(user){
         setSelectedGoals([]);
         setSelectedChallenges([]);
         setSelectedQuality([]);
         setUploadAlert(true);
-    }
+        console.log(user)
+        const newUserData = {
+          goals: selectedGoals,
+          challenges: selectedChallenges,
+          quality: selectedQuality,
+      }
+      setUser(user.uid, newUserData)
+      }
+  };
+
 
     const handleToggle = (subsection, name) => {
       switch (subsection) {
@@ -124,12 +149,21 @@ const CompleteProfileGrid = () => {
           return;
       }
     }
-
+    const buttonStyle = {
+      width: '10rem',
+      color: 'white', 
+      backgroundColor: "#F2AFAF", 
+      fontFamily: 'Raleway',
+      '&:hover': {
+        backgroundColor: '#B28181',
+        color: 'white',
+      },
+  };
 
   
     
     return (
-      
+    <>
     <Grid container>
       {subsections.map((subsection, i) => {
        // console.log(sectionItems[subsection]);
@@ -169,6 +203,8 @@ const CompleteProfileGrid = () => {
               <Button sx={{ color: 'black', border: 1 }} onClick={onSubmit}>Submit</Button>   
             </Grid>
     </Grid>
+    {data && <Button variant="contained" sx={buttonStyle} onClick={() => onSubmit()}> Submit </Button>}
+    </>
     );
 }
 
@@ -186,7 +222,7 @@ const ProductsCategory = ({ data }) => {
   </>
 }
 
-const Dropdown = ({ category, hairType, content, title, children }) => {
+const Dropdown = ({ category, hairType, content, title, bgcolor, children }) => {
 
 
 
@@ -217,7 +253,7 @@ const Dropdown = ({ category, hairType, content, title, children }) => {
         </Typography>
       </AccordionSummary>
       <AccordionDetails
-        sx={{ border: 4, borderTop: 0, borderColor: crownsPink }}
+        sx={{ border: 4, borderTop: 0, borderColor: crownsPink, backgroundColor: bgcolor ?? 'white' }}
       >
         {children}
       </AccordionDetails>
