@@ -11,6 +11,8 @@ import { products } from "../data/Products";
 import "@fontsource/raleway";
 import { makeStyles } from "@material-ui/core/styles";
 import { crownsPink } from "../styles/quizStyling";
+import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
 
 const formattedKeyNames = {
   conditioners: "Conditioners",
@@ -73,6 +75,13 @@ const CompleteProfileGrid = () => {
     const [selectedGoals, setSelectedGoals] = useState([]);
     const [selectedChallenges, setSelectedChallenges] = useState([]);
     const [selectedQuality, setSelectedQuality] = useState([]);
+    const [uploadAlert, setUploadAlert] = useState(false);
+    const onSubmit = () => {
+        setSelectedGoals([]);
+        setSelectedChallenges([]);
+        setSelectedQuality([]);
+        setUploadAlert(true);
+    }
 
     const handleToggle = (subsection, name) => {
       switch (subsection) {
@@ -149,8 +158,14 @@ const CompleteProfileGrid = () => {
               </Grid>
             );
           })}
+               
           </>);
       })}
+            <Snackbar open={uploadAlert} onClose={() => setUploadAlert(false)} autoHideDuration={2000} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+>
+                <Alert severity="success" >Profile upload successful</Alert>
+            </Snackbar>
+            <Button sx={{ color: 'black', border: 1 }} onClick={onSubmit}>Submit</Button>   
     </Grid>
     );
 }
