@@ -11,7 +11,12 @@ import { products } from "../data/Products";
 import "@fontsource/raleway";
 import { makeStyles } from "@material-ui/core/styles";
 import { crownsPink } from "../styles/quizStyling";
+
+import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
+
 import { setUser, useUser } from "../utilities/firebase"
+
 
 
 const formattedKeyNames = {
@@ -72,6 +77,12 @@ const CompleteProfileGrid = ({user, selectedGoals, setSelectedGoals, selectedCha
     
     const [data, loading, error] = useUser("users", user?.uid);
     
+
+    const [selectedGoals, setSelectedGoals] = useState([]);
+    const [selectedChallenges, setSelectedChallenges] = useState([]);
+    const [selectedQuality, setSelectedQuality] = useState([]);
+    const [uploadAlert, setUploadAlert] = useState(false);
+
     useEffect(() => {
       if (data){
         if (data.goals) setSelectedGoals(data.goals);
@@ -82,6 +93,10 @@ const CompleteProfileGrid = ({user, selectedGoals, setSelectedGoals, selectedCha
 
     const onSubmit = async () => {
       if(user){
+        setSelectedGoals([]);
+        setSelectedChallenges([]);
+        setSelectedQuality([]);
+        setUploadAlert(true);
         console.log(user)
         const newUserData = {
           goals: selectedGoals,
@@ -91,6 +106,7 @@ const CompleteProfileGrid = ({user, selectedGoals, setSelectedGoals, selectedCha
       setUser(user.uid, newUserData)
       }
   };
+
 
     const handleToggle = (subsection, name) => {
       switch (subsection) {
@@ -176,8 +192,16 @@ const CompleteProfileGrid = ({user, selectedGoals, setSelectedGoals, selectedCha
               </Grid>
             );
           })}
+               
           </>);
       })}
+            <Snackbar open={uploadAlert} onClose={() => setUploadAlert(false)} autoHideDuration={2000} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+>
+                <Alert severity="success" >Profile upload successful</Alert>
+            </Snackbar>
+            <Grid item xs={12} sx={{alignItems: 'flex-end', paddingTop: "10px"}}>
+              <Button sx={{ color: 'black', border: 1 }} onClick={onSubmit}>Submit</Button>   
+            </Grid>
     </Grid>
     {data && <Button variant="contained" sx={buttonStyle} onClick={() => onSubmit()}> Submit </Button>}
     </>
