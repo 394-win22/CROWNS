@@ -89,9 +89,9 @@ const CompleteProfileGrid = ({user, selectedGoals, setSelectedGoals, selectedCha
 
     const onSubmit = async () => {
       if(user){
-        setSelectedGoals([]);
-        setSelectedChallenges([]);
-        setSelectedQuality([]);
+        //setSelectedGoals([]);
+        //setSelectedChallenges([]);
+        //setSelectedQuality([]);
         setUploadAlert(true);
         console.log(user)
         const newUserData = {
