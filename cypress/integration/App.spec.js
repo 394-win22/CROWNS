@@ -27,5 +27,9 @@ describe ('Test App', () => {
         cy.get('[data-cy=signIn').click();
         
     })
+
+    it('log in test', () => {
+        cy.login();
+    })
   
 });
