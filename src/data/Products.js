@@ -14,7 +14,7 @@ const product_schema = {
 
 const products = {
     _4A: {
-        description: "Shampoo",
+        description: "Products for Type 4A",
         shampoos: [
             {
                 title: "Amla and Coconut Oil Shampoo",
@@ -53,7 +53,7 @@ const products = {
 
     },
     _4B: {
-        description: "Shampoo",
+        description: "Products for Type 4B",
         shampoos: [
             {
                 title: "Amla and Coconut Oil Shampoo",
