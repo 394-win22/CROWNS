@@ -2,6 +2,7 @@ import React from "react";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 import { accordionStyle, gridStyle } from '../styles/quizStyling'
 import { ProductsDropdown, Dropdown, CompleteProfileGrid } from "./Dropdown";
 import { signOut, useUserState, useUser } from '../utilities/firebase'
@@ -12,7 +13,7 @@ import Button from '@mui/material/Button';
 import Navbar from './Navbar';
 
 
-const ResultsPage = ({ hairType, setHairType }) => {
+const ResultsPage = ({ hairType, setHairType, selectedGoals, setSelectedGoals, selectedChallenges, setSelectedChallenges, selectedQuality, setSelectedQuality}) => {
   console.log("navigated to results page");
   const navigate = useNavigate();
   const [user] = useUserState();
@@ -100,9 +101,20 @@ const ResultsPage = ({ hairType, setHairType }) => {
         </Button>
       </Grid>}
 
-      <Dropdown title={"Complete Your Profile"}><CompleteProfileGrid /></Dropdown>
-
+      {data && <Dropdown title={"Complete Your Profile"}>
+        <CompleteProfileGrid user={user} selectedGoals={selectedGoals} setSelectedGoals={setSelectedGoals}
+                    selectedChallenges={selectedChallenges} setSelectedChallenges={setSelectedChallenges}
+                    selectedQuality={selectedQuality} setSelectedQuality={setSelectedQuality}/>
+      </Dropdown>}
       <ProductsDropdown hairType={"_" + hairType.code} category="" />
+
+      <Dropdown title={"Stylists"} bgcolor={"lightGray"}>
+        <Typography sx={{ fontWeight: "bold", color: "#333333", fontFamily: "Raleway", fontStyle: "italic"}}>Coming Soon...</Typography>
+      </Dropdown>
+
+      <Dropdown title={"Hairstyles"} bgcolor={"lightGray"}>
+        <Typography sx={{ fontWeight: "bold", color: "#333333", fontFamily: "Raleway", fontStyle: "italic" }}>Coming Soon...</Typography>
+      </Dropdown>
 
       
 
