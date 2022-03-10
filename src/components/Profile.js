@@ -68,6 +68,15 @@ const Profile = ({ hairType, setHairType }) => {
         //setName(name)
     };
 
+    const onRequiz = async () => {
+        const resetUserData = {
+            hairType: "",
+        }
+        setHairType(null)
+        await setUser(user.uid, resetUserData)
+        navigate("/") 
+    }
+
 
     if (!data && !loading)
         return (<Container maxWidth="sm" sx={{ pb: '60px', alignItems: 'center', height: "100%" }}>
@@ -101,7 +110,11 @@ const Profile = ({ hairType, setHairType }) => {
                 </CardContent>
             </Card>
             <Button onClick={() => { setOpen(true) }} variant="contained" size="large" defaultValue={30} sx={accountButtonStyle} >
-                {"Edit Your Profile!"}
+                {"Edit Your Profile"}
+            </Button>
+
+            <Button onClick={() => { onRequiz() }} variant="contained" size="large" defaultValue={30} sx={accountButtonStyle} >
+                {"Take the Quiz Again"}
             </Button>
 
             <Modal open={open} onClose ={() => {setOpen(false); setName(data?.userName)}} sx={{margin: "auto"}} >
