@@ -29,17 +29,17 @@ const InnerGrid = ({ data, subsection }) => {
   if (data[subsection].length === 0) return null
   return (
     <Grid container>
-      <Grid item xs={12} sx={{alignItems: 'flex-end'}}>
+      {/* <Grid item xs={12} sx={{alignItems: 'flex-end'}}>
         <Typography variant="h6">
           {formattedKeyNames[subsection]}
         </Typography>
-      </Grid>
+      </Grid> */}
       {data[subsection].map((e, index) => {
         return (
           <Grid item xs={6} sm={6} md={4} key={index} sx={{ p: 1.5 }}>
             <img
-              style={{ width: `${100}%`, height: "auto" }}
-              src={"./images/goals/" + e.image}
+              style={{ width: "50%", height: "auto" }}
+              src={"./images/goals/productImages/" + e.image}
               alt={``}
             />
             <Typography
@@ -58,7 +58,7 @@ const InnerGrid = ({ data, subsection }) => {
                 fontSize: "0.8rem",
               }}
             >
-              By: {e.brand}
+              {e.price}
             </Typography>
           </Grid>
         );
@@ -77,10 +77,6 @@ const CompleteProfileGrid = ({user, selectedGoals, setSelectedGoals, selectedCha
     
     const [data, loading, error] = useUser("users", user?.uid);
     
-
-    const [selectedGoals, setSelectedGoals] = useState([]);
-    const [selectedChallenges, setSelectedChallenges] = useState([]);
-    const [selectedQuality, setSelectedQuality] = useState([]);
     const [uploadAlert, setUploadAlert] = useState(false);
 
     useEffect(() => {
@@ -212,7 +208,7 @@ const ProductsCategory = ({ data }) => {
   const subsections = Object.keys(data);
 
   return <>
-    <Typography variant="h5">
+    <Typography variant="h5" sx={{fontWeight: "bold"}}>
       {data["description"]}
     </Typography>
     {
