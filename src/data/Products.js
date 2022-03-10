@@ -8,84 +8,424 @@ const tile_schema = {
 const product_schema = {
     title: "string",
     image: "string",
-    brand: "string",
+    price: "string",
     link: "string",
 }
 
 const products = {
-    _4A: {
-        description: "This is a description",
-        shampoos: [
+    _1A: {
+        description: "Type 1A Products",
+        products: [
             {
-                title: "Amla and Coconut Oil Shampoo",
-                image: "tgin.png",
-                brand: "TGIN",
+                title: "Brush",
+                image: "Brush.png",
+                price: "$20",
                 link: ""
             },
             {
-                title: "Fresh Rosé Hair Treatment",
-                image: "tgin.png",
-                brand: "Natur All",
+                title: "Comb",
+                image: "Comb.png",
+                price: "$10",
+                link: ""
+            },
+            {
+                title: "Leave-In Conditioner",
+                image: "Leave-in 1.png",
+                price: "$15",
+                link: ""
+            },
+            {
+                title: "Spritz",
+                image: "Leave-in 3.png",
+                price: "$20",
+                link: ""
+            },
+            {
+                title: "Conditioner",
+                image: "Conditioner.png",
+                price: "$20",
                 link: ""
             }
+        ]
+
+    },
+    _1B: {
+        description: "Type 1B Products",
+        products: [
+            {
+                title: "Brush",
+                image: "Brush.png",
+                price: "$20",
+                link: ""
+            },
+            {
+                title: "Comb",
+                image: "Comb.png",
+                price: "$10",
+                link: ""
+            },
+            {
+                title: "Leave-In Conditioner",
+                image: "Leave-in 1.png",
+                price: "$15",
+                link: ""
+            },
+            {
+                title: "Spritz",
+                image: "Leave-in 3.png",
+                price: "$20",
+                link: ""
+            },
+            {
+                title: "Conditioner",
+                image: "Conditioner.png",
+                price: "$20",
+                link: ""
+            }
+        ]
+
+    },
+    _1C: {
+        description: "Type 1C Products",
+        products: [
+            {
+                title: "Brush",
+                image: "Brush.png",
+                price: "$20",
+                link: ""
+            },
+            {
+                title: "Comb",
+                image: "Comb.png",
+                price: "$10",
+                link: ""
+            },
+            {
+                title: "Leave-In Conditioner",
+                image: "Leave-in 1.png",
+                price: "$15",
+                link: ""
+            },
+            {
+                title: "Spritz",
+                image: "Leave-in 3.png",
+                price: "$20",
+                link: ""
+            },
+            {
+                title: "Conditioner",
+                image: "Conditioner.png",
+                price: "$20",
+                link: ""
+            }
+        ]
+
+    },
+
+    _2A: {
+        description: "Type 2A Products",
+        products: [
+            {
+                title: "Brush",
+                image: "Brush.png",
+                price: "$20",
+                link: ""
+            },
+            {
+                title: "Comb",
+                image: "Comb.png",
+                price: "$10",
+                link: ""
+            },
+            {
+                title: "Leave-in Conditioner",
+                image: "Leave-in 1.png",
+                price: "$15",
+                link: ""
+            },
+            {
+                title: "Spritz",
+                image: "Leave-in 3.png",
+                price: "$20",
+                link: ""
+            },
+            {
+                title: "Shampoo + Conditioner",
+                image: "Shampoo.png",
+                price: "$30",
+                link: ""
+            },
         ],
-        conditioners: [],
-        leaveIns: [
+        
+
+    },
+
+    _2B: {
+        description: "Type 2B Products",
+        products: [
             {
-                title: "Everyday Gloss Hair Oil",
-                image: "BREADBEAUTY.png",
-                brand: "Bread",
+                title: "Brush",
+                image: "Brush.png",
+                price: "$20",
                 link: ""
             },
             {
-                title: "Everyday Gloss Hair Oil",
-                image: "BREADBEAUTY.png",
-                brand: "Bread",
+                title: "Comb",
+                image: "Comb.png",
+                price: "$10",
                 link: ""
             },
             {
-                title: "Everyday Gloss Hair Oil",
-                image: "BREADBEAUTY.png",
-                brand: "Bread",
+                title: "Leave-in Conditioner",
+                image: "Leave-in 1.png",
+                price: "$15",
+                link: ""
+            },
+            {
+                title: "Spritz",
+                image: "Leave-in 3.png",
+                price: "$20",
+                link: ""
+            },
+            {
+                title: "Shampoo + Conditioner",
+                image: "Shampoo.png",
+                price: "$30",
+                link: ""
+            },
+        ],
+        
+
+    },
+
+    _2C: {
+        description: "Type 2C Products",
+        products: [
+            {
+                title: "Brush",
+                image: "Brush.png",
+                price: "$20",
+                link: ""
+            },
+            {
+                title: "Comb",
+                image: "Comb.png",
+                price: "$10",
+                link: ""
+            },
+            {
+                title: "Leave-in Conditioner",
+                image: "Leave-in 1.png",
+                price: "$15",
+                link: ""
+            },
+            {
+                title: "Spritz",
+                image: "Leave-in 3.png",
+                price: "$20",
+                link: ""
+            },
+            {
+                title: "Shampoo + Conditioner",
+                image: "Shampoo.png",
+                price: "$30",
+                link: ""
+            },
+        ],
+        
+
+    },
+
+    _3A: {
+        description: "Type 3A Products",
+        products: [
+            {
+                title: "Comb",
+                image: "Comb.png",
+                price: "$10",
+                link: ""
+            },
+            {
+                title: "Comb",
+                image: "Comb 2.png",
+                price: "$10",
+                link: ""
+            },
+            {
+                title: "Leave-in Conditioner",
+                image: "Leave-in 1.png",
+                price: "$15",
+                link: ""
+            },
+            {
+                title: "Pomade",
+                image: "Pomade.png",
+                price: "$10",
+                link: ""
+            },
+            {
+                title: "Shampoo + Conditioner",
+                image: "Shampoo.png",
+                price: "$20",
+                link: ""
+            }
+        ]
+    },
+
+    _3B: {
+        description: "Type 3B Products",
+        products: [
+            {
+                title: "Comb",
+                image: "Comb.png",
+                price: "$10",
+                link: ""
+            },
+            {
+                title: "Comb",
+                image: "Comb 2.png",
+                price: "$10",
+                link: ""
+            },
+            {
+                title: "Leave-in Conditioner",
+                image: "Leave-in 1.png",
+                price: "$15",
+                link: ""
+            },
+            {
+                title: "Pomade",
+                image: "Pomade.png",
+                price: "$10",
+                link: ""
+            },
+            {
+                title: "Shampoo + Conditioner",
+                image: "Shampoo.png",
+                price: "$20",
+                link: ""
+            }
+        ]
+
+    },
+    _3C: {
+        description: "Type 3C Products",
+        products: [
+            {
+                title: "Comb",
+                image: "Comb.png",
+                price: "$10",
+                link: ""
+            },
+            {
+                title: "Comb",
+                image: "Comb 2.png",
+                price: "$10",
+                link: ""
+            },
+            {
+                title: "Leave-in Conditioner",
+                image: "Leave-in 1.png",
+                price: "$15",
+                link: ""
+            },
+            {
+                title: "Pomade",
+                image: "Pomade.png",
+                price: "$10",
+                link: ""
+            },
+            {
+                title: "Shampoo + Conditioner",
+                image: "Shampoo.png",
+                price: "$20",
+                link: ""
+            }
+        ]
+
+    },
+
+
+
+    _4A: {
+        description: "Type 4A Products",
+        products: [
+            {
+                title: "Comb",
+                image: "Comb.png",
+                price: "$10",
+                link: ""
+            },
+            {
+                title: "Comb",
+                image: "Comb 2.png",
+                price: "$10",
+                link: ""
+            },
+            {
+                title: "Leave-in Conditioner",
+                image: "Leave-in 1.png",
+                price: "$15",
+                link: ""
+            },
+            {
+                title: "Pomade",
+                image: "Pomade.png",
+                price: "$10",
+                link: ""
+            },
+            {
+                title: "Shampoo + Conditioner",
+                image: "Shampoo.png",
+                price: "$20",
+                link: ""
+            },
+            {
+                title: "Hair Oil",
+                image: "Oil.png",
+                price: "$15",
                 link: ""
             }
         ]
 
     },
     _4B: {
-        description: "This is a description",
-        shampoos: [
+        description: "Type 4B Products",
+        products: [
             {
-                title: "Amla and Coconut Oil Shampoo",
-                image: "tgin.png",
-                brand: "TGIN",
+                title: "Comb",
+                image: "Comb.png",
+                price: "$10",
                 link: ""
             },
             {
-                title: "Fresh Rosé Hair Treatment",
-                image: "tgin.png",
-                brand: "Natur All",
-                link: ""
-            }
-        ],
-        conditioners: [],
-        leaveIns: [
-            {
-                title: "Everyday Gloss Hair Oil",
-                image: "BREADBEAUTY.png",
-                brand: "Bread",
+                title: "Comb",
+                image: "Comb 2.png",
+                price: "$10",
                 link: ""
             },
             {
-                title: "Everyday Gloss Hair Oil",
-                image: "BREADBEAUTY.png",
-                brand: "Bread",
+                title: "Leave-in Conditioner",
+                image: "Leave-in 1.png",
+                price: "$15",
                 link: ""
             },
             {
-                title: "Everyday Gloss Hair Oil",
-                image: "BREADBEAUTY.png",
-                brand: "Bread",
+                title: "Pomade",
+                image: "Pomade.png",
+                price: "$10",
+                link: ""
+            },
+            {
+                title: "Shampoo + Conditioner",
+                image: "Shampoo.png",
+                price: "$20",
+                link: ""
+            },
+            {
+                title: "Hair Oil",
+                image: "Oil.png",
+                price: "$15",
                 link: ""
             }
         ]
@@ -93,39 +433,42 @@ const products = {
     },
     _4C: {
         description: "Products for Type 4C",
-        shampoos: [
+        products: [
             {
-                title: "Sulfate Free Shampoo with Amla Oil and Coconut Oil",
-                image: "/type4/products/Sulfate Free Shampoo with Amla Oil and Coconut Oil by TGIN.png",
-                brand: "TGIN",
-                link: ""
-            }
-        ],
-        conditioners: [],
-        leaveIns: [
-            {
-                title: "Everyday Gloss Hair Oil",
-                image: "type4/products/Everyday Gloss Hair Oil By Bread.png",
-                brand: "Bread",
+                title: "Comb",
+                image: "Comb.png",
+                price: "$10",
                 link: ""
             },
             {
-                title: "Fresh Froze Hair Treatment",
-                image: "/type4/products/Fresh Frozé Hair Treatment by Natur All.jpeg",
-                brand: "Natur All",
+                title: "Comb",
+                image: "Comb 2.png",
+                price: "$10",
                 link: ""
             },
             {
-                title: "Cleansing Creme",
-                image: "/type4/products/Cleansing Creme by Oribe.png",
-                brand: "Oribe",
+                title: "Leave-in Conditioner",
+                image: "Leave-in 1.png",
+                price: "$15",
                 link: ""
             },
             {
-                title: "Mimosa Hair Honey Pomade",
-                brand: "Carol's Daughter",
-                link: "",
-                image: "/type4/products/Mimosa Hair Honey Pomade by Carol_s Daughter.png"
+                title: "Pomade",
+                image: "Pomade.png",
+                price: "$10",
+                link: ""
+            },
+            {
+                title: "Shampoo + Conditioner",
+                image: "Shampoo.png",
+                price: "$20",
+                link: ""
+            },
+            {
+                title: "Hair Oil",
+                image: "Oil.png",
+                price: "$15",
+                link: ""
             }
         ]
 

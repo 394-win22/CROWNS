@@ -10,12 +10,14 @@ import Card from '@mui/material/Card';
 import { useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import { quizQuestions } from "../data/Questions"
-import { PlainQuizQuestion, ImageQuizQuestion } from './QuizQuestion';
+import { PlainQuizQuestion, ImageQuizQuestion, DropdownQuizQuestion } from './QuizQuestion';
+import { Dropdown } from "./Dropdown";
 import {accordionStyle} from "../styles/quizStyling"
 import "@fontsource/aileron";
 import "@fontsource/caveat";
 import "@fontsource/raleway";
 import {useUserState, setUser} from '../utilities/firebase.js'
+import {headerStyle} from './LandingPage';
 
 
 const HairSubtype = ({ hairSubtype, setHairType }) => {
@@ -105,7 +107,7 @@ const HairQuiz = ({ setHairType }) => {
     console.log(user);
     if (user) setUser(user.uid, {hairType: maxKey.substring(1)})
     navigate("/results")
-  }, [totalWeights, navigate, setHairType]);
+  }, [totalWeights, navigate, setHairType, user]);
 
   const setResult = useCallback((res, weights) => {
     let temp2 = {...totalWeights}
@@ -119,20 +121,26 @@ const HairQuiz = ({ setHairType }) => {
       })
     }
     setTotalWeights(temp2);
+    // let nextQuestion = quizQuestions[currentQuestion].answers[res].nextQuestion;
+    let nextQuestion = 0;
 
-    if (currentQuestion === quizQuestions.length - 1) {
+    if (!nextQuestion) {
       finishQuiz(temp2)
     } else {
-      setCurrentQuestion(currentQuestion + 1)
+      setCurrentQuestion(nextQuestion)
     }
+
   }, [totalWeights, currentQuestion, finishQuiz]);
 
   return (
-    <div style={{ maxWidth: "40rem", width: '100%', display: "inline-block"}}>
-      <PlainQuizQuestion setResult = {setResult} question={quizQuestions[currentQuestion]}/>
-      
-      { /* all_types.map(function(e, index) {return (<HairType key={index.toString()} hairType={e} setHairType={setHairType} />)}) */}
+    <div>
+      <Typography sx={{...headerStyle, color:'black'}}>CROWNS</Typography>
+      <div style={{ maxWidth: "40rem", width: '100%', display: "inline-block"}}>
+        <DropdownQuizQuestion setResult = {setResult} question={quizQuestions[currentQuestion]} allQuestions={quizQuestions}/>
+        
+        { /* all_types.map(function(e, index) {return (<HairType key={index.toString()} hairType={e} setHairType={setHairType} />)}) */}
 
+      </div>
     </div>
   );
 }
