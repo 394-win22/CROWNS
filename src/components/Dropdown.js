@@ -89,9 +89,9 @@ const CompleteProfileGrid = ({user, selectedGoals, setSelectedGoals, selectedCha
 
     const onSubmit = async () => {
       if(user){
-        setSelectedGoals([]);
-        setSelectedChallenges([]);
-        setSelectedQuality([]);
+        //setSelectedGoals([]);
+        //setSelectedChallenges([]);
+        //setSelectedQuality([]);
         setUploadAlert(true);
         console.log(user)
         const newUserData = {
@@ -196,10 +196,9 @@ const CompleteProfileGrid = ({user, selectedGoals, setSelectedGoals, selectedCha
                 <Alert severity="success" >Profile upload successful</Alert>
             </Snackbar>
             <Grid item xs={12} sx={{alignItems: 'flex-end', paddingTop: "10px"}}>
-              <Button sx={{ color: 'black', border: 1 }} onClick={onSubmit}>Submit</Button>   
+              <Button variant="contained" sx={buttonStyle} onClick={onSubmit}>Submit</Button>   
             </Grid>
     </Grid>
-    {data && <Button variant="contained" sx={buttonStyle} onClick={() => onSubmit()}> Submit </Button>}
     </>
     );
 }
