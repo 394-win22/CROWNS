@@ -1,8 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { useEffect, useState, useCallback } from "react";
 import { initializeApp } from "firebase/app";
-import { getFirestore, getDoc, doc, setDoc, updateDoc, } from "firebase/firestore";
-import { getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithPopup, signOut } from 'firebase/auth';
+import { getFirestore, getDoc, doc, setDoc, updateDoc, connectFirestoreEmulator} from "firebase/firestore";
+import { getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithPopup, signOut, connectAuthEmulator, signInWithCredential } from 'firebase/auth';
 
 const firebaseConfig = {
     apiKey: "AIzaSyB8Xulh0Uh7Jy2AHJVQOiBf4vTK2F2aotw",
@@ -13,7 +13,17 @@ const firebaseConfig = {
     appId: "1:640118822953:web:6b9e6891d3c429d79ea438"
 };
 const app = initializeApp(firebaseConfig);
-export const db = getFirestore();
+export const db = getFirestore(app);
+const auth = getAuth(app);
+
+if (window.Cypress) {
+    connectAuthEmulator(auth, "localhost:9099");
+    connectFirestoreEmulator(db, "localhost", 9000);
+  
+    signInWithCredential(auth, GoogleAuthProvider.credential(
+      '{"sub": "bcf1ucJn4ya8ou09q7uoNAUETKrL", "email": "tester@gmail.com", "displayName":"Test User", "email_verified": true}'
+    ));
+}
 
 const firebaseSignOut = async (navigate = null) => {
     await signOut(getAuth(app));
