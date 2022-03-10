@@ -14,25 +14,25 @@ const firebaseConfig = {
     appId: "1:640118822953:web:6b9e6891d3c429d79ea438"
 };
 const app = initializeApp(firebaseConfig);
-export const db = getFirestore();
-
-const firebaseSignOut = () => signOut(getAuth(app));
-
-// const auth = getAuth();
-// const db = getDatabase();
+export const db = getFirestore(app);
+const auth = getAuth(app);
 
 if (window.Cypress) {
-  connectAuthEmulator(getAuth(), "http://localhost:9099");
+  connectAuthEmulator(auth, "http://localhost:9099");
   connectFirestoreEmulator(db, "localhost", 9000);
 
-  signInWithCredential(GoogleAuthProvider.credential(
-    'chris'
+  signInWithCredential(auth, GoogleAuthProvider.credential(
+    '{"sub": "36pW3SUzMNtCdv3EqdfLD4ykDE4j", "email": "briangleason2023@u.northwestern.edu", "displayName":"Brian Gleason"}'
   ));
 
   console.log(getAuth().currentUser);
 
   // ' {userName: "Chris Riesbeck", hairType: "2A", postIds: []}'
 }
+
+
+const firebaseSignOut = () => signOut(getAuth(app));
+
 export { firebaseSignOut as signOut };
 
 export const useUserState = () => {

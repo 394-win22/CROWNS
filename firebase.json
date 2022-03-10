@@ -21,10 +21,12 @@
   ],
   "emulators": {
     "auth": {
-      "port": 9099
+      "port": 9099,
+      "host": "localhost"
     },
-    "database": {
-      "port": 9000
+    "firestore": {
+      "port": 9000,
+      "host": "localhost"
     },
     "hosting": {
       "port": 5000
