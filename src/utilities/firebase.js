@@ -18,7 +18,7 @@ const auth = getAuth(app);
 
 if (window.Cypress) {
     connectAuthEmulator(auth, "localhost:9099");
-    connectFirestoreEmulator(db, "localhost", 8080);
+    connectFirestoreEmulator(db, "localhost", 9000);
   
     signInWithCredential(auth, GoogleAuthProvider.credential(
       '{"sub": "bcf1ucJn4ya8ou09q7uoNAUETKrL", "email": "tester@gmail.com", "displayName":"Test User", "email_verified": true}'
