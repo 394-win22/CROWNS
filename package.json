@@ -31,7 +31,7 @@
     "eject": "react-scripts eject",
     "cy:open": "cypress open",
     "em:start": "firebase emulators:start --import=./saved-data --export-on-exit",
-    "em:run": "firebase emulators:exec --import=./saved-data 'npm start'"
+    "em:run": "firebase emulators:exec --ui --import=./saved-data 'npm start'"
   },
   "eslintConfig": {
     "extends": [
