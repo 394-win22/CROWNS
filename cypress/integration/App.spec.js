@@ -20,7 +20,7 @@ describe ('Test App', () => {
         });
         cy.get('[data-cy=quizQuestion]').should('be.visible');
     })
-
+    /*
     it ('tries to sign in', () => {
         cy.visit ('/');
 
@@ -31,5 +31,6 @@ describe ('Test App', () => {
     it('log in test', () => {
         cy.login();
     })
+    */
   
 });
