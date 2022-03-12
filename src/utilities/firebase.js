@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { useEffect, useState, useCallback } from "react";
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore, getDoc, doc, setDoc, updateDoc, connectFirestoreEmulator} from "firebase/firestore";
 import { getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithPopup, signOut, connectAuthEmulator, signInWithCredential } from 'firebase/auth';
 
@@ -12,7 +12,7 @@ const firebaseConfig = {
     messagingSenderId: "640118822953",
     appId: "1:640118822953:web:6b9e6891d3c429d79ea438"
 };
-const app = initializeApp(firebaseConfig);
+const app = getApps().length === 0? initializeApp(firebaseConfig) : getApp();
 export const db = getFirestore(app);
 const auth = getAuth(app);
 
