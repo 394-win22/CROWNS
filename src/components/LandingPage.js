@@ -132,7 +132,7 @@ const LandingPage = ({ setUserData, userData, setHairType, hairType }) => {
                 spacing={0}
                 height="100vh"
             >
-                <div style={headerStyle}>
+                <div style={headerStyle} data-cy="title">
                     CROWNS
                 </div>
                 {/* <div>
@@ -144,7 +144,7 @@ const LandingPage = ({ setUserData, userData, setHairType, hairType }) => {
                 </div>
 
                 <div style={{margin: '2rem 0rem'}}>
-                    <Button onClick={() => {navigate('/quiz'); }}variant="contained" size="large" defaultValue={30} sx={buttonStyle} > 
+                    <Button onClick={() => { navigate('/quiz'); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle} data-cy="quiz"> 
                         Find out my hair type! 
                     </Button>
                 </div>
@@ -157,7 +157,7 @@ const LandingPage = ({ setUserData, userData, setHairType, hairType }) => {
                
                 <div style={{ margin: '2rem 0rem', display: 'flex' }}>
 
-                    <Button onClick={user ? () => {signOut()} : () => { signInWithGoogle(); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} >
+                    <Button onClick={user ? () => { signOut() } : () => { signInWithGoogle(); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle3} data-cy="signIn">
                         {user ? "Sign Out" : "Login"}
                     </Button>
                     &nbsp;&nbsp;&nbsp;

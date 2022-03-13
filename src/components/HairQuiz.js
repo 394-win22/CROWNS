@@ -135,8 +135,10 @@ const HairQuiz = ({ setHairType }) => {
   return (
     <div>
       <Typography sx={{...headerStyle, color:'black'}}>CROWNS</Typography>
-      <div style={{ maxWidth: "40rem", width: '100%', display: "inline-block"}}>
+
+      <div style={{ maxWidth: "40rem", width: '100%', display: "inline-block"}} data-cy="quizQuestion">
         <DropdownQuizQuestion setResult = {setResult} question={quizQuestions[currentQuestion]} allQuestions={quizQuestions}/>
+
         
         { /* all_types.map(function(e, index) {return (<HairType key={index.toString()} hairType={e} setHairType={setHairType} />)}) */}
 
