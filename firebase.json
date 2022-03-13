@@ -37,15 +37,15 @@
     },
     "auth": {
       "port": 9099,
-      "host": "0.0.0.0"
-    },
-    "firestore": {
-      "port": 9000,
-      "host": "0.0.0.0"
+      "host": "localhost"
     },
     "hosting": {
       "port": 5000,
-      "host": "0.0.0.0"
+      "host": "localhost"
+    },
+    "firestore": {
+      "port": 8080,
+      "host": "localhost"
     }
   }
 }
