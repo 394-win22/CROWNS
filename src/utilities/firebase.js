@@ -24,7 +24,7 @@ if (window.Cypress) {
       '{"sub": "bcf1ucJn4ya8ou09q7uoNAUETKrL", "email": "qiuyangxu123@gmail.com", "displayName":"March 12 test", "email_verified": true}'
     ));
 }
-
+//test
 const firebaseSignOut = async (navigate = null) => {
     await signOut(getAuth(app));
     if (navigate) navigate("/");
