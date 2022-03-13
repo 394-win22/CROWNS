@@ -10,7 +10,8 @@ import Card from '@mui/material/Card';
 import { useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import { quizQuestions } from "../data/Questions"
-import { PlainQuizQuestion, ImageQuizQuestion } from './QuizQuestion';
+import { PlainQuizQuestion, ImageQuizQuestion, DropdownQuizQuestion } from './QuizQuestion';
+import { Dropdown } from "./Dropdown";
 import {accordionStyle} from "../styles/quizStyling"
 import "@fontsource/aileron";
 import "@fontsource/caveat";
@@ -120,7 +121,8 @@ const HairQuiz = ({ setHairType }) => {
       })
     }
     setTotalWeights(temp2);
-    let nextQuestion = quizQuestions[currentQuestion].answers[res].nextQuestion;
+    // let nextQuestion = quizQuestions[currentQuestion].answers[res].nextQuestion;
+    let nextQuestion = 0;
 
     if (!nextQuestion) {
       finishQuiz(temp2)
@@ -133,8 +135,10 @@ const HairQuiz = ({ setHairType }) => {
   return (
     <div>
       <Typography sx={{...headerStyle, color:'black'}}>CROWNS</Typography>
-          <div style={{ maxWidth: "40rem", width: '100%', display: "inline-block" }} data-cy="quizQuestion">
-        <PlainQuizQuestion setResult = {setResult} question={quizQuestions[currentQuestion]}/>
+
+      <div style={{ maxWidth: "40rem", width: '100%', display: "inline-block"}} data-cy="quizQuestion">
+        <DropdownQuizQuestion setResult = {setResult} question={quizQuestions[currentQuestion]} allQuestions={quizQuestions}/>
+
         
         { /* all_types.map(function(e, index) {return (<HairType key={index.toString()} hairType={e} setHairType={setHairType} />)}) */}
 
