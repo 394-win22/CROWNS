@@ -1,41 +1,26 @@
 import React, { useState } from "react";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red, orange, yellow, green, blue, purple } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import CommentIcon from '@mui/icons-material/Comment';
 import "@fontsource/raleway";
-import { crownsPinkLight, crownsPink } from "../styles/quizStyling";
+import { crownsPinkLight } from "../styles/quizStyling";
 import Grid from '@mui/material/Grid';
-import { products } from "../data/Products";
 import "@fontsource/raleway";
-import { makeStyles } from "@material-ui/core/styles";
 import Container from '@mui/material/Container';
 import post_data from '../data/Post';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import TextField from '@mui/material/TextField';
 import Popper from '@mui/material/Popper';
 import Fade from '@mui/material/Fade';
 import Paper from '@mui/material/Paper';
 import Navbar from './Navbar';
-import { signOut, useUserState, useUser } from '../utilities/firebase';
+import { useUserState, useUser } from '../utilities/firebase';
 
 
 const colors = [red[500], orange[500], yellow[500], green[500], blue[500], purple[500],
@@ -60,16 +45,10 @@ const DiscussionCard = ({ data, index }) => {
                         {data.name.charAt(0).toUpperCase()}
                     </Avatar>
                 }
-                
+
                 title={<b>{data.title}</b>}
                 subheader={data.date}
             />
-            {/*<CardMedia
-                component="img"
-                height="194"
-                image="/static/images/cards/paella.jpg"
-                alt="How to better style my hair, pls help!!"
-            />*/}
 
             <CardContent sx={{ textAlign: "left" }}>
                 <Typography variant="body2" color="text.secondary">
@@ -104,123 +83,61 @@ const DiscussionCard = ({ data, index }) => {
 const CommunityFilters = ({ setFilter }) => {
     const filters = ["Hairstyles", "Products", "Stylists", "News", "All"]
     return (
-        <Container disableGutters sx={{ textAlign: "left", display: 'flex', flexWrap: 'wrap'}}>
-            {filters.map(e => { return <Chip onClick={() => setFilter(e === 'All' ? false : e)} label={e} sx={{ backgroundColor: "white", ml: 0.5, border: 1, borderColor: "black", fontFamily: "Raleway" }} /> })}
+        <Container disableGutters sx={{ textAlign: "left", display: 'flex', flexWrap: 'wrap' }}>
+            {filters.map((e, i) => { return <Chip key={i} onClick={() => setFilter(e === 'All' ? false : e)} label={e} sx={{ backgroundColor: "white", ml: 0.5, border: 1, borderColor: "black", fontFamily: "Raleway" }} /> })}
         </Container>
     )
 }
 
-const PostModal = () => {
-    const [open, setOpen] = useState(false)
-    const handleOpen = () => {
-        setOpen(true);
-    }
-    const handleClose = () => {
-        setOpen(false);
-    }
-    return (
-        <>
-            <Button type="button" onClick={handleOpen}>Add Post</Button>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={{}}>
-                    <Stack spacing={2}>
-                        <TextField label="Title" variant="outlined" />
-                        <TextField label="Description" variant="outlined" />
-                        <TextField label="Title" variant="outlined" />
-                        {/* <Autocomplete
-                            multiple
-                            id="fixed-tags-demo"
-                            value={value}
-                            onChange={(event, newValue) => {
-                                setValue([
-                                    ...fixedOptions,
-                                    ...newValue.filter((option) => fixedOptions.indexOf(option) === -1),
-                                ]);
-                            }}
-                            options={top100Films}
-                            getOptionLabel={(option) => option.title}
-                            renderTags={(tagValue, getTagProps) =>
-                                tagValue.map((option, index) => (
-                                    <Chip
-                                        label={option.title}
-                                        {...getTagProps({ index })}
-                                        disabled={fixedOptions.indexOf(option) !== -1}
-                                    />
-                                ))
-                            }
-                            style={{ width: 500 }}
-                            renderInput={(params) => (
-                                <TextField {...params} label="Fixed tag" placeholder="Favorites" />
-                            )}
-                        /> */}
-                    </Stack>
-                </Box>
-            </Modal>
-        </>
-    )
-}
 
-const Community = ({hairType}) => {
+const Community = ({ hairType }) => {
     const [user] = useUserState();
-    const [data, loading, error] = useUser("users", user?.uid);
+    const [data,,] = useUser("users", user?.uid);
 
 
     const [currentFilter, setCurrentFilter] = useState("")
     const [open, setOpen] = useState(false)
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleClick = (event) => {
-        //console.log(event.currentTarget);
         setAnchorEl(anchorEl ? null : event.currentTarget);
         setOpen(!open);
     };
-    const useStyles = makeStyles({
-        content: {
-            justifyContent: "center"
-        }
-    });
-    const classes = useStyles();
-    console.log(post_data);
+   
     return (
         <>
-        <Container sx={{ pb: '65px' }} disableGutters>
+            <Container sx={{ pb: '65px' }} disableGutters>
 
-            <Typography variant="h3" fontWeight="bold" sx={{ fontFamily: "Raleway", my: 4 }}>Community Board</Typography>
-            {/* <PostModal /> */}
-            <Chip onClick={handleClick} label={'Create Post'} sx={{ backgroundColor: "grey", border: 1, borderColor: "black", fontFamily: "Raleway", fontWeight: 'bold', mb: 4 }} />
-            <Popper id={'pop'} open={open} placement={'bottom'} anchorEl={anchorEl} transition sx={{ p: 0 }}>
-                {({ TransitionProps }) => (
-                    <Fade {...TransitionProps} timeout={350}>
-                        <Paper sx={{ backgroundColor: 'lightGray' }}>
-                            <Typography sx={{ p: 0.5, color: '#111111', fontSize: '0.75rem' }}>Coming Soon...</Typography>
-                        </Paper>
-                    </Fade>
-                )}
-            </Popper>
-            <Container sx={{
-                mx: 0, py: 2, backgroundColor: crownsPinkLight
-            }}>
-                <CommunityFilters setFilter={setCurrentFilter} />
-                <Grid columns={1} sx={{ alignItems: "center" }}>
-                    {
-                        post_data.filter(data => currentFilter ? data.tags.includes(currentFilter) : true).map((data, index) => {
-                            return (
-                                <Grid item key={index}>
-                                    <DiscussionCard data={data} index={index}></DiscussionCard>
-                                </Grid>)
+                <Typography variant="h3" fontWeight="bold" sx={{ fontFamily: "Raleway", my: 4 }}>Community Board</Typography>
+                <Chip onClick={handleClick} label={'Create Post'} sx={{ backgroundColor: "grey", border: 1, borderColor: "black", fontFamily: "Raleway", fontWeight: 'bold', mb: 4 }} />
+                <Popper id={'pop'} open={open} placement={'bottom'} anchorEl={anchorEl} transition sx={{ p: 0 }}>
+                    {({ TransitionProps }) => (
+                        <Fade {...TransitionProps} timeout={350}>
+                            <Paper sx={{ backgroundColor: 'lightGray' }}>
+                                <Typography sx={{ p: 0.5, color: '#111111', fontSize: '0.75rem' }}>Coming Soon...</Typography>
+                            </Paper>
+                        </Fade>
+                    )}
+                </Popper>
+                <Container sx={{
+                    mx: 0, py: 2, backgroundColor: crownsPinkLight
+                }}>
+                    <CommunityFilters setFilter={setCurrentFilter} />
+                    <Grid columns={1} sx={{ alignItems: "center" }}>
+                        {
+                            post_data.filter(data => currentFilter ? data.tags.includes(currentFilter) : true).map((data, index) => {
+                                return (
+                                    <Grid item key={index}>
+                                        <DiscussionCard data={data} index={index}></DiscussionCard>
+                                    </Grid>)
+                            }
+                            )
+
                         }
-                        )
-
-                    }
-                </Grid>
+                    </Grid>
+                </Container>
+                <Navbar hairTypeCode={data ? data.hairType : hairType?.code} />
             </Container>
-            <Navbar hairTypeCode={data ? data.hairType : hairType?.code}/>
-        </Container>
-        
+
         </>
     )
 }

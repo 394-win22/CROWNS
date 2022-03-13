@@ -6,8 +6,8 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from '@mui/material/CardMedia';
 import "@fontsource/raleway";
 import { crownsPinkLight, crownsPink } from "../styles/quizStyling";
-import { signOut,useUserState, useUser } from '../utilities/firebase';
-import { signInWithGoogle, uploadUser, setUser } from "../utilities/firebase"
+import { signOut, useUserState, useUser } from '../utilities/firebase';
+import { signInWithGoogle, setUser } from "../utilities/firebase";
 import Button from '@mui/material/Button';
 import Navbar from './Navbar';
 import Grid from "@mui/material/Grid";
@@ -25,8 +25,6 @@ const accountButtonStyle = {
         backgroundColor: '#F2AFAF',
         color: 'white',
     },
-
-    
 };
 
 const style = {
@@ -43,14 +41,10 @@ const style = {
     p: 4,
 };
 
-
-
-
-
 const Profile = ({ hairType, setHairType }) => {
     const [open, setOpen] = useState(false);
     const [user] = useUserState();
-    const [data, loading, error] = useUser("users", user?.uid);
+    const [data, loading, ] = useUser("users", user?.uid);
     const [name, setName] = useState(data?.userName);
 
     useEffect(() => {
@@ -65,7 +59,6 @@ const Profile = ({ hairType, setHairType }) => {
         }
 
         setUser(user.uid, newUserData)
-        //setName(name)
     };
 
     const onRequiz = async () => {
@@ -74,14 +67,14 @@ const Profile = ({ hairType, setHairType }) => {
         }
         setHairType(null)
         await setUser(user.uid, resetUserData)
-        navigate("/") 
+        navigate("/")
     }
 
 
     if (!data && !loading)
         return (<Container maxWidth="sm" sx={{ pb: '60px', alignItems: 'center', height: "100%" }}>
             <Navbar hairTypeCode={hairType?.code} />
-            
+
             <Typography variant="h3" fontWeight="bold" sx={{ fontFamily: "Raleway", my: 4 }}>Profile</Typography>
             <Typography>Please login to view your profile</Typography>
             <Button onClick={() => { signInWithGoogle(); }} variant="contained" size="large" defaultValue={30} sx={accountButtonStyle} >
@@ -89,22 +82,23 @@ const Profile = ({ hairType, setHairType }) => {
             </Button>
         </Container>)
     else
-        return (<Container maxWidth="sm" sx={{pb: '60px'}}>
+        return (<Container maxWidth="sm" sx={{ pb: '60px' }}>
             <Navbar hairTypeCode={data?.hairType} />
             {user && <Grid sx={{ position: "absolute", right: 0, top: 0, paddingRight: "0.5rem", cursor: "pointer" }} onClick={() => { signOut(navigate); setHairType(null) }}>
                 <div style={{ float: "right", color: "black" }}>
                     <img src={"../images/goals/type4/goals/Crown Icon.png"}
-                        style={{ width: "3rem" }} />
+                        style={{ width: "3rem" }}
+                        alt={"Sign Out"} />
                     <div style={{ width: "5rem" }}>
                         Sign Out
                     </div>
                 </div>
             </Grid>}
-            <Typography variant="h3" fontWeight="bold" sx={{fontFamily: "Raleway", my:4}}>Profile</Typography>
-            <Card sx={{m: 1, border: 4, borderColor: crownsPink, backgroundColor: crownsPinkLight }}>
+            <Typography variant="h3" fontWeight="bold" sx={{ fontFamily: "Raleway", my: 4 }}>Profile</Typography>
+            <Card sx={{ m: 1, border: 4, borderColor: crownsPink, backgroundColor: crownsPinkLight }}>
                 <CardContent>
-                    <CardMedia component="img" src={user?.photoURL} alt="your profile picture" loading="lazy" 
-                    sx={{width: 'auto', maxHeight: '40vh', objectFit: "contain", mb: 1, mx: 'auto', border: 2, borderColor: crownsPink}}/>
+                    <CardMedia component="img" src={user?.photoURL} alt="your profile picture" loading="lazy"
+                        sx={{ width: 'auto', maxHeight: '40vh', objectFit: "contain", mb: 1, mx: 'auto', border: 2, borderColor: crownsPink }} />
                     <Typography variant="h5" fontWeight="bold" data-testid="name-str" sx={{ fontFamily: "Raleway" }}>{name}</Typography>
                     <Typography variant="h5" sx={{ fontFamily: "Raleway" }}>Your Hair Type: {data?.hairType}</Typography>
                 </CardContent>
@@ -117,26 +111,24 @@ const Profile = ({ hairType, setHairType }) => {
                 {"Take the Quiz Again"}
             </Button>
 
-            <Modal open={open} onClose ={() => {setOpen(false); setName(data?.userName)}} sx={{margin: "auto"}} >
-            <Grid container spacing={1} sx={style}>
+            <Modal open={open} onClose={() => { setOpen(false); setName(data?.userName) }} sx={{ margin: "auto" }} >
+                <Grid container spacing={1} sx={style}>
                     <Grid item xs={8}>
                         <h1>Edit Profile</h1>
                     </Grid>
                     <Grid item xs={8}>
                         <TextField
                             label="Username"
-                            defaultValue={name}
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                         />
                     </Grid>
                     <Grid item xs={8}>
-                        <Button onClick={() => {onSubmit(); setOpen(false)}} sx={accountButtonStyle}>Submit Changes</Button>
+                        <Button onClick={() => { onSubmit(); setOpen(false) }} sx={accountButtonStyle}>Submit Changes</Button>
                     </Grid>
                 </Grid>
             </Modal>
         </Container>)
-
 }
 
 export default Profile;

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const questionSchema = {
     question: "what is the meaning of life?",
     id: -1,
@@ -16,6 +18,8 @@ const questionSchema = {
         }
     ]
 };
+
+/* eslint-enable */
 
 const quizQuestions = [
     {
@@ -208,84 +212,6 @@ const quizQuestions = [
             }
         ]
     }
-    // {
-    //     question: "What is the texture of your natural hair?",
-    //     id: 1,
-    //     answers: [
-    //         {
-    //             id: 0,
-    //             option: "Fine",
-    //             image: null,
-    //             weights: null
-    //         },
-    //         {
-    //             id: 1,
-    //             option: "Medium",
-    //             image: null,
-    //             weights: null
-    //         },
-    //         {
-    //             id: 2,
-    //             option: "Coarse",
-    //             image: null,
-    //             weights: null
-    //         }
-    //     ]
-    // },
-    // {
-    //     question: "What is the length of your hair?",
-    //     id: 2,
-    //     answers: [
-    //         {
-    //             id: 0,
-    //             option: "Super Short",
-    //             image: null,
-    //             weights: null
-    //         },
-    //         {
-    //             id: 1,
-    //             option: "Short",
-    //             image: null,
-    //             weights: null
-    //         },
-    //         {
-    //             id: 2,
-    //             option: "Medium",
-    //             image: null,
-    //             weights: null
-    //         },
-    //         {
-    //             id: 3,
-    //             option: "Long",
-    //             image: null,
-    //             weights: null
-    //         }
-    //     ]
-    // },
-    // {
-    //     question: "What is the texture of your natural hair?",
-    //     id: 3,
-    //     answers: [
-    //         {
-    //             id: 0,
-    //             option: "Fine",
-    //             image: null,
-    //             weights: null
-    //         },
-    //         {
-    //             id: 1,
-    //             option: "Medium",
-    //             image: null,
-    //             weights: null
-    //         },
-    //         {
-    //             id: 2,
-    //             option: "Coarse",
-    //             image: null,
-    //             weights: null
-    //         }
-    //     ]
-    // }
 ];
 
 export { quizQuestions };

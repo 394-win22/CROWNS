@@ -77,14 +77,14 @@ export const uploadUser = async (id, data) => {
     const existingUser = await getDoc(existingUserRef)
     if (existingUser.exists()) {
       const userData = existingUser.data();
-      console.log("user Exists");
+      
       return userData;
     }
 
     const docRef = await setDoc(existingUserRef, data);
     if (docRef.ok) return true;
     else {
-        console.log(docRef);
+        
         return false;
     }
 }

@@ -1,5 +1,7 @@
+/* eslint-disable */
+
 const tile_schema = {
-    description: "string",  
+    description: "string",
     shampoos: [],
     leaveIns: [],
     conditioners: [],
@@ -9,8 +11,9 @@ const product_schema = {
     title: "string",
     image: "string",
     price: "string",
-    link: "string",
 }
+
+/* eslint-enable */
 
 const products = {
     _1A: {
@@ -20,31 +23,30 @@ const products = {
                 title: "Brush",
                 image: "Brush.png",
                 price: "$20",
-                link: ""
             },
             {
                 title: "Comb",
                 image: "Comb.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Leave-In Conditioner",
                 image: "Leave-in 1.png",
                 price: "$15",
-                link: ""
+
             },
             {
                 title: "Spritz",
                 image: "Leave-in 3.png",
                 price: "$20",
-                link: ""
+
             },
             {
                 title: "Conditioner",
                 image: "Conditioner.png",
                 price: "$20",
-                link: ""
+
             }
         ]
 
@@ -56,31 +58,31 @@ const products = {
                 title: "Brush",
                 image: "Brush.png",
                 price: "$20",
-                link: ""
+
             },
             {
                 title: "Comb",
                 image: "Comb.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Leave-In Conditioner",
                 image: "Leave-in 1.png",
                 price: "$15",
-                link: ""
+
             },
             {
                 title: "Spritz",
                 image: "Leave-in 3.png",
                 price: "$20",
-                link: ""
+
             },
             {
                 title: "Conditioner",
                 image: "Conditioner.png",
                 price: "$20",
-                link: ""
+
             }
         ]
 
@@ -92,31 +94,31 @@ const products = {
                 title: "Brush",
                 image: "Brush.png",
                 price: "$20",
-                link: ""
+
             },
             {
                 title: "Comb",
                 image: "Comb.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Leave-In Conditioner",
                 image: "Leave-in 1.png",
                 price: "$15",
-                link: ""
+
             },
             {
                 title: "Spritz",
                 image: "Leave-in 3.png",
                 price: "$20",
-                link: ""
+
             },
             {
                 title: "Conditioner",
                 image: "Conditioner.png",
                 price: "$20",
-                link: ""
+
             }
         ]
 
@@ -129,34 +131,34 @@ const products = {
                 title: "Brush",
                 image: "Brush.png",
                 price: "$20",
-                link: ""
+
             },
             {
                 title: "Comb",
                 image: "Comb.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Leave-in Conditioner",
                 image: "Leave-in 1.png",
                 price: "$15",
-                link: ""
+
             },
             {
                 title: "Spritz",
                 image: "Leave-in 3.png",
                 price: "$20",
-                link: ""
+
             },
             {
                 title: "Shampoo + Conditioner",
                 image: "Shampoo.png",
                 price: "$30",
-                link: ""
+
             },
         ],
-        
+
 
     },
 
@@ -167,34 +169,34 @@ const products = {
                 title: "Brush",
                 image: "Brush.png",
                 price: "$20",
-                link: ""
+
             },
             {
                 title: "Comb",
                 image: "Comb.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Leave-in Conditioner",
                 image: "Leave-in 1.png",
                 price: "$15",
-                link: ""
+
             },
             {
                 title: "Spritz",
                 image: "Leave-in 3.png",
                 price: "$20",
-                link: ""
+
             },
             {
                 title: "Shampoo + Conditioner",
                 image: "Shampoo.png",
                 price: "$30",
-                link: ""
+
             },
         ],
-        
+
 
     },
 
@@ -205,34 +207,34 @@ const products = {
                 title: "Brush",
                 image: "Brush.png",
                 price: "$20",
-                link: ""
+
             },
             {
                 title: "Comb",
                 image: "Comb.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Leave-in Conditioner",
                 image: "Leave-in 1.png",
                 price: "$15",
-                link: ""
+
             },
             {
                 title: "Spritz",
                 image: "Leave-in 3.png",
                 price: "$20",
-                link: ""
+
             },
             {
                 title: "Shampoo + Conditioner",
                 image: "Shampoo.png",
                 price: "$30",
-                link: ""
+
             },
         ],
-        
+
 
     },
 
@@ -243,31 +245,31 @@ const products = {
                 title: "Comb",
                 image: "Comb.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Comb",
                 image: "Comb 2.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Leave-in Conditioner",
                 image: "Leave-in 1.png",
                 price: "$15",
-                link: ""
+
             },
             {
                 title: "Pomade",
                 image: "Pomade.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Shampoo + Conditioner",
                 image: "Shampoo.png",
                 price: "$20",
-                link: ""
+
             }
         ]
     },
@@ -279,31 +281,31 @@ const products = {
                 title: "Comb",
                 image: "Comb.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Comb",
                 image: "Comb 2.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Leave-in Conditioner",
                 image: "Leave-in 1.png",
                 price: "$15",
-                link: ""
+
             },
             {
                 title: "Pomade",
                 image: "Pomade.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Shampoo + Conditioner",
                 image: "Shampoo.png",
                 price: "$20",
-                link: ""
+
             }
         ]
 
@@ -315,31 +317,31 @@ const products = {
                 title: "Comb",
                 image: "Comb.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Comb",
                 image: "Comb 2.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Leave-in Conditioner",
                 image: "Leave-in 1.png",
                 price: "$15",
-                link: ""
+
             },
             {
                 title: "Pomade",
                 image: "Pomade.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Shampoo + Conditioner",
                 image: "Shampoo.png",
                 price: "$20",
-                link: ""
+
             }
         ]
 
@@ -354,37 +356,37 @@ const products = {
                 title: "Comb",
                 image: "Comb.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Comb",
                 image: "Comb 2.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Leave-in Conditioner",
                 image: "Leave-in 1.png",
                 price: "$15",
-                link: ""
+
             },
             {
                 title: "Pomade",
                 image: "Pomade.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Shampoo + Conditioner",
                 image: "Shampoo.png",
                 price: "$20",
-                link: ""
+
             },
             {
                 title: "Hair Oil",
                 image: "Oil.png",
                 price: "$15",
-                link: ""
+
             }
         ]
 
@@ -396,37 +398,37 @@ const products = {
                 title: "Comb",
                 image: "Comb.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Comb",
                 image: "Comb 2.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Leave-in Conditioner",
                 image: "Leave-in 1.png",
                 price: "$15",
-                link: ""
+
             },
             {
                 title: "Pomade",
                 image: "Pomade.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Shampoo + Conditioner",
                 image: "Shampoo.png",
                 price: "$20",
-                link: ""
+
             },
             {
                 title: "Hair Oil",
                 image: "Oil.png",
                 price: "$15",
-                link: ""
+
             }
         ]
 
@@ -438,37 +440,37 @@ const products = {
                 title: "Comb",
                 image: "Comb.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Comb",
                 image: "Comb 2.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Leave-in Conditioner",
                 image: "Leave-in 1.png",
                 price: "$15",
-                link: ""
+
             },
             {
                 title: "Pomade",
                 image: "Pomade.png",
                 price: "$10",
-                link: ""
+
             },
             {
                 title: "Shampoo + Conditioner",
                 image: "Shampoo.png",
                 price: "$20",
-                link: ""
+
             },
             {
                 title: "Hair Oil",
                 image: "Oil.png",
                 price: "$15",
-                link: ""
+
             }
         ]
 
@@ -477,4 +479,4 @@ const products = {
 
 }
 
-export {products}
+export { products }

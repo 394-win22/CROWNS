@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const schema = {
     shortDescription: "straight",
     longDescription: "straight with little to no volume",
@@ -5,6 +7,7 @@ const schema = {
     code: "1A"
 };
 
+/* eslint-enable */
 
 const type1a = {
     shortDescription: "fine",
