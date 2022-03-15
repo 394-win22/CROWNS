@@ -103,8 +103,8 @@ This project was created by Team Blue.
 The developer team members were students in CS 394 Agile Software Development.
 
 - [Ben Fisk](https://github.com/bfiskers)
-- [Bradley Pawlow](https://github.com/BrianGleason)
-- [Brian Gleason](https://github.com/bpawlow)
+- [Bradley Pawlow](https://github.com/bpawlow)
+- [Brian Gleason](https://github.com/BrianGleason)
 - [James White](https://github.com/jimmy-white)
 - [Jeff Lee](https://github.com/jeffjwl)
 - [Qiuyang Xu](https://github.com/Timxuv587)
