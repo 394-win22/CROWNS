@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { useEffect, useState, useCallback } from "react";
 import { initializeApp, getApps, getApp } from "firebase/app";
-import { getFirestore, getDoc, doc, setDoc, updateDoc, connectFirestoreEmulator } from "firebase/firestore";
+import { getFirestore, getDoc, doc, setDoc, updateDoc } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithPopup, signOut, connectAuthEmulator, signInWithCredential } from 'firebase/auth';
 
 const firebaseConfig = {
