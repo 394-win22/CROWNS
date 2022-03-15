@@ -10,23 +10,23 @@ import Avatar from '@mui/material/Avatar';
 import { useNavigate } from "react-router-dom";
 
 
-const Navbar = ({hairTypeCode}) => {
+const Navbar = ({ hairTypeCode }) => {
     let navigate = useNavigate();
 
     return (
-        <AppBar position="fixed"  sx={{ top: 'auto', bottom: 0 , backgroundColor: crownsPinkLight, justifyContent: "space-around", maxHeight: '55px'}}>
+        <AppBar position="fixed" sx={{ top: 'auto', bottom: 0, backgroundColor: crownsPinkLight, justifyContent: "space-around", maxHeight: '55px' }}>
             <Toolbar>
                 <Box sx={{ flexGrow: 0.5 }} />
-                <IconButton size = 'large' onClick={() => { navigate('/profile'); }}>
-                    <AccountCircleIcon fontSize = 'inherit'/>
+                <IconButton size='large' onClick={() => { navigate('/profile'); }}>
+                    <AccountCircleIcon fontSize='inherit' />
                 </IconButton>
-                <Box sx={{ flexGrow: 1}} />
+                <Box sx={{ flexGrow: 1 }} />
                 <IconButton onClick={() => { navigate('/results'); }}>
                     <Avatar sx={{ bgcolor: crownsPink }}>{hairTypeCode}</Avatar>
                 </IconButton>
-                <Box sx={{ flexGrow: 1}} />
+                <Box sx={{ flexGrow: 1 }} />
                 <IconButton size='large' onClick={() => { navigate('/community'); }}>
-                    <ConnectWithoutContactIcon fontSize = 'inherit'/>
+                    <ConnectWithoutContactIcon fontSize='inherit' />
                 </IconButton>
                 <Box sx={{ flexGrow: 0.5 }} />
             </Toolbar>

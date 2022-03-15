@@ -1,8 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { useEffect, useState, useCallback } from "react";
-import { initializeApp } from "firebase/app";
-import { getFirestore, getDoc, doc, setDoc, updateDoc, } from "firebase/firestore";
-import { getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithPopup, signOut } from 'firebase/auth';
+import { initializeApp, getApps, getApp } from "firebase/app";
+import { getFirestore, getDoc, doc, setDoc, updateDoc, connectFirestoreEmulator } from "firebase/firestore";
+import { getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithPopup, signOut, connectAuthEmulator, signInWithCredential } from 'firebase/auth';
 
 const firebaseConfig = {
     apiKey: "AIzaSyB8Xulh0Uh7Jy2AHJVQOiBf4vTK2F2aotw",
@@ -12,8 +12,18 @@ const firebaseConfig = {
     messagingSenderId: "640118822953",
     appId: "1:640118822953:web:6b9e6891d3c429d79ea438"
 };
-const app = initializeApp(firebaseConfig);
-export const db = getFirestore();
+const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
+export const db = getFirestore(app);
+const auth = getAuth(app);
+
+if (window.Cypress) {
+    connectAuthEmulator(auth, "http://localhost:9099");
+    connectFirestoreEmulator(db, "localhost", 8080);
+
+    signInWithCredential(auth, GoogleAuthProvider.credential(
+        '{"sub": "bcf1ucJn4ya8ou09q7uoNAUETKrL", "email": "qiuyangxu123@gmail.com", "displayName":"March 12 test", "email_verified": true}'
+    ));
+}
 
 const firebaseSignOut = async (navigate = null) => {
     await signOut(getAuth(app));
@@ -66,15 +76,15 @@ export const uploadUser = async (id, data) => {
     const existingUserRef = doc(db, "users", id)
     const existingUser = await getDoc(existingUserRef)
     if (existingUser.exists()) {
-      const userData = existingUser.data();
-      console.log("user Exists");
-      return userData;
+        const userData = existingUser.data();
+
+        return userData;
     }
 
     const docRef = await setDoc(existingUserRef, data);
     if (docRef.ok) return true;
     else {
-        console.log(docRef);
+
         return false;
     }
 }
@@ -89,16 +99,16 @@ export const setUser = async (id, data) => {
     await updateDoc(existingUserRef, data);
 }
 
-  export const signInWithGoogle = async () => {
+export const signInWithGoogle = async () => {
     const user = await signInWithPopup(getAuth(app), new GoogleAuthProvider());
-    return uploadUser(user.user.uid, 
-        {userName: user.user.displayName, hairType: "", postIds: []});
+    return uploadUser(user.user.uid,
+        { userName: user.user.displayName, hairType: "", postIds: [] });
 };
 
-export const getUserById = async(collectionName, userID) => {
-  const docRef = doc(db, collectionName, userID);
-  const docSnap = await getDoc(docRef);
-  const data = docSnap.data();
-  return data;
+export const getUserById = async (collectionName, userID) => {
+    const docRef = doc(db, collectionName, userID);
+    const docSnap = await getDoc(docRef);
+    const data = docSnap.data();
+    return data;
 };
 

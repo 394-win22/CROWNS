@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -18,22 +18,10 @@ import Snackbar from '@mui/material/Snackbar';
 import { setUser, useUser } from "../utilities/firebase"
 
 
-
-const formattedKeyNames = {
-  conditioners: "Conditioners",
-  leaveIns: "Leave Ins",
-  shampoos: "Shampoos"
-}
-
 const InnerGrid = ({ data, subsection }) => {
   if (data[subsection].length === 0) return null
   return (
     <Grid container>
-      {/* <Grid item xs={12} sx={{alignItems: 'flex-end'}}>
-        <Typography variant="h6">
-          {formattedKeyNames[subsection]}
-        </Typography>
-      </Grid> */}
       {data[subsection].map((e, index) => {
         return (
           <Grid item xs={6} sm={6} md={4} key={index} sx={{ p: 1.5 }}>
@@ -67,160 +55,150 @@ const InnerGrid = ({ data, subsection }) => {
   );
 }
 
-const CompleteProfileGrid = ({user, selectedGoals, setSelectedGoals, selectedChallenges, setSelectedChallenges, selectedQuality, setSelectedQuality}) => {
-    const subsections = ["Goals", "Challenges", "Quality"];
-    const sectionItems = {
-      "Goals": ["Strength", "Softness", "Growth", "Hydration", "Volume", "Tame my frizz", "Shine"],
-      "Challenges": ["Color damage", "Very dry", "Breakage", "Split ends", "Tangles easily"],
-      "Quality": ["Color damage", "Breakage", "Tangles easily"]
+const CompleteProfileGrid = ({ user, selectedGoals, setSelectedGoals, selectedChallenges, setSelectedChallenges, selectedQuality, setSelectedQuality }) => {
+  const subsections = ["Goals", "Challenges", "Quality"];
+  const sectionItems = {
+    "Goals": ["Strength", "Softness", "Growth", "Hydration", "Volume", "Tame my frizz", "Shine"],
+    "Challenges": ["Color damage", "Very dry", "Breakage", "Split ends", "Tangles easily"],
+    "Quality": ["Color damage", "Breakage", "Tangles easily"]
+  }
+
+  const [data, , ] = useUser("users", user?.uid);
+
+  const [uploadAlert, setUploadAlert] = useState(false);
+
+  useEffect(() => {
+    if (data) {
+      if (data.goals) setSelectedGoals(data.goals);
+      if (data.challenges) setSelectedChallenges(data.challenges);
+      if (data.quality) setSelectedQuality(data.quality);
     }
-    
-    const [data, loading, error] = useUser("users", user?.uid);
-    
-    const [uploadAlert, setUploadAlert] = useState(false);
+  }, [data, setSelectedGoals, setSelectedChallenges, setSelectedQuality])
 
-    useEffect(() => {
-      if (data){
-        if (data.goals) setSelectedGoals(data.goals);
-        if (data.challenges) setSelectedChallenges(data.challenges);
-        if (data.quality) setSelectedQuality(data.quality);
-      } 
-    }, [data])
-
-    const onSubmit = async () => {
-      if(user){
-        //setSelectedGoals([]);
-        //setSelectedChallenges([]);
-        //setSelectedQuality([]);
-        setUploadAlert(true);
-        console.log(user)
-        const newUserData = {
-          goals: selectedGoals,
-          challenges: selectedChallenges,
-          quality: selectedQuality,
+  const onSubmit = async () => {
+    if (user) {
+      setUploadAlert(true);
+      
+      const newUserData = {
+        goals: selectedGoals,
+        challenges: selectedChallenges,
+        quality: selectedQuality,
       }
       setUser(user.uid, newUserData)
-      }
+    }
   };
 
 
-    const handleToggle = (subsection, name) => {
-      switch (subsection) {
-        case "Goals":
-            if(selectedGoals.includes(name)) {
-              setSelectedGoals(selectedGoals.filter(e => e !== name));
-            } else {
-              setSelectedGoals(selectedGoals.concat([name]));
-            }
-            break;
-        case "Challenges":
-          if(selectedChallenges.includes(name)) {
-            setSelectedChallenges(selectedChallenges.filter(e => e !== name));
-          } else {
-            setSelectedChallenges(selectedChallenges.concat([name]));
-          }
-          break;
-        case "Quality":
-          if(selectedQuality.includes(name)) {
-            setSelectedQuality(selectedQuality.filter(e => e !== name));
-          } else {
-            setSelectedQuality(selectedQuality.concat([name]));
-          }
-          break;
-        default:
-          return;
-      }
+  const handleToggle = (subsection, name) => {
+    switch (subsection) {
+      case "Goals":
+        if (selectedGoals.includes(name)) {
+          setSelectedGoals(selectedGoals.filter(e => e !== name));
+        } else {
+          setSelectedGoals(selectedGoals.concat([name]));
+        }
+        break;
+      case "Challenges":
+        if (selectedChallenges.includes(name)) {
+          setSelectedChallenges(selectedChallenges.filter(e => e !== name));
+        } else {
+          setSelectedChallenges(selectedChallenges.concat([name]));
+        }
+        break;
+      case "Quality":
+        if (selectedQuality.includes(name)) {
+          setSelectedQuality(selectedQuality.filter(e => e !== name));
+        } else {
+          setSelectedQuality(selectedQuality.concat([name]));
+        }
+        break;
+      default:
+        return;
     }
+  }
 
-    const checkIfToggled = (subsection, name) => {
-      switch (subsection) {
-        case "Goals":
-            console.log(selectedGoals.includes(name))
-            return selectedGoals.includes(name);
-        case "Challenges":
-          return selectedChallenges.includes(name);
-        case "Quality":
-          return selectedQuality.includes(name);
-        default:
-          return;
-      }
+  const checkIfToggled = (subsection, name) => {
+    switch (subsection) {
+      case "Goals":
+        return selectedGoals.includes(name);
+      case "Challenges":
+        return selectedChallenges.includes(name);
+      case "Quality":
+        return selectedQuality.includes(name);
+      default:
+        return;
     }
-    const buttonStyle = {
-      width: '10rem',
-      color: 'white', 
-      backgroundColor: "#F2AFAF", 
-      fontFamily: 'Raleway',
-      '&:hover': {
-        backgroundColor: '#B28181',
-        color: 'white',
-      },
+  }
+  const buttonStyle = {
+    width: '10rem',
+    color: 'white',
+    backgroundColor: "#F2AFAF",
+    fontFamily: 'Raleway',
+    '&:hover': {
+      backgroundColor: '#B28181',
+      color: 'white',
+    },
   };
 
-  
-    
-    return (
+
+
+  return (
     <>
-    <Grid container>
-      {subsections.map((subsection, i) => {
-       // console.log(sectionItems[subsection]);
-        return (
-        <>
-          <Grid item xs={12} sx={{alignItems: 'flex-end'}} key={i}>
-            <Typography variant="h6">
-              {subsection}
-            </Typography>
-          </Grid>
-          {sectionItems[subsection].map((name, i) => {
-           // console.log("name of button:" + name)
-            return (
-              
-              <Grid item xs={4} key={i} sx={{padding: '0.5rem 0rem'}}>
-                {/* <Button size="small">Small</Button> */}
-                <ToggleButton
-                  value="check"
-                  size="small"
-                  sx={{width: '6rem', height: '3rem'}}
-                  selected={checkIfToggled(subsection, name)}
-                  onClick={() => handleToggle(subsection, name)}
-                >
-                  {name}
-                </ToggleButton>
+      <Grid container>
+        {subsections.map((subsection, i) => {
+          return (
+            <span key={i}>
+              <Grid item xs={12} sx={{ alignItems: 'flex-end' }}>
+                <Typography variant="h6">
+                  {subsection}
+                </Typography>
               </Grid>
-            );
-          })}
-               
-          </>);
-      })}
-            <Snackbar open={uploadAlert} onClose={() => setUploadAlert(false)} autoHideDuration={2000} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
->
-                <Alert severity="success" >Profile upload successful</Alert>
-            </Snackbar>
-            <Grid item xs={12} sx={{alignItems: 'flex-end', paddingTop: "10px"}}>
-              <Button variant="contained" sx={buttonStyle} onClick={onSubmit}>Submit</Button>   
-            </Grid>
-    </Grid>
+              {sectionItems[subsection].map((name, i) => {
+                return (
+
+                  <Grid item xs={4} key={i} sx={{ padding: '0.5rem 0rem' }}>
+                    <ToggleButton
+                      value="check"
+                      size="small"
+                      sx={{ width: '6rem', height: '3rem' }}
+                      selected={checkIfToggled(subsection, name)}
+                      onClick={() => handleToggle(subsection, name)}
+                    >
+                      {name}
+                    </ToggleButton>
+                  </Grid>
+                );
+              })}
+
+            </span>);
+        })}
+        <Snackbar open={uploadAlert} onClose={() => setUploadAlert(false)} autoHideDuration={2000} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        >
+          <Alert severity="success" >Profile upload successful</Alert>
+        </Snackbar>
+        <Grid item xs={12} sx={{ alignItems: 'flex-end', paddingTop: "10px" }}>
+          <Button variant="contained" sx={buttonStyle} onClick={onSubmit}>Submit</Button>
+        </Grid>
+      </Grid>
     </>
-    );
+  );
 }
 
 const ProductsCategory = ({ data }) => {
   const subsections = Object.keys(data);
 
   return <>
-    <Typography variant="h5" sx={{fontWeight: "bold"}}>
+    <Typography variant="h5" sx={{ fontWeight: "bold" }}>
       {data["description"]}
     </Typography>
     {
-      subsections.map(ss =>
-        Array.isArray(data[ss]) ? <InnerGrid data={data} subsection={ss} /> : null)
+      subsections.map((ss, i) =>
+        Array.isArray(data[ss]) ? <InnerGrid data={data} subsection={ss} key={i} /> : null)
     }
   </>
 }
 
 const Dropdown = ({ category, hairType, content, title, bgcolor, children }) => {
-
-
-
   const useStyles = makeStyles({
     content: {
       justifyContent: "center"
