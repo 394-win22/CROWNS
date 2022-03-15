@@ -4,7 +4,7 @@
 /node_modules
 /.pnp
 /.vs
-.pnp.js
+.vs/
 
 # testing
 /coverage
@@ -25,3 +25,8 @@ yarn-error.log*
 
 # Firebase
 .firebase/
+firebase-export*
+*-debug.log
+
+.vscode/
+.pnp.js

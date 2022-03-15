@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "crown-dd66d"
+  },
+  "targets": {
+    "crown-dd66d": {
+      "hosting": {
+        "develop": [
+          "crowns-develop"
+        ],
+        "live": [
+          "crown-dd66d"
+        ]
+      }
+    }
   }
 }
