@@ -26,6 +26,7 @@ yarn-error.log*
 # Firebase
 .firebase/
 firebase-export*
+*-debug.log
 
 .vscode/
 .pnp.js

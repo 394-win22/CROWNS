@@ -42,10 +42,6 @@
     "hosting": {
       "port": 5000,
       "host": "localhost"
-    },
-    "firestore": {
-      "port": 8080,
-      "host": "localhost"
     }
   }
 }
