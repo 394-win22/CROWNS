@@ -23,8 +23,11 @@ describe ('Test App', () => {
     /*
     it ('tries to sign in', () => {
         cy.visit ('/');
-
-        cy.get('[data-cy=signIn').click();
+        cy.get('[data-cy=quiz]').click();
+        cy.get('[data-cy=option1]').click();
+        cy.get('[data-cy=option2]').click();
+        cy.get('[data-cy=goal]').should('be.visible');
+        
         
     })
 
