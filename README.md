@@ -7,13 +7,13 @@
 - [Background](#background)
 - [Install](#install)
 - [Usage](#usage)
-    - [Firebase](#firebase)
-    - [Data](#data)
+  - [Firebase](#firebase)
+  - [Data](#data)
 - [Next Steps](#next-steps)
 - [Known Bugs and Issues](#bugs-and-issues)
 - [Contributors](#contributors)
-    - [Developers](#developers)
-    - [Clients](#clients)
+  - [Developers](#developers)
+  - [Clients](#clients)
 
 
 ## Background
@@ -78,6 +78,7 @@ Each file has a example schema at the top of the file for how data should be str
 User data is stored on firebase in the firestore. The structure for user data can be viewed in [firebase.js](src/utilities/firebase.js).
 
 ## Next Steps
+
 - Allow users to post and comment on the community page.
 - Add in information for hairstyles of all types.
 - List stylists in the area for all hair types, including a map where users can see a stylist's location. 
@@ -89,6 +90,7 @@ User data is stored on firebase in the firestore. The structure for user data ca
 - Selected goals should appear on the user's Profile page.
 
 ## Known Bugs And Issues
+
 - Unable to perform emulator CI on Github actions, failed to start emulator
 - Log in on Profile page might not upload previous survey result to firebase
 
