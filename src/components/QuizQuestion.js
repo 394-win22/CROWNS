@@ -92,9 +92,8 @@ const DropdownQuizQuestion = ({ question, setResult, allQuestions }) => {
         {question.answers.map((answer, i) => {
           return (<span key={i}>
             <Grid key={answer.id} item>
-
               <Accordion>
-                <AccordionSummary
+                <AccordionSummary data-cy={answer.option}
                   expandIcon={<ExpandMoreIcon sx={{ color: "white" }} />}
                   aria-controls="products"
                   id="products"
@@ -118,7 +117,7 @@ const DropdownQuizQuestion = ({ question, setResult, allQuestions }) => {
                 <AccordionDetails>
                   {allQuestions[1 + i].answers.map((answer, i) => {
                     return (
-                      <Button key={i}
+                      <Button data-cy={answer.option} key={i}
                         sx={{
                         ...gridStyle,
                         backgroundImage: answer.image ? "url(/images" + answer.image + ')' : null,
