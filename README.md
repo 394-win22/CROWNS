@@ -1,70 +1,121 @@
-# Getting Started with Create React App
+# CROWNS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Development has been suspended on this project** since March 2022. This guide offers background on the CROWNS webapp and instructions for initializing the project as it was left. 
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Background](#background)
+- [Install](#install)
+- [Usage](#usage)
+    - [Firebase](#firebase)
+    - [Data](#data)
+- [Next Steps](#next-steps)
+- [Known Bugs and Issues](#bugs-and-issues)
+- [Contributors](#contributors)
+    - [Developers](#developers)
+    - [Clients](#clients)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Background
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+CROWNS is a web app designed to help women of color learn what their hair type is and learn more about how to care for their hair. Users can fill out a questionairre to learn what their hair type is, with the available hair types being 1A through 4C. Additionally, users can read a short description of what their assigned hair type means, view products that can help them treat their hair, and choose goals they want to focus on with their hair as well as challenges they currently face.
 
-### `npm test`
+In the future, users should be able to make posts to a community board (currently the community board is static) and view and comment on posts other users made. They should also be able to filter posts to view those by others who share their hair type. Also, users will be able to view stylists near their location and see services offered by those stylists.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project was started in February 2022 as part of the MPD2 program at Northwestern University, and the original developers were students enrolled in CS 394 also at Northwestern University. The project originally concluded on March 11, 2022.
 
-### `npm run build`
+## Install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This project uses [node](http://nodejs.org) and [npm](https://npmjs.com). Go check them out if you don't have them locally installed.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The only global dependency you may need is firebase-tools which can be installed like so:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
+$ npm install -g firebase-tools
+```
 
-### `npm run eject`
+The remainder of the dependencies can be installed with:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```sh
+$ npm i
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+After installing the necessary dependencies, run the app locally with the following:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```sh
+$ npm start
+# Starts the app locally on localhost:3000
+```
 
-## Learn More
+In order to test the app using jest, run the following in a new console after starting the app:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```sh
+$ npm run test
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+In order to test the app using cypress, run the following in a new console after starting the app:
 
-### Code Splitting
+```sh
+$ npm run cy:open
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+In order to deploy the app to firebase, make a pull request to develop or main on github and the deployment will automatically occur as long as firebase is set up. If not, read the next section.
 
-### Analyzing the Bundle Size
+### Firebase
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+If firebase is not already set up, you should create a new project on [firebase](https://console.firebase.google.com/u/0/). Once the new project is created, find project settings and find the block of code called firebaseConfig (make sure npm is checked). You can paste this information into [firebase.js](src/utilities/firebase.js). Additionally, the files [.firebaserc](.firebaserc), [firebase-hosting-merge.yml](firebase-hosting-merge.yml), and [firebase-hosting-pull-request.yml](firebase-hosting-pull-request.yml) will need updated values for "projectId".
 
-### Making a Progressive Web App
+Once this is set up, pull requests to the main and develop branches should cause the production and developer sites to build automatically.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Data
 
-### Advanced Configuration
+All of the data for [hair types](data/Hairtypes.js), [products](data/Products.js), [quiz questions](Questions.js), and [community posts](Post.js) can be found in the [data](data/) folder.
+Each file has a example schema at the top of the file for how data should be structured. The questions data is currently set up such that questions 1-4 are used in dropdowns from the answers of question 0. The `PlainQuizQuestion` components does not use dropdowns or have subquestions, while the `DropdownQuizQuestion` does both.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+User data is stored on firebase in the firestore. The structure for user data can be viewed in [firebase.js](src/utilities/firebase.js).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Next Steps
+- Allow users to post and comment on the community page.
+- Add in information for hairstyles of all types.
+- List stylists in the area for all hair types, including a map where users can see a stylist's location. 
+- Make a more comprehensive quiz so that absolute beginners are able to determine their hairtype.
+- For each product, shows detail information on a new page, including prices and description
+- Allow transactions of products to be made through the app, including a shopping cart functionality and allowing users to sort through products depending on price.
+- Add in more comprehensive resources for users' individual hair types and goals for hair.
+- Allow users to log their hair journey in a diary that populates a calendar on their account so they can see the progress they've made.
+- Selected goals should appear on the user's Profile page.
 
-### `npm run build` fails to minify
+## Known Bugs And Issues
+- Unable to perform emulator CI on Github actions, failed to start emulator
+- Log in on Profile page might not upload previous survey result to firebase
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contributors
+
+This project was created by Team Blue.
+
+### Developers
+
+The developer team members were students in CS 394 Agile Software Development.
+
+- [Ben Fisk](https://github.com/bfiskers)
+- [Bradley Pawlow](https://github.com/BrianGleason)
+- [Brian Gleason](https://github.com/bpawlow)
+- [James White](https://github.com/jimmy-white)
+- [Jeff Lee](https://github.com/jeffjwl)
+- [Qiuyang Xu](https://github.com/Timxuv587)
+- [Seth May](https://github.com/sethdmay)
+
+The developers also developed [EcoExchange](https://github.com/394-win22/EcoExchange) (*warning - partially incomplete and buggy*) as part of the same class.
+
+### Clients
+
+The client team members were students in the MPD^2 program.
+
+- Hunter Loveland
+- John Stokvis
+- Ogechi Anyanwu
+- Sean Kim
+- Taryn Sack

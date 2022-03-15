@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-const tile_schema = {
+const type_schema = {
     description: "string",
     shampoos: [],
     leaveIns: [],

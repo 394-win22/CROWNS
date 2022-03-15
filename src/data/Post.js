@@ -1,12 +1,12 @@
 /* eslint-disable */
 
-const tile_schema = {
+const post_schema = {
     title: "string",
     name: "string",
     userID: "string",
     content: "string",
     date: "string",
-    tags: []
+    tags: [] // list of strings
 }
 
 /* eslint-enable */
