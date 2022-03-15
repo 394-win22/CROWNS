@@ -96,7 +96,7 @@ const LandingPage = ({ setUserData, userData, setHairType, hairType }) => {
                 </div>
 
                 <div >
-                    <Button onClick={() => { navigate('/selector'); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle2} >
+                    <Button onClick={() => { navigate('/selector'); }} variant="contained" size="large" defaultValue={30} sx={buttonStyle2} data-cy="selector">
                         I know my type!
                     </Button>
                 </div>

@@ -25,7 +25,7 @@ const InnerGrid = ({ data, subsection }) => {
       {data[subsection].map((e, index) => {
         return (
           <Grid item xs={6} sm={6} md={4} key={index} sx={{ p: 1.5 }}>
-            <img
+            <img data-cy="product_image"
               style={{ width: "50%", height: "auto" }}
               src={"./images/goals/productImages/" + e.image}
               alt={``}
@@ -207,7 +207,7 @@ const Dropdown = ({ category, hairType, content, title, bgcolor, children }) => 
   const classes = useStyles();
 
   return (
-    <Accordion>
+    <Accordion data-cy="dropdowns">
       <AccordionSummary
         expandIcon={<ExpandMoreIcon sx={{ color: "white" }} />}
         aria-controls="products"

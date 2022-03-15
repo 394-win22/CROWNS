@@ -57,7 +57,7 @@ const ResultsPage = ({ hairType, setHairType, selectedGoals, setSelectedGoals, s
   };
 
   return (
-    <>
+    <div>
       <Navbar hairTypeCode={hairType.code} />
       <Container className="ResultsPage" maxWidth="lg" style={font} sx={{ pb: '60px' }}>
         <Grid>
@@ -100,7 +100,7 @@ const ResultsPage = ({ hairType, setHairType, selectedGoals, setSelectedGoals, s
             selectedChallenges={selectedChallenges} setSelectedChallenges={setSelectedChallenges}
             selectedQuality={selectedQuality} setSelectedQuality={setSelectedQuality} />
         </Dropdown>}
-        <ProductsDropdown hairType={"_" + hairType.code} category="" />
+        <ProductsDropdown hairType={"_" + hairType.code} category=""/>
 
         <Dropdown title={"Stylists"} bgcolor={"lightGray"}>
           <Typography sx={{ fontWeight: "bold", color: "#333333", fontFamily: "Raleway", fontStyle: "italic" }}>Coming Soon...</Typography>
@@ -110,7 +110,7 @@ const ResultsPage = ({ hairType, setHairType, selectedGoals, setSelectedGoals, s
           <Typography sx={{ fontWeight: "bold", color: "#333333", fontFamily: "Raleway", fontStyle: "italic" }}>Coming Soon...</Typography>
         </Dropdown>
       </Container>
-    </>
+    </div>
   );
 };
 

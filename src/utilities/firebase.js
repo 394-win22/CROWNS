@@ -17,12 +17,12 @@ export const db = getFirestore(app);
 const auth = getAuth(app);
 
 if (window.Cypress) {
-    connectAuthEmulator(auth, "http://localhost:9099");
+    //connectAuthEmulator(auth, "http://localhost:9099");
     // connectFirestoreEmulator(db, "localhost", 8080);
 
-    signInWithCredential(auth, GoogleAuthProvider.credential(
-        '{"sub": "bcf1ucJn4ya8ou09q7uoNAUETKrL", "email": "qiuyangxu123@gmail.com", "displayName":"March 12 test", "email_verified": true}'
-    ));
+    //signInWithCredential(auth, GoogleAuthProvider.credential(
+    //    '{"sub": "bcf1ucJn4ya8ou09q7uoNAUETKrL", "email": "qiuyangxu123@gmail.com", "displayName":"March 12 test", "email_verified": true}'
+    //));
 }
 
 const firebaseSignOut = async (navigate = null) => {

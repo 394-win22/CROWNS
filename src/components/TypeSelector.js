@@ -59,7 +59,7 @@ const TypeSelector = ({ setHairType }) => {
             )
           }
           return (
-            <Grid item xs={4} sm={4} md={4} key={index} onClick={() => { chooseHairType(item.subtype); }}>
+            <Grid item xs={4} sm={4} md={4} key={index} onClick={() => { chooseHairType(item.subtype); }} data-cy="hairtype">
               <img style={{ width: `${100}%`, height: 'auto' }} src={item.image} alt={``} />
             </Grid>
           )
