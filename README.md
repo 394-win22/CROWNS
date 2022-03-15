@@ -65,7 +65,7 @@ In order to deploy the app to firebase, make a pull request to develop or main o
 
 ### Firebase
 
-If firebase is not already set up, you should create a new project on [firebase](https://console.firebase.google.com/u/0/). Once the new project is created, find project settings and find the block of code called firebaseConfig (make sure npm is checked). You can paste this information into [firebase.js](src/utilities/firebase.js). Additionally, the files [.firebaserc](.firebaserc), [firebase-hosting-merge.yml](firebase-hosting-merge.yml), and [firebase-hosting-pull-request.yml](firebase-hosting-pull-request.yml) will need updated values for "projectId".
+If firebase is not already set up, you should create a new project on [firebase](https://console.firebase.google.com/u/0/). Once the new project is created, find project settings and find the block of code called firebaseConfig (make sure npm is checked). You can paste this information into [firebase.js](src/utilities/firebase.js). Additionally, the files [.firebaserc](.firebaserc), [firebase-hosting-merge.yml](.github/workflows/firebase-hosting-merge.yml), and [firebase-hosting-pull-request.yml](.github/workflows/firebase-hosting-pull-request.yml) will need updated values for "projectId".
 
 Once this is set up, pull requests to the main and develop branches should cause the production and developer sites to build automatically.
 
