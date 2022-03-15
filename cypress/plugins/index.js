@@ -19,4 +19,6 @@
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
+  config.ignoreTestFiles = ["**/integration/1-getting-started/*.spec.js","**/integration/2-advanced-examples/*.spec.js"];
+  return config;
 }
