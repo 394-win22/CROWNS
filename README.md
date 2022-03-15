@@ -71,7 +71,7 @@ Once this is set up, pull requests to the main and develop branches should cause
 
 ### Data
 
-All of the data for [hair types](data/Hairtypes.js), [products](data/Products.js), [quiz questions](Questions.js), and [community posts](Post.js) can be found in the [data](data/) folder.
+All of the data for [hair types](src/data/Hairtypes.js), [products](src/data/Products.js), [quiz questions](src/data/Questions.js), and [community posts](src/data/Post.js) can be found in the [data](src/data/) folder.
 Each file has a example schema at the top of the file for how data should be structured. The questions data is currently set up such that questions 1-4 are used in dropdowns from the answers of question 0. The `PlainQuizQuestion` components does not use dropdowns or have subquestions, while the `DropdownQuizQuestion` does both.
 
 
