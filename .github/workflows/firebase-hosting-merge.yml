@@ -31,25 +31,25 @@ jobs:
   #        start: npm start
   #        wait-on: http://localhost:3000
 
-  cypress:
-    name: Cypress test
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Cache firebase emulators
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/firebase/emulators
-          key: ${{ runner.os }}-firebase-emulators-${{ hashFiles('~/.cache/firebase/emulators/**') }}
+  # cypress:
+  #   name: Cypress test
+  #   needs: [build]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Cache firebase emulators
+  #       uses: actions/cache@v2
+  #       with:
+  #         path: ~/.cache/firebase/emulators
+  #         key: ${{ runner.os }}-firebase-emulators-${{ hashFiles('~/.cache/firebase/emulators/**') }}
 
-      - run: npm install -g firebase-tools
+  #     - run: npm install -g firebase-tools
 
-      - uses: cypress-io/github-action@v2
-        with:
-          build: npm run build
-          start: npm run em:run
-          wait-on: http://localhost:3000
+  #     - uses: cypress-io/github-action@v2
+  #       with:
+  #         build: npm run build
+  #         start: npm run em:run
+  #         wait-on: http://localhost:3000
 
   deploy:
     name: Firebase deploy
