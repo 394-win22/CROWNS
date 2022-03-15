@@ -17,6 +17,7 @@ export const db = getFirestore(app);
 const auth = getAuth(app);
 
 if (window.Cypress) {
+    auth.useEmulator("http://localhost:9099");
     connectAuthEmulator(auth, "http://localhost:9099");
     connectFirestoreEmulator(db, "localhost", 8080);
 
