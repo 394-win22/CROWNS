@@ -23,7 +23,7 @@ describe ('Test Products Dropdown', () => {
             .should('be.visible')
             .and(($img) => {expect($img[0].naturalWidth).to.be.greaterThan(0)})
         // click dropdown to close
-        cy.get("[data-cy=dropdowns]").first().click()
+        cy.get("[data-cy=dropdowns]").first().click("topLeft")
         // check element in image is no longer visible again
         cy.get('[data-cy="product_image"]')
             .should('not.be.visible')
