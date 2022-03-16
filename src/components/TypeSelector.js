@@ -53,14 +53,14 @@ const TypeSelector = ({ setHairType }) => {
         {itemData.map((item, index) => {
           if (index === 1) {
             return (
-              <Grid item xs={8} sm={8} md={8} key={index} >
-                <img style={{ width: `${100}%`, height: 'auto' }} src={item.image} alt={``} />
+                <Grid item xs={8} sm={8} md={8} key={index}>
+                    <img style={{ width: `${100}%`, height: 'auto' }} src={item.image} alt={``} />
               </Grid>
             )
           }
           return (
-            <Grid item xs={4} sm={4} md={4} key={index} onClick={() => { chooseHairType(item.subtype); }}>
-              <img style={{ width: `${100}%`, height: 'auto' }} src={item.image} alt={``} />
+              <Grid item xs={4} sm={4} md={4} key={index} onClick={() => { chooseHairType(item.subtype); }}>
+                  <img style={{ width: `${100}%`, height: 'auto' }} data-cy={item.subtype.code} src={item.image} alt={item.subtype.code} />
             </Grid>
           )
         })}
