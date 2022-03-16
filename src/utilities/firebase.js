@@ -2,7 +2,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore, getDoc, doc, setDoc, updateDoc } from "firebase/firestore";
-import { getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithPopup, signOut, connectAuthEmulator, signInWithCredential } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithPopup, signOut } from 'firebase/auth';
 
 const firebaseConfig = {
     apiKey: "<Insert from firebase>",
@@ -14,16 +14,16 @@ const firebaseConfig = {
 };
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
 export const db = getFirestore(app);
-const auth = getAuth(app);
+//const auth = getAuth(app);
 
-if (window.Cypress) {
-    //connectAuthEmulator(auth, "http://localhost:9099");
-    // connectFirestoreEmulator(db, "localhost", 8080);
+// if (window.Cypress) {
+//     connectAuthEmulator(auth, "http://localhost:9099");
+//     // connectFirestoreEmulator(db, "localhost", 8080);
 
-    //signInWithCredential(auth, GoogleAuthProvider.credential(
-    //    '{"sub": "bcf1ucJn4ya8ou09q7uoNAUETKrL", "email": "qiuyangxu123@gmail.com", "displayName":"March 12 test", "email_verified": true}'
-    //));
-}
+//     signInWithCredential(auth, GoogleAuthProvider.credential(
+//         '{"sub": "bcf1ucJn4ya8ou09q7uoNAUETKrL", "email": "qiuyangxu123@gmail.com", "displayName":"March 12 test", "email_verified": true}'
+//     ));
+// }
 
 const firebaseSignOut = async (navigate = null) => {
     await signOut(getAuth(app));

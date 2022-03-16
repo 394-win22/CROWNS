@@ -75,9 +75,9 @@ const Profile = ({ hairType, setHairType }) => {
         return (<Container maxWidth="sm" sx={{ pb: '60px', alignItems: 'center', height: "100%" }}>
             <Navbar hairTypeCode={hairType?.code} />
 
-            <Typography variant="h3" fontWeight="bold" sx={{ fontFamily: "Raleway", my: 4 }}>Profile</Typography>
-            <Typography>Please login to view your profile</Typography>
-            <Button onClick={() => { signInWithGoogle(); }} variant="contained" size="large" defaultValue={30} sx={accountButtonStyle} >
+            <Typography data-cy="profileTitle" variant="h3" fontWeight="bold" sx={{ fontFamily: "Raleway", my: 4 }}>Profile</Typography>
+            <Typography data-cy="profileSubtitle">Please login to view your profile</Typography>
+            <Button data-cy="profileJoinButton" onClick={() => { signInWithGoogle(); }} variant="contained" size="large" defaultValue={30} sx={accountButtonStyle} >
                 {"Join Our Community!"}
             </Button>
         </Container>)

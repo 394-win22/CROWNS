@@ -74,7 +74,7 @@ const ResultsPage = ({ hairType, setHairType, selectedGoals, setSelectedGoals, s
           </div>
         </Grid>}
         <Grid sx={{ ...gridStyle, backgroundColor: "#f9b792" }}>
-          <Typography sx={{ fontSize: "2rem" }}>Your hair type is {hairType.code}</Typography>
+        <Typography data-cy="hairtypeTitle" sx={{ fontSize: "2rem" }}>Your hair type is {hairType.code}</Typography>
         </Grid>
         <Grid sx={{ display: "flex", alignItems: "center", justifyContent: "center", border: 3, borderColor: "black", padding: 1 }}>
           <Grid item xs={5}>
