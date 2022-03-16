@@ -17,8 +17,8 @@ describe('Test Primary Quiz Navigation', () => {
         cy.get('[data-cy=quizQuestion]').should('be.visible');
         cy.get('[data-cy=Kinky]').should('be.visible');
         cy.get('[data-cy=Kinky]').click();
-        cy.get(`[data-cy=${tightCoil}]`).should('be.visible');
-        cy.get(`[data-cy=${tightCoil}]`).click();
+        cy.get(`[data-cy="${tightCoil}"]`).should('be.visible');
+        cy.get(`[data-cy="${tightCoil}"]`).click();
         cy.get('[data-cy=hairtypeTitle]').should('contain', 'Your hair type is 4C');
     })
 });
