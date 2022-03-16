@@ -1,6 +1,14 @@
 /* globals cy */
 
 describe('Test for Know Type Result Navigation', () => {
+
+    it('Ensures list image is not clickable or no faulty redirect', () => {
+        cy.visit('/selector');
+        cy.get(('[data-cy=unclickable]')).click();
+        cy.url().should('include', '/selector');
+        cy.get(('[alt="List of Types"]')).should('be.visible');
+    })
+
     it('opens correct hairtype results for type 1A hair', () => {
         cy.visit('/selector');
         cy.get(('[alt="1A"]')).should('be.visible');

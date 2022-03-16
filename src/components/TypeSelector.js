@@ -54,7 +54,7 @@ const TypeSelector = ({ setHairType }) => {
           if (index === 1) {
             return (
                 <Grid item xs={8} sm={8} md={8} key={index}>
-                    <img style={{ width: `${100}%`, height: 'auto' }} src={item.image} alt={``} />
+                    <img style={{ width: `${100}%`, height: 'auto' }} data-cy={ 'unclickable' } src={item.image} alt={`List of Types`} />
               </Grid>
             )
           }

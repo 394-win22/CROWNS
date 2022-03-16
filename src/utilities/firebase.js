@@ -2,7 +2,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore, getDoc, doc, setDoc, updateDoc } from "firebase/firestore";
-import { getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithPopup, signOut, connectAuthEmulator, signInWithCredential } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithPopup, signOut } from 'firebase/auth';
 
 const firebaseConfig = {
     apiKey: "<Insert from firebase>",
@@ -14,7 +14,7 @@ const firebaseConfig = {
 };
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
 export const db = getFirestore(app);
-const auth = getAuth(app);
+//const auth = getAuth(app);
 
 // if (window.Cypress) {
 //     connectAuthEmulator(auth, "http://localhost:9099");
