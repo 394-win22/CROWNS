@@ -37,7 +37,7 @@ const DiscussionCard = ({ data, index }) => {
     };
 
     return (
-        <Card sx={{ marginTop: "1rem", border: 3, borderColor: "black" }}>
+        <Card data-cy="post-card" sx={{ marginTop: "1rem", border: 3, borderColor: "black" }}>
             <CardHeader
                 sx={{ textAlign: "left" }}
                 avatar={
@@ -63,7 +63,7 @@ const DiscussionCard = ({ data, index }) => {
                 </Stack>
             }
             <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites" onClick={handleClick}>
+                <IconButton aria-label="add to favorites" data-cy="comment-button" onClick={handleClick}>
                     <CommentIcon />
                 </IconButton>
                 <Popper id={'pop'} open={open} placement={'right'} anchorEl={anchorEl} transition sx={{ p: 0 }}>
@@ -102,7 +102,7 @@ const Community = ({ hairType }) => {
         setAnchorEl(anchorEl ? null : event.currentTarget);
         setOpen(!open);
     };
-   
+
     return (
         <>
             <Container sx={{ pb: '65px' }} disableGutters>
